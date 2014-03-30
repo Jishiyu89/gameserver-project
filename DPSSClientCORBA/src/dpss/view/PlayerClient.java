@@ -165,37 +165,42 @@ public class PlayerClient {
 			
 			ORB orb = ORB.init((String[])null,null);	
 			
-			BufferedReader brNA = new BufferedReader (new FileReader("G:\\workspace\\iorNA.txt"));
-			String iorNA = brNA.readLine();
-			brNA.close();
-
-			BufferedReader brEU = new BufferedReader (new FileReader("G:\\workspace\\iorEU.txt"));
-			String iorEU = brEU.readLine();
-			brEU.close();
-			
-			BufferedReader brAS = new BufferedReader (new FileReader("G:\\workspace\\iorAS.txt"));
-			String iorAS = brAS.readLine();
-			brAS.close();		
-
-			org.omg.CORBA.Object oNA = orb.string_to_object(iorNA);
-			org.omg.CORBA.Object oEU = orb.string_to_object(iorEU);
-			org.omg.CORBA.Object oAS = orb.string_to_object(iorAS);			
-			
-
-						
-			if (playerServerName.equals("NA")){ 
-			
-				this.gameServer = GameServerHelper.narrow(oNA);
-			}
-			else if (playerServerName.equals("EU")) {
-			
-				this.gameServer = GameServerHelper.narrow(oEU);
-			}
-			else if (playerServerName.equals("AS")){
-			
-				this.gameServer = GameServerHelper.narrow(oAS);			
-			}
-			
+//			BufferedReader brNA = new BufferedReader (new FileReader("G:\\workspace\\iorNA.txt"));
+//			String iorNA = brNA.readLine();
+//			brNA.close();
+//
+//			BufferedReader brEU = new BufferedReader (new FileReader("G:\\workspace\\iorEU.txt"));
+//			String iorEU = brEU.readLine();
+//			brEU.close();
+//			
+//			BufferedReader brAS = new BufferedReader (new FileReader("G:\\workspace\\iorAS.txt"));
+//			String iorAS = brAS.readLine();
+//			brAS.close();		
+//
+//			org.omg.CORBA.Object oNA = orb.string_to_object(iorNA);
+//			org.omg.CORBA.Object oEU = orb.string_to_object(iorEU);
+//			org.omg.CORBA.Object oAS = orb.string_to_object(iorAS);			
+//			
+//
+//						
+//			if (playerServerName.equals("NA")){ 
+//			
+//				this.gameServer = GameServerHelper.narrow(oNA);
+//			}
+//			else if (playerServerName.equals("EU")) {
+//			
+//				this.gameServer = GameServerHelper.narrow(oEU);
+//			}
+//			else if (playerServerName.equals("AS")){
+//			
+//				this.gameServer = GameServerHelper.narrow(oAS);			
+//			}
+//			
+			BufferedReader brFE = new BufferedReader (new FileReader("..\\iorFE.txt"));
+			String iorFE = brFE.readLine();
+			brFE.close();
+			org.omg.CORBA.Object oFE = orb.string_to_object(iorFE);
+			this.gameServer=GameServerHelper.narrow(oFE);
 		} catch(Exception e){
 			e.printStackTrace();
 		}
