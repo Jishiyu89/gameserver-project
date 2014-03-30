@@ -19,7 +19,7 @@ public class ReplicaManagement extends Thread{
 	DatagramSocket socket=null;
 	int count1,count2,count3;
 	ReplicaManagement()
-	{
+	{ 
 		try {
 			DatagramSocket socket=new DatagramSocket(7000);
 		} catch (SocketException e) {
