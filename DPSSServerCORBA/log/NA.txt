@@ -1,2 +1,0 @@
-[2014-02-17 08:59:14] Game server NA is up and running on ports 
-[2014-02-17 08:59:35] Username [a] sucessfuly created on game server NA!
