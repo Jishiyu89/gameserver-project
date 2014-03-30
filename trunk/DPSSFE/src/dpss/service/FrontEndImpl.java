@@ -61,7 +61,8 @@ public class FrontEndImpl extends GameServerPOA {
 		
 	@SuppressWarnings("unchecked")
 	public String createPlayerAccount(String firstNameParam, String lastNameParam, String usernameParam, String passwordParam, int ageParam, String iPAdressParam) {
-		String request="CreatPlayAccount"+"->"+firstNameParam+"->"+lastNameParam+"->"+usernameParam+"->"+passwordParam +"->"+ ageParam+"->"+iPAdressParam;
+		RequestType type=RequestType.CreatePlayerAccount;
+		String request=type+"->"+firstNameParam+"->"+lastNameParam+"->"+usernameParam+"->"+passwordParam +"->"+ ageParam+"->"+iPAdressParam;
 		byte[] bufferRequest=new byte[1000];
 		DatagramPacket UDPRequest=null;
 		byte[] bufferReply=new byte[1000];
@@ -97,8 +98,8 @@ public class FrontEndImpl extends GameServerPOA {
 	@SuppressWarnings("unchecked")
 	@Override
 	public String playerSignIn(String usernameParam, String passwordParam, String iPAdressParam){
-			
-		String request="PlayerSignIn"+"->"+usernameParam+"->"+passwordParam +"->"+iPAdressParam;
+		RequestType type=RequestType.PlayerSignIn;	
+		String request=type+"->"+usernameParam+"->"+passwordParam +"->"+iPAdressParam;
 		DatagramPacket UDPRequest=null;
 		byte[] bufferRequest=new byte[1000];
 		byte[] bufferReply=new byte[1000];
@@ -134,7 +135,8 @@ public class FrontEndImpl extends GameServerPOA {
 	@Override
 	public String playerSignOut(String usernameParam, String iPAdressParam) {
 		
-		String request="PlayerSignOut"+"->"+usernameParam+"->"+iPAdressParam;
+		RequestType type=RequestType.PlayerSignOut;	
+		String request=type+"->"+usernameParam+"->"+iPAdressParam;
 		DatagramPacket UDPRequest=null;
 		byte[] bufferRequest=new byte[1000];
 		byte[] bufferReply=new byte[1000];
@@ -169,7 +171,7 @@ public class FrontEndImpl extends GameServerPOA {
 	@SuppressWarnings("unchecked")
 	@Override
 	public String transferAccount(String usernameParam, String passwordParam, String oldIPAddressParam, String newIPAddressParam) {
-		String request="TransferAccount"+"->"+usernameParam+"->"+passwordParam +"->"+ oldIPAddressParam+"->"+newIPAddressParam;
+		String request=RequestType.TransferAccount+"->"+usernameParam+"->"+passwordParam +"->"+ oldIPAddressParam+"->"+newIPAddressParam;
 		byte[] bufferRequest=new byte[1000];
 		DatagramPacket UDPRequest=null;
 		byte[] bufferReply=new byte[1000];
@@ -206,7 +208,7 @@ public class FrontEndImpl extends GameServerPOA {
 	@Override
 	public String getPlayerStatus(String adminUsernameParam, String adminPasswordParam, String iPAdressParam)  {
 	
-		String request="GetPlayerStatus"+"->"+adminUsernameParam+"->"+adminPasswordParam +"->"+iPAdressParam;
+		String request=RequestType.GetPlayerStatus+"->"+adminUsernameParam+"->"+adminPasswordParam +"->"+iPAdressParam;
 		byte[] bufferRequest=new byte[1000];
 		DatagramPacket UDPRequest=null;
 		byte[] bufferReply=new byte[1000];
@@ -242,7 +244,7 @@ public class FrontEndImpl extends GameServerPOA {
 	@SuppressWarnings("unchecked")
 	@Override
 	public String suspendAccount(String adminUsernameParam, String adminPasswordParam, String iPAdressParam, String usernameSuspendParam) {
-		String request="SuspendAccount"+"->"+adminUsernameParam+"->"+adminPasswordParam +"->"+iPAdressParam+"->"+usernameSuspendParam;
+		String request=RequestType.SuspendAccount+"->"+adminUsernameParam+"->"+adminPasswordParam +"->"+iPAdressParam+"->"+usernameSuspendParam;
 		byte[] bufferRequest=new byte[1000];
 		DatagramPacket UDPRequest=null;
 		byte[] bufferReply=new byte[1000];
