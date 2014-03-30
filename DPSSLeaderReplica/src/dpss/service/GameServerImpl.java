@@ -20,7 +20,7 @@ import org.omg.CORBA.ORB;
 import dpss.model.Player;
 import dpss.service.corba.GameServerPOA;
 
-public class GameServerImpl implements GameInterface {
+public class GameServerImpl extends GameServerPOA {
 	
 	ORB orb; 
 	String serverName;
