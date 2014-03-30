@@ -1,0 +1,6 @@
+[2014-03-30 07:06:49] Front End FrontEnd is up and running!
+[2014-03-30 07:23:18] Front End FrontEnd is up and running!
+[2014-03-30 07:25:37] Front End FrontEnd is up and running!
+[2014-03-30 07:26:25] Front End FrontEnd is up and running!
+[2014-03-30 07:26:54] Front End send Create Account request to Leader Replica from Client[132.xxx.xxx.xxx]!
+[2014-03-30 07:26:54] Front End recieve Create Account reply[CreatPlayerAccount] from Leader Replica to Client[132.xxx.xxx.xxx]!

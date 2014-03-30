@@ -13,6 +13,7 @@ package dpss.service;
  *    
  * */
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.DatagramPacket;
@@ -276,30 +277,23 @@ public class FrontEndImpl extends GameServerPOA {
 		}
 	}	
 	
-	public void main(String args[]){
+	public static void main(String args[]){
 		
 		try{ 
-			 orb = ORB.init(args, null); 
-			 POA rootPOA = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
+			ORB orb = ORB.init(args,null);
+			POA rootPOA = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
 			 
-			 FrontEndImpl frontEnd = new FrontEndImpl();
+			FrontEndImpl frontEnd = new FrontEndImpl();
 					 
-			byte[] idFE = rootPOA.activate_object(frontEnd);
-				
-			org.omg.CORBA.Object refFE = rootPOA.id_to_reference(idFE);
-			
-			String iorFE = orb.object_to_string(refFE);
-			
-			
-			PrintWriter fileFE = new PrintWriter("..\\iorFE.txt");
-			
-			fileFE.println(iorFE);
-			fileFE.close();	
-								
-			// wait for invocations from clients 
+			byte[] idFE = rootPOA.activate_object(frontEnd); /* converting to a unique ID*/		
+			org.omg.CORBA.Object refFE = rootPOA.id_to_reference(idFE); /* postal card - our reference */		
+			String iorAS = orb.object_to_string(refFE);
+			System.out.println(iorAS);
+			PrintWriter file = new PrintWriter("../iorFE.txt");
+			file.println(iorAS);
+			file.close();
 			rootPOA.the_POAManager().activate();
 			orb.run();
-			 
 		}
 		catch(Exception e){
 			e.printStackTrace();
