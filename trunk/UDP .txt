@@ -1,0 +1,12 @@
+FE:
+Sending: format: type of request +information, 
+	 port number of LR:1010
+recieve: port number:9000
+
+
+
+RM
+receive: port number:7000
+send   : fromat"Restart"
+	 port number:??
+	 Address: local host
