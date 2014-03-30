@@ -1,9 +1,16 @@
 package dpss.service;
 
-/**  Implementation of the Game Server which contains the code of available features.
- *   Main class on Server side. It represents the server itself that holds the database of users and responds to players and admin requests.
- * 	 In addition to methods specified in the JAVA IDL interface (GameInterface.idl), other private methods used in internal  operations can be found.   
- *   @class GameServerImpl   
+/**  Implementation of the Front End which contains the code of available features.
+ *      
+ *   @class FrontEndImpl   
+ *   
+ * 	 For every clients' or adminclients' CORBA invocation,FR send UDP request to Leader Replica
+ * 	 Format: type of request +information from clients or adminclients.
+ * 	 Port number: 1010
+ * 
+ *   Receive reply from Leader Replica
+ *   Port number: 9000
+ *    
  * */
 
 import java.io.IOException;
