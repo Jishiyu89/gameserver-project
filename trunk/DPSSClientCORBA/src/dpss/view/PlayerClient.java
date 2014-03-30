@@ -1,5 +1,8 @@
 package dpss.view;
  
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -148,7 +151,7 @@ public class PlayerClient {
 		
 		try{ 
 
-			Properties properties = System.getProperties( );
+			/*Properties properties = System.getProperties( );
 				
 			properties.put( "org.omg.CORBA.ORBInitialHost", "localhost" );
 			properties.put( "org.omg.CORBA.ORBInitialPort", Integer.toString(900));
@@ -158,7 +161,40 @@ public class PlayerClient {
 			
 			NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef); 
 			this.gameServer = GameServerHelper.narrow(ncRef.resolve_str(playerServerName));
+			*/
 			
+			ORB orb = ORB.init((String[])null,null);	
+			
+			BufferedReader brNA = new BufferedReader (new FileReader("G:\\workspace\\iorNA.txt"));
+			String iorNA = brNA.readLine();
+			brNA.close();
+
+			BufferedReader brEU = new BufferedReader (new FileReader("G:\\workspace\\iorEU.txt"));
+			String iorEU = brEU.readLine();
+			brEU.close();
+			
+			BufferedReader brAS = new BufferedReader (new FileReader("G:\\workspace\\iorAS.txt"));
+			String iorAS = brAS.readLine();
+			brAS.close();		
+
+			org.omg.CORBA.Object oNA = orb.string_to_object(iorNA);
+			org.omg.CORBA.Object oEU = orb.string_to_object(iorEU);
+			org.omg.CORBA.Object oAS = orb.string_to_object(iorAS);			
+			
+
+						
+			if (playerServerName.equals("NA")){ 
+			
+				this.gameServer = GameServerHelper.narrow(oNA);
+			}
+			else if (playerServerName.equals("EU")) {
+			
+				this.gameServer = GameServerHelper.narrow(oEU);
+			}
+			else if (playerServerName.equals("AS")){
+			
+				this.gameServer = GameServerHelper.narrow(oAS);			
+			}
 			
 		} catch(Exception e){
 			e.printStackTrace();
