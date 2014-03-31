@@ -6,7 +6,7 @@ package RM;
  * format: replica number;  port number : 7000
  * 
  * send control message to the replica which is wrong over 2 time
- * format: restart;  ?????port number of replica address of replica?????
+ * format: Restart;  ?????port number of replica address of replica?????
  * 
  * @author Shu Liu ID: 6855466
  */
