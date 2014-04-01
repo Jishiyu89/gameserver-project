@@ -21,6 +21,7 @@ public class LeaderReplica extends Thread{
 	InetAddress hostLR;
 	org.omg.CORBA.Object oNA,oEU,oAS;
 	GameServer gameServer;
+	int Seq;
 	
 	LinkedList<Request> reqList;
 	LeaderReplica()	{
@@ -28,7 +29,7 @@ public class LeaderReplica extends Thread{
 			socketA=new DatagramSocket(portA);
 			hostLR = InetAddress.getByName("localhost");
 			reqList=new LinkedList<Request>();
-			
+			Seq=0;
 			ORB orb = ORB.init((String[])null,null);	
 			
 			BufferedReader brNA = new BufferedReader (new FileReader("..\\iorNA.txt"));
@@ -84,10 +85,16 @@ public class LeaderReplica extends Thread{
 				switch(type){
 				case CreatePlayerAccount:
 					System.out.println("CreatPlayerAccount");
+					reqList.add(new Request(Seq,RequestType.CreatePlayerAccount));
 					
 					gameServer=IPConvert(requestInformation[6]);
 					if(gameServer!=null)
+					{
 						reply=gameServer.createPlayerAccount(requestInformation[1], requestInformation[2], requestInformation[3], requestInformation[4], Integer.parseInt(requestInformation[5]), requestInformation[6]);
+						Request temp=reqList.get(Seq);
+						Seq++;
+						temp.setStatus(1, reply);
+					}
 					System.out.println(reply);		
 					UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
 					break;
@@ -137,6 +144,10 @@ public class LeaderReplica extends Thread{
 					break;
 				}
 				socketA.send(UDPReply);
+				
+				//to RM
+				socketA.send(new DatagramPacket("1".getBytes(),"1".length(),hostLR,7000));
+				
 				
 			} catch (IOException e) {
 				
