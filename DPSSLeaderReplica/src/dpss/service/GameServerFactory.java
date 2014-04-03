@@ -20,7 +20,7 @@ import org.omg.PortableServer.POAHelper;
 import dpss.service.corba.GameServer;
 import dpss.service.corba.GameServerHelper;
 
-public class GameServerFactory {
+public class GameServerFactory extends Thread {
 
 	ORB orb;
 	POA rootpoa;
@@ -28,11 +28,18 @@ public class GameServerFactory {
 	NamingContextExt ncRef;
 	String[] args;
 	
+	public GameServerImpl servantNA;
+	public GameServerImpl servantEU;
+	public GameServerImpl servantAS;
+	
 	public GameServerFactory() { 
 			
 		try{ 
-
-			 orb = ORB.init(args, null); 
+			servantNA = new GameServerImpl("NA",1500);
+			 servantEU = new GameServerImpl("EU",2500);
+			 servantAS = new GameServerImpl("AS",3500);
+			 
+		/*	 orb = ORB.init(args, null); 
 			 POA rootPOA = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
 			 
 			 GameServerImpl servantNA = new GameServerImpl("NA",1500);
@@ -51,9 +58,9 @@ public class GameServerFactory {
 			String iorEU = orb.object_to_string(refEU);
 			String iorAS = orb.object_to_string(refAS);
 			
-			PrintWriter fileNA = new PrintWriter("G:\\workspace\\iorNA.txt");
-			PrintWriter fileEU = new PrintWriter("G:\\workspace\\iorEU.txt");
-			PrintWriter fileAS = new PrintWriter("G:\\workspace\\iorAS.txt");
+			PrintWriter fileNA = new PrintWriter("..\\iorNA.txt");
+			PrintWriter fileEU = new PrintWriter("..\\iorEU.txt");
+			PrintWriter fileAS = new PrintWriter("..\\iorAS.txt");
 			fileNA.println(iorNA);
 			fileEU.println(iorEU);
 			fileAS.println(iorAS);
@@ -62,7 +69,7 @@ public class GameServerFactory {
 			fileAS.close();			
 					
 			rootPOA.the_POAManager().activate();
-			orb.run();
+			orb.run();*/
 			 
 		}
 		catch(Exception e){

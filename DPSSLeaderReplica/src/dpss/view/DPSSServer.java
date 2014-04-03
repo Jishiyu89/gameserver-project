@@ -1,6 +1,7 @@
 package dpss.view; 
 
-import dpss.service.GameServerFactory;;
+import dpss.service.GameServerFactory;
+import dpss.service.LeaderReplica;
 
 /**  Single entry point of the application (Server side) <BR>
  *   Game servers NA, EU and AS are created here by invocating the class GameServerFactory
@@ -11,10 +12,10 @@ import dpss.service.GameServerFactory;;
 
 public class DPSSServer {
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
-		GameServerFactory gameServers = new GameServerFactory();
+		LeaderReplica lR=new LeaderReplica();
+		lR.run();		
 
 	}
 

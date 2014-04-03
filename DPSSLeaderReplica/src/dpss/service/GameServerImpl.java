@@ -65,6 +65,8 @@ public class GameServerImpl extends GameServerPOA {
 	@SuppressWarnings("unchecked")
 	public String createPlayerAccount(String firstNameParam, String lastNameParam, String usernameParam, String passwordParam, int ageParam, String iPAdressParam) {
 		
+			System.out.println("entrei!");
+		
 			char auxHashIndex = ((usernameParam.trim()).toUpperCase()).charAt(0);
 			ArrayList<Player> auxArrPlayer = (ArrayList<Player>) hashPlayers.get(auxHashIndex);
 			
