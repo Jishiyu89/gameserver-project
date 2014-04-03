@@ -1,5 +1,7 @@
 package dpss.view;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -29,7 +31,7 @@ public class AdministratorClient {
 	String[] adminIPRange = {"132.xxx.xxx.xxx","93.xxx.xxx.xxx","182.xxx.xxx.xxx"};
 	String[] adminrServerRange = {"rmi://localhost:1000/gameserver","rmi://localhost:2000/gameserver","rmi://localhost:3000/gameserver"};
 	String[] adminrServerNameRange = {"NA","EU","AS"};
-	WriteLog Logger = new WriteLog(); 
+	WriteLog Logger ; 
 	GameServer gameServer;
 	
 	@SuppressWarnings("unused")
@@ -42,7 +44,7 @@ public class AdministratorClient {
 		selectRandomIP();	 
 		connectToServer();
 		showMenu();		
-		
+		Logger=new WriteLog("admin."+adminIP);
 		try{
 		
 		int userChoice=0;
@@ -113,18 +115,24 @@ public class AdministratorClient {
 		
 		try{ 
 
-			Properties properties = System.getProperties( );
+		/*	Properties properties = System.getProperties( );
 				
 			properties.put( "org.omg.CORBA.ORBInitialHost", "localhost" );
-			properties.put( "org.omg.CORBA.ORBInitialPort", Integer.toString(900));
+			properties.put( "org.omg.CORBA.ORBInitialPort", Integer.toString(900));*/
 			 
-			ORB orb = ORB.init((String[])null,properties);			
-			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService"); 
+			ORB orb = ORB.init((String[])null,null);			
+		/*	org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService"); 
 			
 			NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef); 
-			this.gameServer = GameServerHelper.narrow(ncRef.resolve_str(adminServerName));
+			this.gameServer = GameServerHelper.narrow(ncRef.resolve_str(adminServerName));*/
 			
 			//System.out.println("Connected to Server " + playerServerName + "!");
+			
+			BufferedReader brFE = new BufferedReader (new FileReader("..\\iorFE.txt"));
+			String iorFE = brFE.readLine();
+			brFE.close();
+			org.omg.CORBA.Object oFE = orb.string_to_object(iorFE);
+			this.gameServer=GameServerHelper.narrow(oFE);
 			
 		} catch(Exception e){
 			e.printStackTrace();
@@ -148,7 +156,7 @@ public class AdministratorClient {
 		String auxReturn;
 		try{
 			auxReturn = gameServer.getPlayerStatus(adminUserName,adminPwd,adminIP);			
-			Logger.write("admin." + adminUserName+adminIP, auxReturn);
+			Logger.write( auxReturn);
 			System.out.println(auxReturn); 				
 		} catch (Exception e){
 			e.printStackTrace();
@@ -171,7 +179,7 @@ public class AdministratorClient {
 		String auxReturn;
 		try{
 			auxReturn = gameServer.suspendAccount(adminUserName,adminPwd,adminIP, usernameToSuspend);			
-			Logger.write("admin." + adminUserName+adminIP, auxReturn);
+			Logger.write( auxReturn);
 			System.out.println(auxReturn); 				
 		} catch (Exception e){
 			e.printStackTrace();
