@@ -20,17 +20,24 @@ public class LeaderReplica extends Thread{
 	int portA=1010;
 	InetAddress hostLR;
 	org.omg.CORBA.Object oNA,oEU,oAS;
-	GameServer gameServer;
+	GameServerImpl gameServer;
 	int Seq;
+	GameServerFactory gameServers;
 	
 	LinkedList<Request> reqList;
-	LeaderReplica()	{
+	
+	public LeaderReplica()	{
 		try {
+			
+			gameServers = new GameServerFactory();
+		
+			System.out.println("factory created");
+			
 			socketA=new DatagramSocket(portA);
 			hostLR = InetAddress.getByName("localhost");
 			reqList=new LinkedList<Request>();
 			Seq=0;
-			ORB orb = ORB.init((String[])null,null);	
+			/*ORB orb = ORB.init((String[])null,null);	
 			
 			BufferedReader brNA = new BufferedReader (new FileReader("..\\iorNA.txt"));
 			String iorNA = brNA.readLine();
@@ -44,9 +51,9 @@ public class LeaderReplica extends Thread{
 			String iorAS = brAS.readLine();
 			brAS.close();		
 
-			org.omg.CORBA.Object oNA = orb.string_to_object(iorNA);
-			org.omg.CORBA.Object oEU = orb.string_to_object(iorEU);
-			org.omg.CORBA.Object oAS = orb.string_to_object(iorAS);
+			oNA = orb.string_to_object(iorNA);
+			oEU = orb.string_to_object(iorEU);
+			oAS = orb.string_to_object(iorAS);*/
 			
 		} catch (Exception e) {
 			
@@ -56,19 +63,33 @@ public class LeaderReplica extends Thread{
 	}
 	
 	
-	private GameServer IPConvert(String s){
+	private GameServerImpl IPConvert(String s){
 		String[] IP=s.split("\\.");
-		if (IP[0]==null)
-		return null;
-		else
-		switch(Integer.parseInt(IP[0])){
-		case 132: return GameServerHelper.narrow(oNA);
-		case 98:return  GameServerHelper.narrow(oEU);
-		default:return GameServerHelper.narrow(oAS);
+		System.out.println(s);
+		System.out.println(IP[0]);
+		if (IP[0]==null) {
+			System.out.println("null>");
+			return null;
+		}		
+		else{ 
+			switch(Integer.parseInt(IP[0])){
+			case 132:System.out.println("132 here!");
+					// return GameServerHelper.narrow(oNA);					 
+					return gameServers.servantNA;
+			case 93:System.out.println("93 here!");
+					//return  GameServerHelper.narrow(oEU);
+					return gameServers.servantEU;
+			default:System.out.println("wte here!");
+					//return GameServerHelper.narrow(oAS);
+					return gameServers.servantAS;
+			}
 		}
 		
 	}
 	public void run(){
+		
+		System.out.println("Running run() from Leader Replica");
+		
 		byte[] bufferRequest=new byte[1000];
 		DatagramPacket UDPRequest=new DatagramPacket(bufferRequest, bufferRequest.length);
 		
@@ -91,6 +112,7 @@ public class LeaderReplica extends Thread{
 					if(gameServer!=null)
 					{
 						reply=gameServer.createPlayerAccount(requestInformation[1], requestInformation[2], requestInformation[3], requestInformation[4], Integer.parseInt(requestInformation[5]), requestInformation[6]);
+						System.out.println("reply = >>>" + reply );
 						Request temp=reqList.get(Seq);
 						Seq++;
 						temp.setStatus(1, reply);
@@ -98,6 +120,7 @@ public class LeaderReplica extends Thread{
 					System.out.println(reply);		
 					UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
 					break;
+				
 				case PlayerSignIn:
 					System.out.println("PlayerSignIn");
 					
@@ -132,16 +155,24 @@ public class LeaderReplica extends Thread{
 
 					gameServer=IPConvert(requestInformation[3]);
 					if(gameServer!=null)
-						reply=gameServer.suspendAccount(requestInformation[1], requestInformation[2],requestInformation[3], requestInformation[4]);
+						reply=gameServer.getPlayerStatus(requestInformation[1], requestInformation[2],requestInformation[3]);
 					System.out.println(reply);		
 					UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
 					
 					break;
-				case SuspendAccount:
-					System.out.println("SuspendAccount");
-					UDPReply=new DatagramPacket("SuspendAccount".getBytes(),"CreatPlayerAccount".length(),hostLR,9000);
+				case SuspendAccount:					
+					//UDPReply=new DatagramPacket("SuspendAccount".getBytes(),"CreatPlayerAccount".length(),hostLR,9000);
 				
+					System.out.println("SuspendAccount");
+
+					gameServer=IPConvert(requestInformation[3]);
+					if(gameServer!=null)
+						reply=gameServer.suspendAccount(requestInformation[1], requestInformation[2],requestInformation[3],requestInformation[4]);
+					System.out.println(reply);		
+					UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
+					
 					break;
+					
 				}
 				socketA.send(UDPReply);
 				
@@ -155,8 +186,8 @@ public class LeaderReplica extends Thread{
 			}
 		}
 	}
-	public static void main(String args[]){
+	/*public static void main(String args[]){
 		LeaderReplica lR=new LeaderReplica();
 		lR.start();
-	}
+	}*/
 }
