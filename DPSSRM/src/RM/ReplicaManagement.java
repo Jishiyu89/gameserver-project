@@ -18,6 +18,7 @@ import java.net.SocketException;
 public class ReplicaManagement extends Thread{
 	DatagramSocket socket=null;
 	int count1,count2,count3;
+	
 	ReplicaManagement()
 	{ 
 		try {
