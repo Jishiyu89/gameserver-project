@@ -1,0 +1,45 @@
+[2014-03-04 01:57:16]Server[NA]:Get the request for Create Player Account from PlayerClient[132.235.135.180].
+[2014-03-04 01:57:16] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 01:57:16] Get response from ServerAS: 0 online, 0 offline. [2014-03-04 01:57:16] Server [NA]Send reply to Administer[132.235.135.180]:NA: 0 online, 0 offline EU: 0 online, 0 offline. AS: 0 online, 0 offline. [2014-03-04 01:58:27]Server[NA]:Get the request for Create Player Account from PlayerClient[132.235.135.180].
+[2014-03-04 01:58:27] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 01:58:27] Get response from ServerAS: 0 online, 1 offline. [2014-03-04 01:58:27] Server [NA]Send reply to Administer[132.235.135.180]:NA: 0 online, 0 offline EU: 0 online, 0 offline. AS: 0 online, 1 offline. [2014-03-04 01:59:11]Server[NA]:Get the request for Create Player Account from PlayerClient[132.235.135.180].
+[2014-03-04 01:59:11] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 01:59:11] Get response from ServerAS: 0 online, 0 offline. [2014-03-04 01:59:11] Server [NA]Send reply to Administer[132.235.135.180]:NA: 0 online, 0 offline EU: 0 online, 0 offline. AS: 0 online, 0 offline. [2014-03-04 02:14:37]Server[NA]:Get the request for Create Player Account from PlayerClient[132.22.86.67].
+[2014-03-04 02:14:37]Server[NA] Reply to:[132.22.86.67]Create Account A successfully
+[2014-03-04 02:14:42]Server[NA]:Get the request for Sign In from PlayerClient[132.22.86.67].
+[2014-03-04 02:14:42]Server[NA] Reply:[132.22.86.67]Welcome A
+[2014-03-04 02:18:59]Server[NA]:Get the request for Create Player Account from PlayerClient[132.232.187.218].
+[2014-03-04 02:18:59]Server[NA] Reply to:[132.232.187.218]Create Account A successfully
+[2014-03-04 02:25:33]Server[NA]:Get the request for Create Player Account from PlayerClient[132.200.241.251].
+[2014-03-04 02:25:33]Server[NA] Reply to:[132.200.241.251]Create Account A successfully
+[2014-03-04 20:25:55]Server[NA]:Get the request for Create Player Account from PlayerClient[132.161.244.149].
+[2014-03-04 20:25:55]Server[NA] Reply to:[132.161.244.149]Create Account A successfully
+[2014-03-04 20:28:05]Server[NA]:Get the request for Create Player Account from PlayerClient[132.166.8.176].
+[2014-03-04 20:28:05]Server[NA] Reply to:[132.166.8.176]Create Account A successfully
+[2014-03-04 20:38:25]Server[NA]:Get the request for Create Player Account from PlayerClient[132.248.237.40].
+[2014-03-04 20:38:25]Server[NA] Reply to:[132.248.237.40]Create Account A successfully
+[2014-03-04 20:38:51]Server[NA]:Get the request for Create Player Account from PlayerClient[132.149.90.209].
+[2014-03-04 20:38:51] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 20:38:51] Get response from ServerAS: 0 online, 0 offline. [2014-03-04 20:38:51] Server [NA]Send reply to Administer[132.149.90.209]:NA: 0 online, 1 offline EU: 0 online, 0 offline. AS: 0 online, 0 offline. [2014-03-04 20:39:05]Server[NA]:Get the request for Transfer Account from PlayerClient[132.248.237.40].
+[2014-03-04 20:39:05] Transfer User [A] sucessfully.[2014-03-04 20:39:34]Server[NA]:Get the request for Create Player Account from PlayerClient[132.149.90.209].
+[2014-03-04 20:39:34] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 20:39:34] Get response from ServerAS: 0 online, 1 offline. [2014-03-04 20:39:34] Server [NA]Send reply to Administer[132.149.90.209]:NA: 0 online, 0 offline EU: 0 online, 0 offline. AS: 0 online, 1 offline. [2014-03-04 20:39:59]Server[NA]:Get the request for Sign In from PlayerClient[132.248.237.40].
+[2014-03-04 20:39:59]Server[NA] Reply:[132.248.237.40]Sorry, the NA does not contains this user:A
+[2014-03-04 20:43:32]Server[NA]:Get the request for Create Player Account from PlayerClient[132.187.40.254].
+[2014-03-04 20:43:32]Server[NA] Reply to:[132.187.40.254]Create Account A successfully
+[2014-03-04 20:43:46]Server[NA]:Get the request for Transfer Account from PlayerClient[132.187.40.254].
+[2014-03-04 20:44:05]Server[NA]:Get the request for Transfer Account from PlayerClient[132.187.40.254].
+[2014-03-04 20:44:05] Transfer User [A] sucessfully.[2014-03-04 21:04:59]Server[NA]:Get the request for Create Player Account from PlayerClient[132.10.70.205].
+[2014-03-04 21:04:59]Server[NA] Reply to:[132.10.70.205]Create Account A successfully
+[2014-03-04 21:05:38]Server[NA]:Get the request for Transfer Account from PlayerClient[132.10.70.205].
+[2014-03-04 21:05:38] Transfer User [A] sucessfully.[2014-03-04 21:10:36]Server[NA]:Get the request for Create Player Account from PlayerClient[132.40.250.108].
+[2014-03-04 21:10:36]Server[NA] Reply to:[132.40.250.108]Create Account A successfully
+[2014-03-04 21:10:50]Server[NA]:Get the request for Transfer Account from PlayerClient[132.40.250.108].
+[2014-03-04 21:10:50] Transfer User [A] sucessfully.[2014-03-04 21:18:29]Server[NA]:Get the request for Create Player Account from PlayerClient[132.70.221.191].
+[2014-03-04 21:18:29] Get response from ServerEU: 0 online, 1 offline. [2014-03-04 21:18:29] Get response from ServerAS: 0 online, 0 offline. [2014-03-04 21:18:29] Server [NA]Send reply to Administer[132.70.221.191]:NA: 0 online, 0 offline EU: 0 online, 1 offline. AS: 0 online, 0 offline. [2014-03-04 21:19:06]Server[NA]:Get the request for Create Player Account from PlayerClient[132.70.221.191].
+[2014-03-04 21:19:06] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 21:19:06] Get response from ServerAS: 0 online, 0 offline. [2014-03-04 21:19:06] Server [NA]Send reply to Administer[132.70.221.191]:NA: 0 online, 1 offline EU: 0 online, 0 offline. AS: 0 online, 0 offline. [2014-03-04 21:19:58]Server[NA]:Get the request for Sign In from PlayerClient[132.154.27.234].
+[2014-03-04 21:19:58]Server[NA] Reply:[132.154.27.234]Welcome A
+[2014-03-04 21:20:18]Server[NA]:Get the request for Suspend Account from AdminClient[132.70.221.191].
+[2014-03-04 21:20:18]Server[NA] Reply:[132.70.221.191]Delete A
+[2014-03-04 21:20:32]Server[NA]:Get the request for Sign In from PlayerClient[132.154.27.234].
+[2014-03-04 21:20:32]Server[NA] Reply:[132.154.27.234]Sorry, the NA does not contains this user:A
+[2014-03-04 22:35:53]Server[NA]:Get the request for Sign In from PlayerClient[132.54.129.141].
+[2014-03-04 22:35:53]Server[NA] Reply:[132.54.129.141]Welcome A
+[2014-03-04 22:36:37]Server[NA]:Get the request for Create Player Account from PlayerClient[132.33.62.56].
+[2014-03-04 22:36:37] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 22:36:37] Get response from ServerAS: 0 online, 0 offline. [2014-03-04 22:36:37] Server [NA]Send reply to Administer[132.33.62.56]:NA: 1 online, 0 offline EU: 0 online, 0 offline. AS: 0 online, 0 offline. [2014-03-04 22:36:48]Server[NA]:Get the request for Suspend Account from AdminClient[132.33.62.56].
+[2014-03-04 22:36:48]Server[NA] Reply:[132.33.62.56]Delete A
