@@ -31,29 +31,12 @@ public class LeaderReplica extends Thread{
 			
 			gameServers = new GameServerFactory();
 		
-			System.out.println("factory created");
+			System.out.println("servers created");
 			
 			socketA=new DatagramSocket(portA);
 			hostLR = InetAddress.getByName("localhost");
 			reqList=new LinkedList<Request>();
 			Seq=0;
-			/*ORB orb = ORB.init((String[])null,null);	
-			
-			BufferedReader brNA = new BufferedReader (new FileReader("..\\iorNA.txt"));
-			String iorNA = brNA.readLine();
-			brNA.close();
-
-			BufferedReader brEU = new BufferedReader (new FileReader("..\\iorEU.txt"));
-			String iorEU = brEU.readLine();
-			brEU.close();
-			
-			BufferedReader brAS = new BufferedReader (new FileReader("..\\iorAS.txt"));
-			String iorAS = brAS.readLine();
-			brAS.close();		
-
-			oNA = orb.string_to_object(iorNA);
-			oEU = orb.string_to_object(iorEU);
-			oAS = orb.string_to_object(iorAS);*/
 			
 		} catch (Exception e) {
 			
@@ -174,20 +157,43 @@ public class LeaderReplica extends Thread{
 					break;
 					
 				}
-				socketA.send(UDPReply);
+				
+				compare();
+				
+				//socketA.send(UDPReply);
 				
 				//to RM
-				socketA.send(new DatagramPacket("1".getBytes(),"1".length(),hostLR,7000));
+				//socketA.send(new DatagramPacket("1".getBytes(),"1".length(),hostLR,7000));
 				
 				
-			} catch (IOException e) {
+			} catch (Exception e) {
 				
 				e.printStackTrace();
 			}
 		}
 	}
-	/*public static void main(String args[]){
-		LeaderReplica lR=new LeaderReplica();
-		lR.start();
-	}*/
+	
+	public void compare() throws Exception {
+		
+		String reply=null;
+		DatagramPacket UDPResult=null;
+		
+		Request oldestReq = reqList.getFirst();
+
+		//Returning the result to FE//
+		if (oldestReq.getAllReplies()){			
+			DatagramPacket UDPReply=null;
+			reply = oldestReq.getVotedReply();
+			UDPResult=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);	
+			socketA.send(UDPReply);
+		}
+		
+		//Informing RM about the issue//
+		if (oldestReq.diffResponse > 0){
+			reply = Integer.toString(oldestReq.diffResponse);
+			UDPResult = (new DatagramPacket(reply.getBytes(),reply.length(),hostLR,7000));
+			socketA.send(UDPResult);
+		}
+	}
+	
 }
