@@ -1,0 +1,18 @@
+module GameInterface {
+	
+	
+	interface Game
+	{	
+		
+		/* Operations performed by Players */
+		string createPlayerAccount(in string firstName, in string lastName, in string username,in string password,in short age, in string iPAdress);
+		string playerSignIn(in string username, in string password,in string iPAdress);
+		string playerSignOut(in string username,in  string iPAdress);
+		string transferAccount (in string Username,in string Password,in string OldIP,in string NewIP);
+		
+		/* Operations performed by Admins */
+		string getPlayerStatus(in string adminUsername, in string adminPassword, in string IP);
+		string suspendAccount(in string adminUsername, in string adminPassword, in string IP, in string userName);
+	};
+	
+};
