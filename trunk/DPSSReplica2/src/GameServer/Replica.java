@@ -46,6 +46,43 @@ public class Replica extends Thread {
 		DatagramPacket UDPReply=null;
 		RequestType type;
 		String reply=null;
+
+
+		/* Receiver  - Multicast
+		
+		int mPort = 6789
+		InetAddress ipGroup = null;
+		MulticastSocket s=null;
+		
+		//Group members
+		ipGroup = InetAddress.getByName("localhost");
+		
+		//Replica 2 //Replica 3
+		s = new MulticastSocket(mPort);
+		s.joinGroup(ipGroup);
+		
+		//Receiving
+		byte[] buf = new byte[1000];
+		while (true) {
+		
+		DatagramPacket messageIn = new DatagramPacket(buf, buf.length);
+		
+		try {
+		    s.setSoTimeout(120000)
+		    s.receive(messageIn);
+		} catch (SocketTimeoutException e) {
+		break;
+		} catch (IOException e) {}
+		
+		    String received = new String(messageIn.getData());
+		    System.out.println(received);
+		}
+		//leaving the group and closing socket
+		s.leaveGroup(ipGroup);if (s!=null) 
+		 s.close();
+		
+		*/
+				
 		
 		while(true){
 			try {
