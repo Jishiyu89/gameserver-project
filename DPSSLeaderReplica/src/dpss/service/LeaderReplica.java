@@ -80,6 +80,34 @@ public class LeaderReplica extends Thread{
 		RequestType type;
 		String reply=null;
 		
+		/* MULTICAST - Sender */
+	
+		/* REVIEW 
+		int mPort = 6789
+		InetAddress ipGroup = null;
+		MulticastSocket s=null;
+
+		//Group members
+		ipGroup = InetAddress.getByName("localhost");
+
+		//Replica 2 //Replica 3
+		s = new MulticastSocket(mPort);
+		s.joinGroup(ipGroup);
+
+		// message contents & destination multicast group (e.g. "228.5.6.7")
+		byte [] m = "test".getBytes();
+		DatagramPacket messageOut = new DatagramPacket(m, m.length, group, mPort);
+		s.send(messageOut);
+
+		//leaving the group and closing socket
+		s.leaveGroup(ipGroup);
+
+		if (s!=null) 
+		 s.close();
+		
+		*/		
+		
+		
 		while(true){
 			try {
 				socketA.receive(UDPRequest);
