@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.LinkedList;
 
 import org.omg.CORBA.ORB;
@@ -24,6 +26,12 @@ public class LeaderReplica extends Thread{
 	int Seq;
 	GameServerFactory gameServers;
 	
+	/* MULTICAST - Sender */			
+	int mPort = 6789;
+	InetAddress ipGroup = null;
+	MulticastSocket s=null;
+
+	
 	LinkedList<Request> reqList;
 	
 	public LeaderReplica()	{
@@ -37,6 +45,11 @@ public class LeaderReplica extends Thread{
 			hostLR = InetAddress.getByName("localhost");
 			reqList=new LinkedList<Request>();
 			Seq=0;
+			
+			/* MULTICAST - Sender */
+			ipGroup = InetAddress.getByName("localhost");
+			s = new MulticastSocket(mPort);
+			s.joinGroup(ipGroup);
 			
 		} catch (Exception e) {
 			
@@ -80,53 +93,33 @@ public class LeaderReplica extends Thread{
 		RequestType type;
 		String reply=null;
 		
-		/* MULTICAST - Sender */
 	
-		/* REVIEW 
-		int mPort = 6789
-		InetAddress ipGroup = null;
-		MulticastSocket s=null;
-
-		//Group members
-		ipGroup = InetAddress.getByName("localhost");
-
-		//Replica 2 //Replica 3
-		s = new MulticastSocket(mPort);
-		s.joinGroup(ipGroup);
-
-		// message contents & destination multicast group (e.g. "228.5.6.7")
-		byte [] m = "test".getBytes();
-		DatagramPacket messageOut = new DatagramPacket(m, m.length, group, mPort);
-		s.send(messageOut);
-
-		//leaving the group and closing socket
-		s.leaveGroup(ipGroup);
-
-		if (s!=null) 
-		 s.close();
-		
-		*/		
 		
 		
 		while(true){
 			try {
+				
 				socketA.receive(UDPRequest);
 				String[] requestInformation=new String[10];
-				requestInformation=new String(UDPRequest.getData()).substring(0,UDPRequest.getLength()).split("->");
+				String s=new String(UDPRequest.getData()).substring(0,UDPRequest.getLength());
+				requestInformation=s.split("->");
 				type=RequestType.valueOf(requestInformation[0]);
+				
 				switch(type){
 				case CreatePlayerAccount:
+					
 					System.out.println("CreatPlayerAccount");
 					reqList.add(new Request(Seq,RequestType.CreatePlayerAccount));
 					
 					gameServer=IPConvert(requestInformation[6]);
 					if(gameServer!=null)
 					{
+						multicastGroup(Seq+"->"+s);
 						reply=gameServer.createPlayerAccount(requestInformation[1], requestInformation[2], requestInformation[3], requestInformation[4], Integer.parseInt(requestInformation[5]), requestInformation[6]);
 						System.out.println("reply = >>>" + reply );
 						Request temp=reqList.get(Seq);
-						Seq++;
 						temp.setStatus(1, reply);
+						Seq++;
 					}
 					System.out.println(reply);		
 					UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
@@ -223,5 +216,29 @@ public class LeaderReplica extends Thread{
 			socketA.send(UDPResult);
 		}
 	}
+	
+	
+	public void multicastGroup(String message) {
+	
+		//Group members
+		try {			
+
+			// message contents & destination multicast group (e.g. "228.5.6.7")
+			byte [] m = message.getBytes();
+			DatagramPacket messageOut = new DatagramPacket(m, m.length, ipGroup, mPort);
+			s.send(messageOut);
+	
+			//leaving the group and closing socket
+			//s.leaveGroup(ipGroup);
+	
+			//if (s!=null) 
+			// s.close();
+		
+		} catch (IOException e1) {			
+			e1.printStackTrace();
+		}	
+		
+	}	
+	
 	
 }
