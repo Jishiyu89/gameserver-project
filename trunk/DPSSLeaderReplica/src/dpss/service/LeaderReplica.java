@@ -18,6 +18,7 @@ import dpss.service.corba.GameServer;
 import dpss.service.corba.GameServerHelper;
 
 public class LeaderReplica extends Thread{
+	
 	DatagramSocket socketA=null;
 	int portA=1010;
 	InetAddress hostLR;
