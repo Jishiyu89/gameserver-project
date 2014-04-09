@@ -12,11 +12,11 @@ import dpss.model.RequestType;
 import dpss.service.GameServerFactory;
 import dpss.service.GameServerImpl;
 
-public class LeaderReplicaFEReceiver {
+public class LeaderReplicaFEReceiver extends Thread {
 
 	DatagramSocket socketA=null;
 	int portA=1010;
-	int Seq;
+	int seqFIFO;
 	InetAddress hostLR;
 	
 	GameServerFactory gameServers;
@@ -34,7 +34,7 @@ public class LeaderReplicaFEReceiver {
 	public LeaderReplicaFEReceiver(GameServerFactory gameServersParam, LinkedList<Request> reqListParam)	{
 		try {
 							
-				Seq = 0;
+				seqFIFO = 0;
 				this.gameServers = gameServersParam;
 				this.reqList = reqListParam;
 				socketA=new DatagramSocket(portA);
@@ -44,9 +44,6 @@ public class LeaderReplicaFEReceiver {
 				ipGroup = InetAddress.getByName("228.5.6.1");
 				s = new MulticastSocket(mPort);
 				s.joinGroup(ipGroup);
-				
-				//Leader Request Handler
-				
 				
 				
 			} catch (Exception e) {
@@ -78,18 +75,14 @@ public class LeaderReplicaFEReceiver {
 //			
 //		}
 		
-		public void run1(){
+		public void run(){
 			
 			System.out.println("Running run() from Leader Replica FE Receiver");
 			
 			byte[] bufferRequest=new byte[1000];
 			DatagramPacket UDPRequest=new DatagramPacket(bufferRequest, bufferRequest.length);
-			
-			//DatagramPacket UDPReply=null;
-			RequestType type;
-			//String reply=null;		
-			
-			
+			RequestType typeReq;
+						
 			while(true){
 				try {
 					
@@ -97,22 +90,29 @@ public class LeaderReplicaFEReceiver {
 					String[] requestInformation=new String[10];
 					String s=new String(UDPRequest.getData()).substring(0,UDPRequest.getLength());
 					requestInformation=s.split("->");
-					type=RequestType.valueOf(requestInformation[0]);
+					typeReq=RequestType.valueOf(requestInformation[0]);
 					
 					System.out.println("s is supposed to be = "+s);
-					
-					reqList.add(new Request(Seq,RequestType.CreatePlayerAccount));
+	
+					//Add request into FIFO Queue
+					System.out.println("1.LeaderReplicaFEReceiver> Add request into FIFO Queue");
+					reqList.add(new Request(seqFIFO,typeReq));
 					
 					//Multicast request
-					System.out.println("multicasting to group");
-					multicastGroup(Seq + "->"+ s);
+					System.out.println("2.LeaderReplicaFEReceiver> Multicasting to group");
+					multicastGroup(seqFIFO + "->"+ s);
 					
 					//Execute on Leader
-					System.out.println("executing on leader");
-					if (s!=null)
-						new Thread(new LeaderReplicaLeaderRequests(gameServers,reqList,s)).start();
-						//new Thread (new LeaderReplicaLeaderRequests(s)).start();
-					s=null;
+					System.out.println("3.LeaderReplicaFEReceiver> Executing on leader");
+					System.out.println("fe>"+	reqList);
+					System.out.println("fe>"+seqFIFO);
+					Request auxRequest2 = reqList.get(seqFIFO);	
+					
+					new Thread(new LeaderReplicaLeaderRequests(gameServers,reqList, seqFIFO, s)).start();
+
+					//FIFO++
+					seqFIFO++;
+					
 //					switch(type){
 //					case CreatePlayerAccount:
 //						

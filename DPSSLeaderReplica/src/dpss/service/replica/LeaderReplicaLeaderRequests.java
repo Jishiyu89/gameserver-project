@@ -1,12 +1,12 @@
 package dpss.service.replica;
 
-import java.net.DatagramPacket;
 import java.util.LinkedList;
 
 import dpss.model.Request;
 import dpss.model.RequestType;
 import dpss.service.GameServerFactory;
 import dpss.service.GameServerImpl;
+import dpss.service.WriteLog;
 
 public class LeaderReplicaLeaderRequests implements Runnable {
 
@@ -16,18 +16,22 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 	String[] requestMessageArray = new String[10];
 	RequestType type;
 	String reply;
-	String requestMessageParam=null;
+	String requestMessage=null;
+	int seqFIFO;
+	WriteLog Logger = new WriteLog(); 	
+	
 	// Auxiliar class to handle Leader's requests
-	public LeaderReplicaLeaderRequests(GameServerFactory gameServersParam, LinkedList<Request> reqListParam,String str) {
+	public LeaderReplicaLeaderRequests(GameServerFactory gameServersParam, LinkedList<Request> reqListParam, Integer seqFIFOParam, String requestMessageParam) {
 
-		requestMessageParam=str;
 		this.gameServers=gameServersParam;
 		this.reqList=reqListParam;
+		this.requestMessage= requestMessageParam;
+		this.seqFIFO = seqFIFOParam;
 	}
 
 	public void run() {
 
-		requestMessageArray = requestMessageParam.split("->");
+		requestMessageArray = requestMessage.split("->");
 		type = RequestType.valueOf(requestMessageArray[0]);
 
 		switch (type) {
@@ -108,7 +112,22 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 			break;
 
 		}
-
+		
+		//After receiving the reply from local game servers > update FIFO queue
+		System.out.println(	reqList);
+		System.out.println(seqFIFO);
+		Request auxRequest = reqList.get(seqFIFO);		
+		try {
+			
+			synchronized (auxRequest) {
+				auxRequest.setStatus(1, reply);
+			}	
+			
+			Logger.write("LeaderReplica", "Reply from request["+seqFIFO+"]:" + reply);
+			
+		}catch(Exception e){
+			Logger.write("LeaderReplica", "Unexpected on Replica 1!");		
+		}
 	}
 
 	private GameServerImpl IPConvert(String s) {

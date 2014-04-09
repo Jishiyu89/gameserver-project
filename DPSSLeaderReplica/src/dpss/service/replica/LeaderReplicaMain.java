@@ -26,7 +26,7 @@ public class LeaderReplicaMain {
 			//Starting FE Receiver
 			LeaderReplicaFEReceiver lRFER = new LeaderReplicaFEReceiver(gameServers, reqList);
 			System.out.println("3.FE Receiver created");
-			lRFER.run1();
+			lRFER.run();
 			
 			
 			
