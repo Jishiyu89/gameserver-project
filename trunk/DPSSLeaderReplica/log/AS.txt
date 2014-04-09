@@ -30,3 +30,9 @@
 [2014-04-08 11:20:27] Game server AS is up and running!
 [2014-04-08 11:20:40] Game server AS is up and running!
 [2014-04-09 12:01:41] Game server AS is up and running!
+[2014-04-09 12:24:44] Game server AS is up and running!
+[2014-04-09 12:35:43] Game server AS is up and running!
+[2014-04-09 12:36:09] Username [deyvid] sucessfuly created on game server AS!
+[2014-04-09 01:00:36] Game server AS is up and running!
+[2014-04-09 01:04:28] Game server AS is up and running!
+[2014-04-09 01:06:13] Game server AS is up and running!
