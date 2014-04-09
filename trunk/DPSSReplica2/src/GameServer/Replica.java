@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
 import java.util.LinkedList;
 
 
@@ -17,14 +18,35 @@ public class Replica extends Thread {
 	InetAddress hostR;
 	
 	public static void main(String[] args) {
-				
-		
+			
+		int mPort = 6789;
+		InetAddress ipGroup = null;
+		MulticastSocket s=null;
+
+		//Receiving
+		byte[] buf = new byte[1000];
 		try {
-			Replica R = new Replica();
-			R.run();	
+			//Group members
+			ipGroup = InetAddress.getByName("localhost");
+					
+			//Replica 2 
+			s = new MulticastSocket(mPort);
+			s.joinGroup(ipGroup);
+			Replica R = new Replica();	
+			//R.start();
+			while(true){
+							
+						DatagramPacket message = new DatagramPacket(buf, buf.length);
+						s.receive(message);
+						String str=new String(message.getData()).substring(0,message.getLength());
+						new Thread(ttt).start();
+						
+			}
+			
 			
 		} catch (Exception e) {			
 			e.printStackTrace();
+			s.close();
 		}
 	}
 	
@@ -36,7 +58,7 @@ public class Replica extends Thread {
 		hostR = InetAddress.getByName("localhost");	
 	}
 	
-	public void run(){
+	public void run(String message){
 		
 		System.out.println("Running run() from Replica");
 		
@@ -48,42 +70,6 @@ public class Replica extends Thread {
 		String reply=null;
 
 
-		/* Receiver  - Multicast
-		
-		int mPort = 6789
-		InetAddress ipGroup = null;
-		MulticastSocket s=null;
-		
-		//Group members
-		ipGroup = InetAddress.getByName("localhost");
-		
-		//Replica 2 //Replica 3
-		s = new MulticastSocket(mPort);
-		s.joinGroup(ipGroup);
-		
-		//Receiving
-		byte[] buf = new byte[1000];
-		while (true) {
-		
-		DatagramPacket messageIn = new DatagramPacket(buf, buf.length);
-		
-		try {
-		    s.setSoTimeout(120000)
-		    s.receive(messageIn);
-		} catch (SocketTimeoutException e) {
-		break;
-		} catch (IOException e) {}
-		
-		    String received = new String(messageIn.getData());
-		    System.out.println(received);
-		}
-		//leaving the group and closing socket
-		s.leaveGroup(ipGroup);if (s!=null) 
-		 s.close();
-		
-		*/
-				
-		
 		while(true){
 			try {
 				socketA.receive(UDPRequest);
