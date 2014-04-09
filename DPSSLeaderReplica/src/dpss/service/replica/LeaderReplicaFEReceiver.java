@@ -53,28 +53,6 @@ public class LeaderReplicaFEReceiver extends Thread {
 			
 		}
 		
-//		
-//		private GameServerImpl IPConvert(String s){
-//			String[] IP=s.split("\\.");
-//			System.out.println(s);
-//			System.out.println(IP[0]);
-//			if (IP[0]==null) {
-//				System.out.println("null>");
-//				return null;
-//			}		
-//			else{ 
-//				switch(Integer.parseInt(IP[0])){
-//				case 132:System.out.println("132 here!");				 
-//						return gameServers.servantNA;
-//				case 93:System.out.println("93 here!");
-//						return gameServers.servantEU;
-//				default:System.out.println("wte here!");
-//						return gameServers.servantAS;
-//				}
-//			}
-//			
-//		}
-		
 		public void run(){
 			
 			System.out.println("Running run() from Leader Replica FE Receiver");
@@ -104,14 +82,11 @@ public class LeaderReplicaFEReceiver extends Thread {
 					
 					//Execute on Leader
 					System.out.println("3.LeaderReplicaFEReceiver> Executing on leader");
-					System.out.println("fe>"+	reqList);
-					System.out.println("fe>"+seqFIFO);
-					Request auxRequest2 = reqList.get(seqFIFO);	
-					
 					new Thread(new LeaderReplicaLeaderRequests(gameServers,reqList, seqFIFO, s)).start();
 
 					//FIFO++
 					seqFIFO++;
+					
 					
 //					switch(type){
 //					case CreatePlayerAccount:
