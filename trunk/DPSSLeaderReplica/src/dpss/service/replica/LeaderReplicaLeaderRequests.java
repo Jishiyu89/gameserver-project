@@ -121,7 +121,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 				auxRequest.setStatus(1, reply);
 			}	
 			
-			Logger.write("LeaderReplica", "Reply from request["+seqFIFO+"]:" + reply);
+			Logger.write("LeaderReplica", "Reply from Leader Replica to request["+seqFIFO+"]:" + reply);
 			
 		}catch(Exception e){
 			Logger.write("LeaderReplica", "Unexpected on Replica 1!");		

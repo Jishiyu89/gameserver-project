@@ -59,7 +59,7 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 					auxRequest.setStatus(codReplica, replyReplica);
 				}	
 				
-				Logger.write("LeaderReplica", "Reply from request["+seqFIFO+"]:" + replyReplica);
+				Logger.write("LeaderReplica", "Reply from Replica" + codReplica + " to request["+seqFIFO+"]:" + replyReplica);
 				
 				
 				
