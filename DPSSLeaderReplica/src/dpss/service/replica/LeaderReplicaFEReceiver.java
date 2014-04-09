@@ -1,28 +1,51 @@
 package dpss.service.replica;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.util.LinkedList;
 
+import dpss.model.Request;
+import dpss.model.RequestType;
 import dpss.service.GameServerFactory;
 import dpss.service.GameServerImpl;
 
-public class LeaderReplicaFEReceiver extends Thread {
+public class LeaderReplicaFEReceiver {
 
 	DatagramSocket socketA=null;
 	int portA=1010;
+	int Seq;
 	InetAddress hostLR;
 	
-	public LeaderReplicaFEReceiver()	{
+	GameServerFactory gameServers;
+	GameServerImpl gameServer;
+	LinkedList<Request> reqList;
+	LeaderReplicaLeaderRequests LeaderRequests;
+	
+	
+	/* MULTICAST - Sender */			
+	int mPort = 6789;
+	InetAddress ipGroup = null;
+	MulticastSocket s=null;
+	
+	
+	public LeaderReplicaFEReceiver(GameServerFactory gameServersParam, LinkedList<Request> reqListParam)	{
 		try {
-			
-				
-				int Seq = 0;
+							
+				Seq = 0;
+				this.gameServers = gameServersParam;
+				this.reqList = reqListParam;
 				socketA=new DatagramSocket(portA);
-				hostLR = InetAddress.getByName("localhost");
+				hostLR = InetAddress.getByName("localhost");	
 				
+				/* MULTICAST - Sender */
+				ipGroup = InetAddress.getByName("228.5.6.1");
+				s = new MulticastSocket(mPort);
+				s.joinGroup(ipGroup);
 				
-				
-				
+				//Leader Request Handler
 				
 				
 				
@@ -33,42 +56,38 @@ public class LeaderReplicaFEReceiver extends Thread {
 			
 		}
 		
+//		
+//		private GameServerImpl IPConvert(String s){
+//			String[] IP=s.split("\\.");
+//			System.out.println(s);
+//			System.out.println(IP[0]);
+//			if (IP[0]==null) {
+//				System.out.println("null>");
+//				return null;
+//			}		
+//			else{ 
+//				switch(Integer.parseInt(IP[0])){
+//				case 132:System.out.println("132 here!");				 
+//						return gameServers.servantNA;
+//				case 93:System.out.println("93 here!");
+//						return gameServers.servantEU;
+//				default:System.out.println("wte here!");
+//						return gameServers.servantAS;
+//				}
+//			}
+//			
+//		}
 		
-		private GameServerImpl IPConvert(String s){
-			String[] IP=s.split("\\.");
-			System.out.println(s);
-			System.out.println(IP[0]);
-			if (IP[0]==null) {
-				System.out.println("null>");
-				return null;
-			}		
-			else{ 
-				switch(Integer.parseInt(IP[0])){
-				case 132:System.out.println("132 here!");
-						// return GameServerHelper.narrow(oNA);					 
-						return gameServers.servantNA;
-				case 93:System.out.println("93 here!");
-						//return  GameServerHelper.narrow(oEU);
-						return gameServers.servantEU;
-				default:System.out.println("wte here!");
-						//return GameServerHelper.narrow(oAS);
-						return gameServers.servantAS;
-				}
-			}
+		public void run1(){
 			
-		}
-		public void run(){
-			
-			System.out.println("Running run() from Leader Replica");
+			System.out.println("Running run() from Leader Replica FE Receiver");
 			
 			byte[] bufferRequest=new byte[1000];
 			DatagramPacket UDPRequest=new DatagramPacket(bufferRequest, bufferRequest.length);
 			
-			DatagramPacket UDPReply=null;
+			//DatagramPacket UDPReply=null;
 			RequestType type;
-			String reply=null;
-			
-		
+			//String reply=null;		
 			
 			
 			while(true){
@@ -80,81 +99,97 @@ public class LeaderReplicaFEReceiver extends Thread {
 					requestInformation=s.split("->");
 					type=RequestType.valueOf(requestInformation[0]);
 					
-					switch(type){
-					case CreatePlayerAccount:
-						
-						System.out.println("CreatPlayerAccount");
-						reqList.add(new Request(Seq,RequestType.CreatePlayerAccount));
-						
-						gameServer=IPConvert(requestInformation[6]);
-						if(gameServer!=null)
-						{
-							multicastGroup(Seq+"->"+s);
-							reply=gameServer.createPlayerAccount(requestInformation[1], requestInformation[2], requestInformation[3], requestInformation[4], Integer.parseInt(requestInformation[5]), requestInformation[6]);
-							System.out.println("reply = >>>" + reply );
-							Request temp=reqList.get(Seq);
-							temp.setStatus(1, reply);
-							Seq++;
-						}
-						System.out.println(reply);		
-						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
-						break;
+					System.out.println("s is supposed to be = "+s);
 					
-					case PlayerSignIn:
-						System.out.println("PlayerSignIn");
-						
-						gameServer=IPConvert(requestInformation[3]);
-						if(gameServer!=null)
-							reply=gameServer.playerSignIn(requestInformation[1], requestInformation[2], requestInformation[3]);
-						System.out.println(reply);		
-						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
-						break;
-					case PlayerSignOut:
-						System.out.println("PlayerSignOut");
-
-						gameServer=IPConvert(requestInformation[2]);
-						if(gameServer!=null)
-							reply=gameServer.playerSignOut(requestInformation[1], requestInformation[2]);
-						System.out.println(reply);		
-						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
-						
-						break;
-					case TransferAccount:
-						System.out.println("TransferAccount");
-
-						gameServer=IPConvert(requestInformation[3]);
-						if(gameServer!=null)
-							reply=gameServer.transferAccount(requestInformation[1], requestInformation[2],requestInformation[3], requestInformation[4]);
-						System.out.println(reply);		
-						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
-						
-						break;
-					case GetPlayerStatus:
-						System.out.println("GetPlayerStatus");
-
-						gameServer=IPConvert(requestInformation[3]);
-						if(gameServer!=null)
-							reply=gameServer.getPlayerStatus(requestInformation[1], requestInformation[2],requestInformation[3]);
-						System.out.println(reply);		
-						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
-						
-						break;
-					case SuspendAccount:					
-						//UDPReply=new DatagramPacket("SuspendAccount".getBytes(),"CreatPlayerAccount".length(),hostLR,9000);
+					reqList.add(new Request(Seq,RequestType.CreatePlayerAccount));
 					
-						System.out.println("SuspendAccount");
-
-						gameServer=IPConvert(requestInformation[3]);
-						if(gameServer!=null)
-							reply=gameServer.suspendAccount(requestInformation[1], requestInformation[2],requestInformation[3],requestInformation[4]);
-						System.out.println(reply);		
-						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
-						
-						break;
-						
-					}
+					//Multicast request
+					System.out.println("multicasting to group");
+					multicastGroup(Seq + "->"+ s);
 					
-					compare();
+					//Execute on Leader
+					System.out.println("executing on leader");
+					if (s!=null)
+						new LeaderReplicaLeaderRequests(s).run2();
+						//new Thread (new LeaderReplicaLeaderRequests(s)).start();
+					s=null;
+//					switch(type){
+//					case CreatePlayerAccount:
+//						
+//						System.out.println("CreatPlayerAccount");
+//						reqList.add(new Request(Seq,RequestType.CreatePlayerAccount));
+//						
+//						//Multicast request
+//						multicastGroup(Seq + "->"+ s);
+//						
+//						gameServer=IPConvert(requestInformation[6]);
+//						if(gameServer!=null)
+//						{							
+//							reply=gameServer.createPlayerAccount(requestInformation[1], requestInformation[2], requestInformation[3], requestInformation[4], Integer.parseInt(requestInformation[5]), requestInformation[6]);
+//							System.out.println("reply = >>>" + reply );
+//							Request temp=reqList.get(Seq);
+//							temp.setStatus(1, reply);
+//							Seq++;
+//						}
+//						System.out.println(reply);		
+//						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
+//						break;
+//					
+//					case PlayerSignIn:
+//						System.out.println("PlayerSignIn");
+//						
+//						gameServer=IPConvert(requestInformation[3]);
+//						if(gameServer!=null)
+//							reply=gameServer.playerSignIn(requestInformation[1], requestInformation[2], requestInformation[3]);
+//						System.out.println(reply);		
+//						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
+//						break;
+//					case PlayerSignOut:
+//						System.out.println("PlayerSignOut");
+//
+//						gameServer=IPConvert(requestInformation[2]);
+//						if(gameServer!=null)
+//							reply=gameServer.playerSignOut(requestInformation[1], requestInformation[2]);
+//						System.out.println(reply);		
+//						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
+//						
+//						break;
+//					case TransferAccount:
+//						System.out.println("TransferAccount");
+//
+//						gameServer=IPConvert(requestInformation[3]);
+//						if(gameServer!=null)
+//							reply=gameServer.transferAccount(requestInformation[1], requestInformation[2],requestInformation[3], requestInformation[4]);
+//						System.out.println(reply);		
+//						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
+//						
+//						break;
+//					case GetPlayerStatus:
+//						System.out.println("GetPlayerStatus");
+//
+//						gameServer=IPConvert(requestInformation[3]);
+//						if(gameServer!=null)
+//							reply=gameServer.getPlayerStatus(requestInformation[1], requestInformation[2],requestInformation[3]);
+//						System.out.println(reply);		
+//						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
+//						
+//						break;
+//					case SuspendAccount:					
+//						//UDPReply=new DatagramPacket("SuspendAccount".getBytes(),"CreatPlayerAccount".length(),hostLR,9000);
+//					
+//						System.out.println("SuspendAccount");
+//
+//						gameServer=IPConvert(requestInformation[3]);
+//						if(gameServer!=null)
+//							reply=gameServer.suspendAccount(requestInformation[1], requestInformation[2],requestInformation[3],requestInformation[4]);
+//						System.out.println(reply);		
+//						UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);
+//						
+//						break;
+//						
+//					}
+					
+					//compare();
 					
 					//socketA.send(UDPReply);
 					
@@ -200,6 +235,7 @@ public class LeaderReplicaFEReceiver extends Thread {
 
 				// message contents & destination multicast group (e.g. "228.5.6.7")
 				byte [] m = message.getBytes();
+				System.out.println("message:" + message);
 				DatagramPacket messageOut = new DatagramPacket(m, m.length, ipGroup, mPort);
 				s.send(messageOut);
 		
@@ -219,4 +255,4 @@ public class LeaderReplicaFEReceiver extends Thread {
 	}
 
 	
-}
+
