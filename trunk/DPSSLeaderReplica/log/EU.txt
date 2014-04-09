@@ -28,3 +28,5 @@
 [2014-04-08 11:18:08] Game server EU is up and running!
 [2014-04-08 11:20:27] Game server EU is up and running!
 [2014-04-08 11:20:40] Game server EU is up and running!
+[2014-04-09 12:01:41] Game server EU is up and running!
+[2014-04-09 12:02:32] Username [deyvid] sucessfuly created on game server EU!

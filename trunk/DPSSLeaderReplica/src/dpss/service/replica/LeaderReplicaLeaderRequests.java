@@ -8,23 +8,24 @@ import dpss.model.RequestType;
 import dpss.service.GameServerFactory;
 import dpss.service.GameServerImpl;
 
-public class LeaderReplicaLeaderRequests extends LeaderReplicaMain {//implements Runnable {
+public class LeaderReplicaLeaderRequests implements Runnable {
 
-	//GameServerFactory gameServers;
+	GameServerFactory gameServers;
 	GameServerImpl gameServer=null;
-	//LinkedList<Request> reqList;
+	LinkedList<Request> reqList;
 	String[] requestMessageArray = new String[10];
 	RequestType type;
 	String reply;
 	String requestMessageParam=null;
 	// Auxiliar class to handle Leader's requests
-	public LeaderReplicaLeaderRequests(String str) {
+	public LeaderReplicaLeaderRequests(GameServerFactory gameServersParam, LinkedList<Request> reqListParam,String str) {
 
 		requestMessageParam=str;
-
+		this.gameServers=gameServersParam;
+		this.reqList=reqListParam;
 	}
 
-	public void run2() {
+	public void run() {
 
 		requestMessageArray = requestMessageParam.split("->");
 		type = RequestType.valueOf(requestMessageArray[0]);

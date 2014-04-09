@@ -110,7 +110,7 @@ public class LeaderReplicaFEReceiver {
 					//Execute on Leader
 					System.out.println("executing on leader");
 					if (s!=null)
-						new LeaderReplicaLeaderRequests(s).run2();
+						new Thread(new LeaderReplicaLeaderRequests(gameServers,reqList,s)).start();
 						//new Thread (new LeaderReplicaLeaderRequests(s)).start();
 					s=null;
 //					switch(type){
