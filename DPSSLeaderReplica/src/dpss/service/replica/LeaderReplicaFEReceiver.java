@@ -43,7 +43,7 @@ public class LeaderReplicaFEReceiver extends Thread {
 				/* MULTICAST - Sender */
 				ipGroup = InetAddress.getByName("228.5.6.1");
 				s = new MulticastSocket(mPort);
-				s.joinGroup(ipGroup);
+				//s.joinGroup(ipGroup);
 				
 				
 			} catch (Exception e) {
@@ -54,8 +54,6 @@ public class LeaderReplicaFEReceiver extends Thread {
 		}
 		
 		public void run(){
-			
-			System.out.println("Running run() from Leader Replica FE Receiver");
 			
 			byte[] bufferRequest=new byte[1000];
 			DatagramPacket UDPRequest=new DatagramPacket(bufferRequest, bufferRequest.length);
@@ -70,8 +68,6 @@ public class LeaderReplicaFEReceiver extends Thread {
 					requestInformation=s.split("->");
 					typeReq=RequestType.valueOf(requestInformation[0]);
 					
-					System.out.println("s is supposed to be = "+s);
-	
 					//Add request into FIFO Queue
 					System.out.println("1.LeaderReplicaFEReceiver> Add request into FIFO Queue");
 					reqList.add(new Request(seqFIFO,typeReq));

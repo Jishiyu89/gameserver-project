@@ -28,6 +28,10 @@ public class LeaderReplicaMain {
 			System.out.println("3.FE Receiver created");
 			lRFER.run();
 			
+			//Starting Replica Receiver
+			LeaderReplicaReplicasReceiver lRRR = new LeaderReplicaReplicasReceiver(reqList);
+			System.out.println("4.Replica Receiver created");
+			lRRR.run();
 			
 			
 		}catch(Exception e) {}
