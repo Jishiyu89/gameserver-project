@@ -12,7 +12,7 @@ public class LeaderReplicaRMReceiver extends Thread {
 	String message=null;
 	DatagramPacket UDPMessage=null;
 	DatagramSocket socketRM=null;
-	int portRM=8000;
+	int portRM=7000;
 	WriteLog Logger = new WriteLog(); 	
 	
 	public LeaderReplicaRMReceiver(GameServerFactory gameServersParam){
@@ -35,9 +35,11 @@ public class LeaderReplicaRMReceiver extends Thread {
 				
 				socketRM.receive(UDPRequest);
 				String s=new String(UDPRequest.getData()).substring(0,UDPRequest.getLength());
-				if (s.equals("reset")){
+				if (s.equals("Restart")){
+					
 					gameServers.serversReset();
-					Logger.write("LeaderReplica", "Reset request from Replica Manager(RM) successfully executed!");					
+					
+					Logger.write("LeaderReplica", "Restart request from Replica Manager(RM) successfully executed!");					
 				}
 			}
 			catch(Exception e){
