@@ -24,19 +24,16 @@ public class LeaderReplicaMain {
 			System.out.println("2.FIFO Queue created");
 			
 			//Starting FE Receiver
-			LeaderReplicaFEReceiver lRFER = new LeaderReplicaFEReceiver(gameServers, reqList);
+			new Thread(new LeaderReplicaFEReceiver(gameServers, reqList)).start();		
 			System.out.println("3.FE Receiver created");
-			lRFER.run();
 			
 			//Starting Replica Receiver
-			LeaderReplicaReplicasReceiver lRRR = new LeaderReplicaReplicasReceiver(reqList);
+			new Thread(new LeaderReplicaReplicasReceiver(reqList)).start();	
 			System.out.println("4.Replica Receiver created");
-			lRRR.run();
-			
+		
 			//Starting RM Receiver
-			LeaderReplicaRMReceiver lRRM = new LeaderReplicaRMReceiver();
+			new Thread(new LeaderReplicaRMReceiver()).start();	
 			System.out.println("5.RM Receiver created");
-			lRRM.run();
 			
 			
 		}catch(Exception e) {}
