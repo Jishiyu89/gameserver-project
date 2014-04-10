@@ -15,6 +15,7 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 	int portR=1300;
 	LinkedList<Request> reqList;
 	WriteLog Logger = new WriteLog(); 	
+	LeaderReplicaCompare compareFIFO;
 	
 	public LeaderReplicaReplicasReceiver(LinkedList<Request> reqListParam)	{
 				
@@ -59,9 +60,11 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 					auxRequest.setStatus(codReplica, replyReplica);
 				}	
 				
-				Logger.write("LeaderReplica", "Reply from Replica" + codReplica + " to request["+seqFIFO+"]:" + replyReplica);
+				//COMPARE AN REPLY
+				compareFIFO = new LeaderReplicaCompare(reqList);
+				compareFIFO.compare();
 				
-				
+				Logger.write("LeaderReplica", "Reply from Replica" + codReplica + " to request["+seqFIFO+"]:" + replyReplica);				
 				
 				
 			}catch(Exception e){

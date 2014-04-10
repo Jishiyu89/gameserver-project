@@ -18,6 +18,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 	String reply;
 	String requestMessage=null;
 	int seqFIFO;
+	LeaderReplicaCompare compareFIFO;	
 	WriteLog Logger = new WriteLog(); 	
 	
 	// Auxiliar class to handle Leader's requests
@@ -122,6 +123,10 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 			}	
 			
 			Logger.write("LeaderReplica", "Reply from Leader Replica to request["+seqFIFO+"]:" + reply);
+			
+			//COMPARE AN REPLY
+			compareFIFO = new LeaderReplicaCompare(reqList);
+			compareFIFO.compare();
 			
 		}catch(Exception e){
 			Logger.write("LeaderReplica", "Unexpected on Replica 1!");		

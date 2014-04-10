@@ -1,5 +1,9 @@
 package dpss.service.replica;
 
-public class LeaderReplicaRMReceiver {
+public class LeaderReplicaRMReceiver extends Thread {
+	
+	public LeaderReplicaRMReceiver(){
+		
+	}
 
 }

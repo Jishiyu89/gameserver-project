@@ -175,28 +175,28 @@ public class LeaderReplicaFEReceiver extends Thread {
 			}
 		}
 		
-		public void compare() throws Exception {
-			
-			String reply=null;
-			DatagramPacket UDPResult=null;
-			
-			Request oldestReq = reqList.getFirst();
-
-			//Returning the result to FE//
-			if (oldestReq.getAllReplies()){			
-				DatagramPacket UDPReply=null;
-				reply = oldestReq.getVotedReply();
-				UDPResult=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);	
-				socketA.send(UDPReply);
-			}
-			
-			//Informing RM about the issue//
-			if (oldestReq.diffResponse > 0){
-				reply = Integer.toString(oldestReq.diffResponse);
-				UDPResult = (new DatagramPacket(reply.getBytes(),reply.length(),hostLR,7000));
-				socketA.send(UDPResult);
-			}
-		}
+//		public void compare() throws Exception {
+//			
+//			String reply=null;
+//			DatagramPacket UDPResult=null;
+//			
+//			Request oldestReq = reqList.getFirst();
+//
+//			//Returning the result to FE//
+//			if (oldestReq.getAllReplies()){			
+//				DatagramPacket UDPReply=null;
+//				reply = oldestReq.getVotedReply();
+//				UDPResult=new DatagramPacket(reply.getBytes(),reply.length(),hostLR,9000);	
+//				socketA.send(UDPReply);
+//			}
+//			
+//			//Informing RM about the issue//
+//			if (oldestReq.diffResponse > 0){
+//				reply = Integer.toString(oldestReq.diffResponse);
+//				UDPResult = (new DatagramPacket(reply.getBytes(),reply.length(),hostLR,7000));
+//				socketA.send(UDPResult);
+//			}
+//		}
 		
 		
 		public void multicastGroup(String message) {
