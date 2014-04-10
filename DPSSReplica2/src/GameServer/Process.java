@@ -38,7 +38,7 @@ public void run(){
 					
 					System.out.println(reply);		
 					Reply(reply);
-					//UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),UDPRequest.getAddress(),9000);
+					
 					break;
 				
 				case PlayerSignIn:
@@ -48,7 +48,6 @@ public void run(){
 					if(gameServer!=null)
 						reply=seq+"->"+2+"->"+gameServer.playerSignIn(requestInformation[2], requestInformation[3], requestInformation[4]);
 					System.out.println(reply);		
-					//UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),UDPRequest.getAddress(),9000);
 					Reply(reply);
 					break;
 				case PlayerSignOut:
@@ -58,7 +57,6 @@ public void run(){
 					if(gameServer!=null)
 						reply=seq+"->"+2+"->"+gameServer.playerSignOut(requestInformation[2], requestInformation[3]);
 					System.out.println(reply);		
-					//UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),UDPRequest.getAddress(),9000);
 					Reply(reply);
 					break;
 				case TransferAccount:
@@ -68,7 +66,6 @@ public void run(){
 					if(gameServer!=null)
 						reply=seq+"->"+2+"->"+gameServer.transferAccount(requestInformation[2], requestInformation[3],requestInformation[4], requestInformation[5]);
 					System.out.println(reply);		
-					//UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),UDPRequest.getAddress(),9000);
 					Reply(reply);
 					break;
 				case GetPlayerStatus:
@@ -78,11 +75,9 @@ public void run(){
 					if(gameServer!=null)
 						reply=seq+"->"+2+"->"+gameServer.getPlayerStatus(requestInformation[2], requestInformation[3],requestInformation[4]);
 					System.out.println(reply);		
-					//UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),UDPRequest.getAddress(),9000);
 					Reply(reply);
 					break;
 				case SuspendAccount:					
-					//UDPReply=new DatagramPacket("SuspendAccount".getBytes(),"CreatPlayerAccount".length(),hostLR,9000);
 				
 					System.out.println("SuspendAccount");
 
@@ -90,7 +85,6 @@ public void run(){
 					if(gameServer!=null)
 						reply=seq+"->"+2+"->"+gameServer.suspendAccount(requestInformation[2], requestInformation[3],requestInformation[4],requestInformation[5]);
 					System.out.println(reply);		
-					//UDPReply=new DatagramPacket(reply.getBytes(),reply.length(),UDPRequest.getAddress(),9000);
 					Reply(reply);
 					break;
 					
@@ -118,11 +112,11 @@ public void run(){
 		else{ 
 			switch(Integer.parseInt(IP[0])){
 			case 132:System.out.println("132 here!");			 
-					return super.serverNA;
+					return serverNA;
 			case 93:System.out.println("93 here!");
-					return super.serverEU;
+					return serverEU;
 			default:System.out.println("wte here!");
-					return super.serverAS;
+					return serverAS;
 			}
 		}
 		

@@ -11,12 +11,12 @@ import java.util.LinkedList;
 
 
 public class Replica {
-	DatagramSocket socketReply=null;
+	static DatagramSocket socketReply=null;
 	//int portA=1012;
 	InetAddress hostR;
-	ServerImpl serverEU=null ;
-	ServerImpl serverNA=null ;
-	ServerImpl serverAS=null ;
+	static ServerImpl serverEU=null ;
+	static ServerImpl serverNA=null ;
+	static ServerImpl serverAS=null ;
 
 		public static void main(String[] args) {
 		//DatagramSocket socketA=null;	
@@ -84,6 +84,15 @@ public class Replica {
 		return true;
 	}
 	
-	
+	public void finalize(){
+		socketReply.close();
+		socketReply=null;
+		serverNA.finalize();
+		serverNA=null;
+		serverEU.finalize();
+		serverEU=null;
+		serverAS.finalize();
+			
+	}
 
 }
