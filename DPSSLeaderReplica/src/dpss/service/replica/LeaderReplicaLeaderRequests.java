@@ -129,7 +129,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 			compareFIFO.compare();
 			
 		}catch(Exception e){
-			Logger.write("LeaderReplica", "Unexpected on Replica 1!");		
+			e.printStackTrace();
 		}
 	}
 

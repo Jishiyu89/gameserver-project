@@ -1,9 +1,49 @@
 package dpss.service.replica;
 
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import dpss.service.GameServerFactory;
+import dpss.service.WriteLog;
+
 public class LeaderReplicaRMReceiver extends Thread {
 	
-	public LeaderReplicaRMReceiver(){
-		
+	GameServerFactory gameServers;
+	
+	String message=null;
+	DatagramPacket UDPMessage=null;
+	DatagramSocket socketRM=null;
+	int portRM=8000;
+	WriteLog Logger = new WriteLog(); 	
+	
+	public LeaderReplicaRMReceiver(GameServerFactory gameServersParam){
+		try {
+			this.gameServers = gameServersParam;
+			socketRM=new DatagramSocket(portRM);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
+	public void run(){
+		
+		byte[] bufferRequest=new byte[1000];
+		DatagramPacket UDPRequest=new DatagramPacket(bufferRequest, bufferRequest.length);
+
+		while(true){
+			try {
+				
+				socketRM.receive(UDPRequest);
+				String s=new String(UDPRequest.getData()).substring(0,UDPRequest.getLength());
+				if (s.equals("reset")){
+					gameServers.serversReset();
+					Logger.write("LeaderReplica", "Reset request from Replica Manager(RM) successfully executed!");					
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+	
+		}
+	}
 }

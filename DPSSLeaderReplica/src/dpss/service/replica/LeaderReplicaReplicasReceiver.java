@@ -6,7 +6,6 @@ import java.net.SocketException;
 import java.util.LinkedList;
 
 import dpss.model.Request;
-import dpss.model.RequestType;
 import dpss.service.WriteLog;
 
 public class LeaderReplicaReplicasReceiver extends Thread {

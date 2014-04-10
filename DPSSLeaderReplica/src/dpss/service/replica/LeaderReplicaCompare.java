@@ -1,6 +1,5 @@
 package dpss.service.replica;
 
-import java.net.DatagramPacket;
 import java.util.LinkedList;
 
 import dpss.model.Request;
