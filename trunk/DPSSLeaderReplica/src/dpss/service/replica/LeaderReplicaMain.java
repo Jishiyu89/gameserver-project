@@ -32,7 +32,7 @@ public class LeaderReplicaMain {
 			System.out.println("4.Replica Receiver created");
 		
 			//Starting RM Receiver
-			new Thread(new LeaderReplicaRMReceiver()).start();	
+			new Thread(new LeaderReplicaRMReceiver(gameServers)).start();	
 			System.out.println("5.RM Receiver created");
 			
 			
