@@ -33,6 +33,11 @@ public class LeaderReplicaMain {
 			System.out.println("4.Replica Receiver created");
 			lRRR.run();
 			
+			//Starting RM Receiver
+			LeaderReplicaRMReceiver lRRM = new LeaderReplicaRMReceiver();
+			System.out.println("5.RM Receiver created");
+			lRRM.run();
+			
 			
 		}catch(Exception e) {}
 		}

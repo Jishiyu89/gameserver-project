@@ -38,3 +38,4 @@
 [2014-04-09 01:06:25] Username [deyvid] sucessfuly created on game server NA!
 [2014-04-09 05:41:44] Game server NA is up and running!
 [2014-04-09 05:41:57] Username [deyvid] sucessfuly created on game server NA!
+[2014-04-10 12:57:40] Game server NA is up and running!
