@@ -53,7 +53,7 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 				//3rd position = Reply from Replica 
 				replyReplica = requestInformation[2];
 						
-				Request auxRequest = reqList.get(seqFIFO);	
+				Request auxRequest = reqList.get(reqList.indexOf(new Request(seqFIFO)));	
 				
 				synchronized (auxRequest) {
 					auxRequest.setStatus(codReplica, replyReplica);

@@ -12,6 +12,9 @@ public class Request {
 		seqNumber=seq;
 		this.type=type;
 	}
+	public Request(int seq){
+		seqNumber=seq;
+	}
 	
 	public void setStatus(int number,String s){
 		switch(number){
@@ -50,5 +53,11 @@ public class Request {
 			}		
 			
 	}
-	
+	@Override 
+	public boolean equals(Object obj){
+		final Request p=(Request) obj;
+		if(this.seqNumber==p.seqNumber)
+			return true;
+		else return false;
+	}
 }
