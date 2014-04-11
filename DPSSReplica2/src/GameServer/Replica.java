@@ -87,11 +87,11 @@ public class Replica {
 	public void finalize(){
 		socketReply.close();
 		socketReply=null;
-		serverNA.finalize();
+		//serverNA.finalize();
 		serverNA=null;
-		serverEU.finalize();
+		//serverEU.finalize();
 		serverEU=null;
-		serverAS.finalize();
+		//serverAS.finalize();
 			
 	}
 
