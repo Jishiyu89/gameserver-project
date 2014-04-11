@@ -1,12 +1,11 @@
 package system;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-import org.omg.CORBA.ORB;
+
 
 public class SystemInterfaceClient {
 
@@ -24,51 +23,18 @@ public String IPaddress;
 	
 	public boolean isSignedIn = false;
 
-	static SystemInterface Asia,Europe,NAmerica;
+	static SystemInterfaceImpl Asia,Europe,NAmerica;
 
 	
 	
+		@SuppressWarnings("resource")
 		public static void main(String[] args) throws IOException {
 		
 		
-		ORB orb = ORB.init(args,null);
-		
-		BufferedReader br1 = new BufferedReader (new FileReader("IOR_North_America.txt"));
-		String IOR_NA = br1.readLine();
-		br1.close();
-		
-		org.omg.CORBA.Object objNA = orb.string_to_object(IOR_NA);
-		
-		NAmerica = SystemInterfaceHelper.narrow(objNA);
-		
-		//-----------------------------------------------------------------------------------
-		
-		ORB orb_Europe = ORB.init(args,null);
-		
-		BufferedReader br2 = new BufferedReader (new FileReader("IOR_EUROPE.txt"));
-		String IOR_EU = br2.readLine();
-		br2.close();
-		
-		org.omg.CORBA.Object objEU = orb_Europe.string_to_object(IOR_EU);
-		
-		Europe = SystemInterfaceHelper.narrow(objEU);
-		
-		//------------------------------------------------------------------------------------
-		
-		ORB orb_Asia = ORB.init(args,null);
-						
-		BufferedReader br3 = new BufferedReader (new FileReader("IOR_ASIA.txt"));
-		String IOR_AS = br3.readLine();
-		br3.close();
-					
-		org.omg.CORBA.Object objASIA = orb_Asia.string_to_object(IOR_AS);
-			
-		Asia = SystemInterfaceHelper.narrow(objASIA);
-		
-		//-----------------------------------------------------------------------------------
 		
 		
-Scanner scan = new Scanner(System.in);
+		
+			Scanner scan = new Scanner(System.in);
 		
 		try 
 		{
@@ -141,6 +107,7 @@ Scanner scan = new Scanner(System.in);
 		
 		
 		// Method to create player		
+		@SuppressWarnings("resource")
 		public void createPlayerAccount()
 		{
 		
@@ -220,6 +187,7 @@ Scanner scan = new Scanner(System.in);
 		
 		
 		// Method for Player sign in
+		@SuppressWarnings("resource")
 		public void playerSignIn() 
 		{
 			Scanner temp1 = new Scanner(System.in);
@@ -282,6 +250,7 @@ Scanner scan = new Scanner(System.in);
 		
 		
 		// Method to sign out user
+		@SuppressWarnings("resource")
 		public void playerSignOut() 
 		{
 			Scanner in = new Scanner(System.in);
@@ -291,7 +260,7 @@ Scanner scan = new Scanner(System.in);
 			
 			String IPaddress= createIP(input);
 			
-			String region = get_loc(IPaddress);
+			//String region = get_loc(IPaddress);
 			
 			System.out.println("IP Address is  " + IPaddress );
 			
@@ -325,11 +294,12 @@ Scanner scan = new Scanner(System.in);
 		
 		}
 		
+		@SuppressWarnings("resource")
 		public String transferAccount()
 		{
 			Scanner temp = new Scanner(System.in);
 			
-			Scanner choice=new Scanner(System.in);
+			//Scanner choice=new Scanner(System.in);
 			
 			int input = temp.nextInt();
 		
@@ -338,7 +308,7 @@ Scanner scan = new Scanner(System.in);
 			// Get Location
 			
 			String OldIPAddress = createIP(input);
-			String location = get_loc(OldIPAddress);
+			//String location = get_loc(OldIPAddress);
 			// Determine IP
 			
 			System.out.println(" Please  Enter your username :");
@@ -352,7 +322,8 @@ Scanner scan = new Scanner(System.in);
 			System.out.println(">> Enter your prefered region to transfer player account :");
 			String NewIPAddress = createIP(input);
 			String region2 = get_loc(NewIPAddress);
-			System.out.println("New ip-address : " + NewIPAddress + " | "+ " Region :" + region2);								String reply_in="";
+			System.out.println("New ip-address : " + NewIPAddress + " | "+ " Region :" + region2);							
+			//String reply_in="";
 				
 			String NA_data;
 			String EU_data, ASIA_data;
