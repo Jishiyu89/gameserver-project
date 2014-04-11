@@ -15,28 +15,36 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
-public class ReplicaManagement extends Thread{
-	DatagramSocket socket=null;
-	int count1,count2,count3;
+public class ReplicaManager extends Thread{
 	
-	ReplicaManagement()
+	DatagramSocket socketRM=null;
+	int count1,count2,count3;
+	int portRM=7000;
+	
+	public ReplicaManager()
 	{ 
 		try {
-			DatagramSocket socket=new DatagramSocket(7000);
+			
+			socketRM=new DatagramSocket(portRM);
+			
 		} catch (SocketException e) {
 			e.printStackTrace();
 		}
 	}
+	
 	public void run(){
+		
 		byte[] buffer = new byte[1000];
 		byte[] bufferReply = new byte[1000];
-		DatagramPacket receive = new DatagramPacket(buffer, buffer.length);
-		DatagramPacket controlor=null;
+		
+		DatagramPacket receiveMsg = new DatagramPacket(buffer, buffer.length);
+		DatagramPacket replyMsg=null;
+		
 		try {
 			 while(true){
 				 synchronized(this){
-					 socket.receive(receive);
-					 String correctness=new String(receive.getData()).substring(0,receive.getLength());
+					 socketRM.receive(receiveMsg);
+					 String correctness=new String(receiveMsg.getData()).substring(0,receiveMsg.getLength());
 					 if (correctness.equals("1") )
 						 count1++;
 					 else if (correctness.equals("2") )
@@ -46,18 +54,21 @@ public class ReplicaManagement extends Thread{
 					 bufferReply="Restart".getBytes();
 					 if (count1>2)
 					 {
-						 controlor=new DatagramPacket(bufferReply,bufferReply.length, receive.getAddress(),receive.getPort());
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),receiveMsg.getPort());
 						 count1=0;
+						 socketRM.send(replyMsg);
 					 }
 					 else if (count2>2)
 					 {
-						 controlor=new DatagramPacket(bufferReply,bufferReply.length, receive.getAddress(),receive.getPort());
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),receiveMsg.getPort());
 						 count2=0;
+						 socketRM.send(replyMsg);
 					 }
 					 else if (count3>2)
 					 {
-						 controlor=new DatagramPacket(bufferReply,bufferReply.length, receive.getAddress(),receive.getPort());
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),receiveMsg.getPort());
 						 count3=0;
+						 socketRM.send(replyMsg);
 					 }
 				 }
 			 }
@@ -67,7 +78,7 @@ public class ReplicaManagement extends Thread{
 		};
 	}
 	public void main(String arg[]){
-		ReplicaManagement RM=new ReplicaManagement();
+		ReplicaManager RM=new ReplicaManager();
 		RM.start();
 	}
 }
