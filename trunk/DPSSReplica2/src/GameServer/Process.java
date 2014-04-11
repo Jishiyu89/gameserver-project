@@ -21,14 +21,14 @@ public void run(){
 		int seq=0;
 		
 			try {
-				
+				System.out.println(message);
 				String[] requestInformation=new String[10];
 				requestInformation=message.split("->");
 				seq=Integer.parseInt(requestInformation[0]);
 				type=RequestType.valueOf(requestInformation[1]);
 				switch(type){
 				case CreatePlayerAccount:
-					System.out.println("CreatPlayerAccount");
+					System.out.println("CreatPlayerAccount");					
 					
 					gameServer=IPConvert(requestInformation[7]);
 					if(gameServer!=null)
