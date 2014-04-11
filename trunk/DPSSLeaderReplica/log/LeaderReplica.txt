@@ -1,0 +1,22 @@
+[2014-04-10 09:47:24] Reply from Leader Replica to request[0]:Username [deyvid] sucessfuly created on the requested game server!
+[2014-04-10 09:47:24] Reply from Replica2 to request[0]:Username [deyvid] sucessfuly created on the requested game server!
+[2014-04-10 09:51:10] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 09:51:10] Unexpected error receiving reply from Replicas!
+[2014-04-10 09:56:02] Reply from Leader Replica to request[0]:Username [portFES] successfully created on the requested game server!
+[2014-04-10 09:56:03] Reply from Replica2 to request[0]:Username [portFES] successfully created on the requested game server!
+[2014-04-10 09:59:41] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 09:59:41] Reply from Replica2 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 10:01:14] Reply from Leader Replica to request[1]:Username [ShuLiu] successfully created on the requested game server!
+[2014-04-10 10:18:30] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 10:18:43] Reply from Leader Replica to request[1]:Username [deyvid1] successfully created on the requested game server!
+[2014-04-10 10:24:36] Reply from Leader Replica to request[2]:Username [tanmay] successfully created on the requested game server!
+[2014-04-10 10:25:01] Reply from Leader Replica to request[3]:Username [ooooooo] successfully created on the requested game server!
+[2014-04-10 10:29:00] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 10:31:46] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 10:40:12] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 10:40:57] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 10:41:37] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 10:43:49] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-10 10:44:04] Reply from Leader Replica to request[1]:Username [deyvid2] successfully created on the requested game server!
+[2014-04-10 10:44:18] Reply from Leader Replica to request[2]:Username [deyvid3] successfully created on the requested game server!
+[2014-04-10 10:44:18] Restart request from Replica Manager(RM) successfully executed!
