@@ -41,7 +41,7 @@ public class LeaderReplicaFEReceiver extends Thread {
 				hostLR = InetAddress.getByName("localhost");	
 				
 				/* MULTICAST - Sender */
-				ipGroup = InetAddress.getByName("228.5.6.1");
+				ipGroup = InetAddress.getByName("228.6.3.21");
 				s = new MulticastSocket(mPort);
 				//s.joinGroup(ipGroup);
 				

@@ -16,6 +16,8 @@ public class LeaderReplicaCompare {
 	
 	public void compare() throws Exception {
 		
+		System.out.println("Compare function called!");
+		
 		String auxMessage=null;
 		
 		Request oldestReq = reqList.getFirst();
@@ -26,16 +28,19 @@ public class LeaderReplicaCompare {
 			auxMessage = oldestReq.getVotedReply();			
 			auxMessage = Integer.toString(oldestReq.diffResponse);
 			fESender = new LeaderReplicaFESender(auxMessage);
-			fESender.send();
-		}
+			fESender.send();		
 		
-		//Informing RM about the issue//
-		if (oldestReq.diffResponse > 0){
-			
-			auxMessage = Integer.toString(oldestReq.diffResponse);
-			rMSender = new LeaderReplicaRMSender(auxMessage);
-			rMSender.send();
+			//Informing RM about the issue//
+			if (oldestReq.diffResponse > 0){
+				
+				auxMessage = Integer.toString(oldestReq.diffResponse);
+				rMSender = new LeaderReplicaRMSender(auxMessage);
+				rMSender.send();
+			}
 		}
+		else
+			System.out.println("Nothing to compare yet!");
+		
 	}
 	
 }
