@@ -30,8 +30,7 @@ public class LeaderReplicaCompare {
 			fESender.send();		
 		
 			//Informing RM about the issue//
-			if (oldestReq.diffResponse > 0){
-				
+			if (oldestReq.diffResponse > 0){				
 				
 				System.out.println("Informing RM about results mismatch!");
 				
