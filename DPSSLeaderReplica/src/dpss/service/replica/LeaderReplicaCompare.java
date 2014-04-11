@@ -26,17 +26,25 @@ public class LeaderReplicaCompare {
 		if (oldestReq.getAllReplies()){				
 			
 			auxMessage = oldestReq.getVotedReply();			
-			auxMessage = Integer.toString(oldestReq.diffResponse);
 			fESender = new LeaderReplicaFESender(auxMessage);
 			fESender.send();		
 		
 			//Informing RM about the issue//
 			if (oldestReq.diffResponse > 0){
 				
+				
+				System.out.println("Informing RM about results mismatch!");
+				
 				auxMessage = Integer.toString(oldestReq.diffResponse);
 				rMSender = new LeaderReplicaRMSender(auxMessage);
 				rMSender.send();
 			}
+			
+			//Delete analyzed request from FIFO Queue
+			synchronized (reqList) {
+				reqList.removeFirst();
+			}
+			
 		}
 		else
 			System.out.println("Nothing to compare yet!");

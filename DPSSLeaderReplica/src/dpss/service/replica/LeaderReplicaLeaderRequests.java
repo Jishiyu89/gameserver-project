@@ -115,7 +115,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 		}
 		
 		//After receiving the reply from local game servers > update FIFO queue
-		Request auxRequest = reqList.get(seqFIFO);		
+		Request auxRequest = reqList.get(reqList.indexOf(new Request(seqFIFO)));		
 		try {
 			
 			synchronized (auxRequest) {

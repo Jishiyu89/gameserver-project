@@ -83,8 +83,12 @@ public class GameServerImpl extends GameServerPOA {
 						auxArrPlayer.add(new Player(firstNameParam, lastNameParam, usernameParam, ageParam, passwordParam, iPAdressParam));
 					}							
 					
-					Logger.write(serverName, "Username ["+ usernameParam + "] sucessfuly created on game server " + serverName + "!");
-					return "Username ["+ usernameParam + "] sucessfuly created on game server " + serverName + "!";	
+					//Logger.write(serverName, "Username ["+ usernameParam + "] successfully created on game server " + serverName + "!");
+					//return "Username ["+ usernameParam + "] successfully created on game server " + serverName + "!";	
+					
+					Logger.write(serverName, "Username ["+ usernameParam + "] successfully created on the requested game server!");
+					return "Username ["+ usernameParam + "] successfully created on the requested game server!";	
+					
 					
 				}catch(Exception e){
 					Logger.write(serverName, "Unexpected server error on game server " + serverName + "!");
@@ -112,7 +116,7 @@ public class GameServerImpl extends GameServerPOA {
 						auxArrPlayer.add(new Player(firstNameParam, lastNameParam, usernameParam, Integer.parseInt(ageParam), passwordParam, iPAdressParam));
 					}							
 					
-					Logger.write(serverName, "Username ["+ usernameParam + "] sucessfuly created on game server " + serverName + "!");
+					Logger.write(serverName, "Username ["+ usernameParam + "] successfully created on game server " + serverName + "!");
 					return "OK";	
 					
 				}catch(Exception e){
@@ -156,8 +160,8 @@ public class GameServerImpl extends GameServerPOA {
 						auxPlayer.setStatus(true);
 					}	
 					
-					Logger.write(serverName, "Username ["+ usernameParam + "] sucessfuly signed in on game server " + serverName + "!");
-					return "Username ["+ usernameParam + "] sucessfuly signed in on game server " + serverName + "!";	
+					Logger.write(serverName, "Username ["+ usernameParam + "] successfully signed in on game server " + serverName + "!");
+					return "Username ["+ usernameParam + "] successfully signed in on game server " + serverName + "!";	
 					
 				}catch(Exception e){
 					Logger.write(serverName, "Unexpected server error on game server " + serverName + "!");
@@ -197,8 +201,8 @@ public class GameServerImpl extends GameServerPOA {
 						auxPlayer.setStatus(false);					
 					}	
 									
-					Logger.write(serverName, "Username ["+ usernameParam + "] sucessfuly signed out on game server " + serverName + "!");
-					return "Username ["+ usernameParam + "] sucessfuly signed out on game server " + serverName + "!";	
+					Logger.write(serverName, "Username ["+ usernameParam + "] successfully signed out on game server " + serverName + "!");
+					return "Username ["+ usernameParam + "] successfully signed out on game server " + serverName + "!";	
 					
 				}catch(Exception e){
 					Logger.write(serverName, "Unexpected server error on game server " + serverName + "!");
@@ -244,8 +248,8 @@ public class GameServerImpl extends GameServerPOA {
 						}
 					}
 					
-					Logger.write(serverName, "Username ["+ usernameParam + "] sucessfuly transferred from game server " + serverName + "!");
-					return "Username ["+ usernameParam + "] sucessfuly transferred from game server " + serverName + "!";	
+					Logger.write(serverName, "Username ["+ usernameParam + "] successfully transferred from game server " + serverName + "!");
+					return "Username ["+ usernameParam + "] successfully transferred from game server " + serverName + "!";	
 					
 				}catch(Exception e){
 					

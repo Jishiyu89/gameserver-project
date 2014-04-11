@@ -16,12 +16,14 @@ public class LeaderReplicaRMSender {
 	DatagramSocket socketRM=null;
 	InetAddress hostRM;
 	int portRM=7000;
+	int portRMS=7002;
+	
 
 	public LeaderReplicaRMSender(String messageParam){
 		try {
 
 			this.message = messageParam;
-			socketRM=new DatagramSocket(portRM);
+			socketRM=new DatagramSocket(portRMS);
 			hostRM = InetAddress.getByName("localhost");
 
 		} catch (UnknownHostException e) {		
