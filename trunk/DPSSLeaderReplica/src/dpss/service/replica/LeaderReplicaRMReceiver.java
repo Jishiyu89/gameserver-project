@@ -37,8 +37,10 @@ public class LeaderReplicaRMReceiver extends Thread {
 				String s=new String(UDPRequest.getData()).substring(0,UDPRequest.getLength());
 				if (s.equals("Restart")){
 					
-					gameServers.serversReset();
-					
+					synchronized (gameServers) {
+						gameServers.serversReset();
+					}
+										
 					Logger.write("LeaderReplica", "Restart request from Replica Manager(RM) successfully executed!");					
 				}
 			}

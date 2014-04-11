@@ -34,6 +34,10 @@ public class GameServerFactory extends Thread {
 		
 	}
 	
+	
+	//TODO: Close Sockets!? 
+	//TODO: sync RM sender>> Call from the main thread
+	
 	public void serversReset() {		
 		try{ 
 			servantNA = null;

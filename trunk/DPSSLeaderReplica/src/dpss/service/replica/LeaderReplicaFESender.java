@@ -16,12 +16,15 @@ public class LeaderReplicaFESender {
 	DatagramSocket socketFE=null;
 	InetAddress hostFE;
 	int portFE=9000;
+	int portFES=9001;
 
 	public LeaderReplicaFESender(String messageParam){
 		try {
 
+			System.out.println("Sending Reply to FE:" + messageParam );
+			
 			this.message = messageParam;
-			socketFE=new DatagramSocket(portFE);
+			socketFE=new DatagramSocket(portFES);
 			hostFE = InetAddress.getByName("localhost");
 
 		} catch (UnknownHostException e) {		
