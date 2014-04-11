@@ -10,7 +10,7 @@ import java.util.logging.SimpleFormatter;
 
 
 
-public class SystemInterfaceImpl extends SystemInterfacePOA {
+public class SystemInterfaceImpl  {
 
 	
 
@@ -817,7 +817,6 @@ public class SystemInterfaceImpl extends SystemInterfacePOA {
 		
 	}
 
-	@Override
 	public String getPlayerStatus(String AdminUsername, String AdminPassword,
 			String IPaddress) {
 		
