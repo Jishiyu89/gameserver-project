@@ -1,0 +1,22 @@
+module system {
+interface SystemInterface
+	{
+	
+     	string createPlayerAccount(in string FirstName, in string LastName, in string Age, in string Username, in string Password, in string IPaddress);
+		
+		string playerSignIn(in string Username, in string Password,in string IPaddress);
+		
+		string playerSignOut(in string Username, in string IPaddress);
+	
+		string getPlayerStatus(in string AdminUsername,in string AdminPassword, in string IPaddress);
+	
+	    string transferAccount(in string Username, in string Password, in string OldIPAddress, in string NewIPAddress);
+		
+		string suspendAccount(in string AdminUsername, in string AdminPassword, in string AdminIP, in string UsernameToSuspend);
+		
+  };
+	
+
+
+	
+};
