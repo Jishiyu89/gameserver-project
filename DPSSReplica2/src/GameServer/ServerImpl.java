@@ -112,7 +112,7 @@ public class ServerImpl extends GamePOA implements Runnable {
 			Player player=new Player(firstName,lastName,userName,age,password,IP);
 			
 			//Get the index of list
-			int index=userName.charAt(0)-'A';
+			int index=userName.charAt(0)-'a';
 			
 			//check the player exists or not
 			if (hash.get(index).contains(player))
@@ -125,7 +125,10 @@ public class ServerImpl extends GamePOA implements Runnable {
 					tempL.add(player);
 					playerNumber++;
 				}
-				reply= "["+IP+"]Create Account " + player.userName+" successfully";
+				
+				//reply= "["+IP+"]Create Account " + player.userName+" successfully";
+				reply= "Username [" + player.userName+"] successfully created on the requested game server!";
+				
 			}
 			bw.write("["+dateFormat.format(new Date())+"]Server["+name+"] Reply to:"+reply );
 			bw.newLine();

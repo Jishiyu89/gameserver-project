@@ -28,12 +28,12 @@ public class Replica {
 		byte[] buf = new byte[1000];
 		try {
 			//Group members
-			ipGroup = InetAddress.getByName("localhost");
+			ipGroup = InetAddress.getByName("228.6.3.21");
 					
 			//Replica 2 
 			s = new MulticastSocket(mPort);
 			s.joinGroup(ipGroup);
-			Replica R = new Replica();	
+			//Replica R = new Replica();	
 			//R.start();
 			while(true){
 							
