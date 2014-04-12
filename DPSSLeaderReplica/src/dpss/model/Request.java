@@ -26,7 +26,7 @@ public class Request {
 	
 	public boolean getAllReplies(){
 		
-		if (response1!=null)// && response2 != null)// && response3!=null)
+		if (response1!=null && response3 != null)// && response3!=null)
 			return true;
 		else
 			return false;

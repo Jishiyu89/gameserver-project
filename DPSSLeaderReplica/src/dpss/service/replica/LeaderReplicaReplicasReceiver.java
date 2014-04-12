@@ -48,6 +48,8 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 				String s=new String(UDPRequest.getData()).substring(0,UDPRequest.getLength());
 				requestInformation=s.split("->");
 				
+				System.out.println("received>>" +s );
+				
 				//1st position = SEQ FIFO
 				seqFIFO = Integer.parseInt(requestInformation[0]);
 				//2nd position = COD Replica
