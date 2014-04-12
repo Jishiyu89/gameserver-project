@@ -1,20 +1,34 @@
 package GameServer;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 
-public class Process  extends Replica implements Runnable  {
+
+public class Process implements Runnable  {
 	String message;
 	ServerImpl gameServer=null;
-	Process(String m){
+	ServerImpl sNA=null,sEU=null,sAS=null;
+	DatagramSocket s;
+	InetAddress hostR;
+	Process(DatagramSocket s,ServerImpl NA,ServerImpl EU,ServerImpl AS,String m){
 		message=m;
-		
+		this.sNA=NA;
+		this.sEU=EU;
+		this.sAS=AS;
+		this.s=s;
+		try {
+			InetAddress hostR = InetAddress.getByName("localhost");
+		} catch (UnknownHostException e) {
+			
+			e.printStackTrace();
+		}	
 	}
 public void run(){
 		
-//		byte[] bufferRequest=new byte[1000];
-//		DatagramPacket UDPRequest=new DatagramPacket(bufferRequest, bufferRequest.length);
-//		
-//		DatagramPacket UDPReply=null;
 		RequestType type;
 		String reply=null;
 
@@ -112,14 +126,28 @@ public void run(){
 		else{ 
 			switch(Integer.parseInt(IP[0])){
 			case 132:System.out.println("132 here!");			 
-					return serverNA;
+					return sNA;
 			case 93:System.out.println("93 here!");
-					return serverEU;
+					return sEU;
 			default:System.out.println("wte here!");
-					return serverAS;
+					return sAS;
 			}
 		}
 		
+	}
+	public boolean Reply(String str){
+		
+		DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostR,1300);
+		synchronized(s){
+			try {
+				s.send(message);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		
+		return true;
 	}
 
 }
