@@ -49,7 +49,9 @@ public class Replica extends Thread {
 		}
 	}
 	
-	
+	public void run(){
+		
+	}
 	public Replica() {
 		
 		
