@@ -1,7 +1,6 @@
 package system;
 
 
-import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,70 +26,70 @@ public String IPaddress;
 
 	
 	
-		@SuppressWarnings("resource")
-		public static void main(String[] args) throws IOException {
-		
-		
-		
-		
-		
-			Scanner scan = new Scanner(System.in);
-		
-		try 
-		{
-			System.out.println("Client is Running.......");
-			
-			
-			
-			String user_value  = "Y";
-			
-			while (user_value.equalsIgnoreCase("Y")) 
-			{
-
-				show_options(); // Display Options available / operations user can perform
-				
-				
-				int user_input = scan.nextInt();
-				
-				if (user_input == 1) 
-				  new SystemInterfaceClient().createPlayerAccount();
- 
-				//If user input is 1, call createPlayerAccount method 
-				
-				
-				if (user_input == 2) 
-				  new SystemInterfaceClient().playerSignIn();
-
-				//If user input is 2, call playerSignIn method
-				
-				if (user_input == 3) 
-				  new SystemInterfaceClient().playerSignOut();
-
-				//If user input is 3, call playerSignOut method
-				
-				if (user_input == 4) 
-					  new SystemInterfaceClient().transferAccount();
-				
-				if (user_input == 5)
-				  break;
-
-				//If user input is 4, quit
-				
-				System.out.println("\n Press 'Y' To Perform Next Operation ");
-				user_value = scan.next();
-				
-				//Ask user if he wants to perform another operation, if yes then show the menu again
-			}
-
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-		
-	
-
-	}
+//		@SuppressWarnings("resource")
+//		public static void main(String[] args) throws IOException {
+//		
+//		
+//		
+//		
+//		
+//			Scanner scan = new Scanner(System.in);
+//		
+//		try 
+//		{
+//			System.out.println("Client is Running.......");
+//			
+//			
+//			
+//			String user_value  = "Y";
+//			
+//			while (user_value.equalsIgnoreCase("Y")) 
+//			{
+//
+//				show_options(); // Display Options available / operations user can perform
+//				
+//				
+//				int user_input = scan.nextInt();
+//				
+//				if (user_input == 1) 
+//				  new SystemInterfaceClient().createPlayerAccount();
+// 
+//				//If user input is 1, call createPlayerAccount method 
+//				
+//				
+//				if (user_input == 2) 
+//				  new SystemInterfaceClient().playerSignIn();
+//
+//				//If user input is 2, call playerSignIn method
+//				
+//				if (user_input == 3) 
+//				  new SystemInterfaceClient().playerSignOut();
+//
+//				//If user input is 3, call playerSignOut method
+//				
+//				if (user_input == 4) 
+//					  new SystemInterfaceClient().transferAccount();
+//				
+//				if (user_input == 5)
+//				  break;
+//
+//				//If user input is 4, quit
+//				
+//				System.out.println("\n Press 'Y' To Perform Next Operation ");
+//				user_value = scan.next();
+//				
+//				//Ask user if he wants to perform another operation, if yes then show the menu again
+//			}
+//
+//		} 
+//		catch (Exception e) 
+//		{
+//			e.printStackTrace();
+//		}
+//		
+//	
+//
+//	}
 
 	//Method to display Menu or operations available to user
 		public static void show_options() 
