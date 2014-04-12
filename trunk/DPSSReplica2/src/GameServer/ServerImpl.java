@@ -11,8 +11,8 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
-import GameInterface.*;
-public class ServerImpl extends GamePOA implements Runnable {
+
+public class ServerImpl implements Runnable {
 	Hashtable<Integer,List<Player>> hash;
 	int onlinePlayerNumber, playerNumber;
 	int portNumber;
@@ -98,8 +98,7 @@ public class ServerImpl extends GamePOA implements Runnable {
 		String reply=""+name+": "+onlinePlayerNumber+" online, "+(playerNumber-onlinePlayerNumber)+" offline. ";
 		return reply;
 	}
-	@Override
-	//Player Sign In Function return the string .
+	
 	public String createPlayerAccount(String firstName,
 			String lastName, String userName, String password,
 			short age, String IP) {
@@ -140,7 +139,7 @@ public class ServerImpl extends GamePOA implements Runnable {
 		return reply;
 	}
 
-	@Override//Sign in function which return string
+	
 	public String playerSignIn(String userName, String password,
 			String IP) {
 		String reply="";
@@ -189,7 +188,6 @@ public class ServerImpl extends GamePOA implements Runnable {
 		return reply;
 	}
 
-	@Override//Sign out function which return string
 	public String playerSignOut(String userName, String IP) {
 		 String reply="";
 		 try
@@ -232,7 +230,7 @@ public class ServerImpl extends GamePOA implements Runnable {
 		return reply;
 	}
 	
-	@Override//transfer Account function which return string
+	//transfer Account function which return string
 	public String transferAccount (String userName, String password,String oldIP,String newIP)
 	{
 		String reply="";
@@ -319,7 +317,7 @@ public class ServerImpl extends GamePOA implements Runnable {
 		
 	}
 
-	@Override//get player status function which return string
+	//get player status function which return string
 	public String getPlayerStatus(String adminName,	String adminPassword, String IP) {
 		String response="";
 		 try
@@ -385,7 +383,7 @@ public class ServerImpl extends GamePOA implements Runnable {
 			return response;
 	}
 	
-	@Override//suspend Account function which return string
+	//suspend Account function which return string
 	public String suspendAccount(String adminUsername, String adminPassword, String IP, String userName){
 		String reply="";
 		 try
