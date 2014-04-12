@@ -15,7 +15,7 @@ public class SystemInterfaceImpl  {
 	
 
 	public Hashtable<String, ArrayList<SystemInterfaceClient>> hash_data = new Hashtable<String, ArrayList<SystemInterfaceClient>>();
-	HashTable hash = new HashTable();
+	//HashTable hash = new HashTable();
 	SystemInterfaceClient cl;
 	String OldIPAddress;
 	
@@ -283,7 +283,7 @@ public class SystemInterfaceImpl  {
 				{
 					file3.close();
 				}
-				return "Player created successfully !!!";
+				return "Username [" +Username + "] successfully created on the requested game server!";
 			}
 
 		} 
@@ -321,7 +321,7 @@ public class SystemInterfaceImpl  {
 			{
 				file2.close();
 			}
-			return "Player created successfully !!!";
+			return "Username [" +Username + "] successfully created on the requested game server!";
 		}
 
 	}
