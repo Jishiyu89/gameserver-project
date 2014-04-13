@@ -1,7 +1,5 @@
 package dpss.view; 
 
-import dpss.service.GameServerFactory;
-import dpss.service.LeaderReplica;
 import dpss.service.replica.LeaderReplicaMain;
 
 /**  Single entry point of the application (Server side) <BR>
