@@ -23,17 +23,27 @@ public class LeaderReplicaMain {
 			reqList=new LinkedList<Request>();
 			System.out.println("2.FIFO Queue created");
 			
+			//Starting RM/FE Senders in the main thread
+			LeaderReplicaFESender fESender = new LeaderReplicaFESender();
+			LeaderReplicaRMSender rMSender = new LeaderReplicaRMSender();
+			
+			//Starting Compare()
+			LeaderReplicaCompare compareFIFO = new LeaderReplicaCompare(reqList, fESender, rMSender);				
+			System.out.println("3.Compare() created");
+			
 			//Starting FE Receiver
-			new Thread(new LeaderReplicaFEReceiver(gameServers, reqList)).start();		
-			System.out.println("3.FE Receiver created");
+			new Thread(new LeaderReplicaFEReceiver(gameServers, reqList, compareFIFO)).start();		
+			System.out.println("4.FE Receiver created");
 			
 			//Starting Replica Receiver
-			new Thread(new LeaderReplicaReplicasReceiver(reqList)).start();	
-			System.out.println("4.Replica Receiver created");
+			new Thread(new LeaderReplicaReplicasReceiver(reqList, compareFIFO)).start();	
+			System.out.println("5.Replica Receiver created");
 		
 			//Starting RM Receiver
 			new Thread(new LeaderReplicaRMReceiver(gameServers)).start();	
-			System.out.println("5.RM Receiver created");
+			System.out.println("6.RM Receiver created");
+			
+			
 			
 			
 		}catch(Exception e) {}
