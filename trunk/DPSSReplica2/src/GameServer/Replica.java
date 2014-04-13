@@ -50,7 +50,19 @@ public class Replica extends Thread {
 	}
 	
 	public void run(){
-		
+		byte[] bufferReply=new byte[1000];
+		DatagramPacket messageRM=new DatagramPacket(bufferReply, bufferReply.length, hostR,7000);
+		while(true){
+			try {
+				socketReply.receive(messageRM);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			String strRM=new String(messageRM.getData()).substring(0, messageRM.getLength());
+			if(strRM.equals("Restart"))
+				restart();
+		}
 	}
 	public Replica() {
 		
@@ -64,7 +76,7 @@ public class Replica extends Thread {
 		
 			hostR = InetAddress.getByName("localhost");	
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -81,12 +93,13 @@ public class Replica extends Thread {
 		//serverAS.finalize();
 		
 		try {
+			System.out.println("Replica 2 restarts!");
 			serverEU= new ServerImpl("EU",1000);
 			serverNA= new ServerImpl("NA",2000);
 			serverAS= new ServerImpl("AS",3000);
 			//socketReply=new DatagramSocket(1012);
 			
-			hostR = InetAddress.getByName("localhost");	
+			//hostR = InetAddress.getByName("localhost");	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
