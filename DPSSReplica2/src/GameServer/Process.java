@@ -11,6 +11,7 @@ import java.net.UnknownHostException;
 public class Process implements Runnable  {
 	String message;
 	ServerImpl gameServer=null;
+	
 	ServerImpl sNA=null,sEU=null,sAS=null;
 	DatagramSocket s;
 	InetAddress hostR;
