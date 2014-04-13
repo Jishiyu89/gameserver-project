@@ -68,10 +68,11 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 				Logger.write("LeaderReplica", "Reply from Replica" + codReplica + " to request["+seqFIFO+"]:" + replyReplica);	
 				
 				//COMPARE AND REPLY			
-				compareFIFO.start();							
+				new Thread(compareFIFO).start();							
 				
 				
 			}catch(Exception e){
+				e.printStackTrace();				
 				Logger.write("LeaderReplica", "Unexpected error receiving reply from Replicas!");		
 			}
 			

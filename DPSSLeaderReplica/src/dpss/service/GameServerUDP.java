@@ -23,15 +23,15 @@ public class GameServerUDP  extends Thread {
 	DatagramSocket uDPSocket = null;
 	DatagramPacket request;
 	
-	public GameServerUDP(GameServerImpl GameServerSourceParam){
-		this.gameServerSrc = GameServerSourceParam;
+	public GameServerUDP( DatagramSocket uDPSocketParam){
+		this.uDPSocket = uDPSocketParam;
 	}
 	
 	public void run(){
 		
 		try{
 			
-			uDPSocket = new DatagramSocket(gameServerSrc.portUDP);			
+						
 			byte[] buffer = new byte[1000];
 			String requestMsg;
 			
