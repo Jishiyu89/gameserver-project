@@ -16,31 +16,29 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 
-import org.omg.CORBA.ORB;
 import dpss.model.Player;
-import dpss.service.corba.GameServerPOA;
 
-public class GameServerImpl extends GameServerPOA {
+
+public class GameServerImpl {
 	
-	ORB orb; 
+	Thread thUDP;
 	String serverName;
-	int portUDP;		
+	int portUDP;
+	DatagramSocket uDPSocket;
 	@SuppressWarnings("rawtypes")
 	Hashtable hashPlayers;
 	@SuppressWarnings("rawtypes")
 	Enumeration hashLetters;
 	WriteLog Logger = new WriteLog(); 		
 	
-	public void setORB(ORB orb_val) { 
-		 this.orb = orb_val; 
-	 }	 
+	
 		 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public GameServerImpl (String serverNameParam, int portUDPParam){
 		 
 		this.serverName = serverNameParam;
 		this.portUDP = portUDPParam;
-	
+		
 		hashPlayers = new Hashtable();
 
 		for (char c = 'A'; c <= 'Z'; c++){
@@ -48,6 +46,7 @@ public class GameServerImpl extends GameServerPOA {
 		}
 		
 		try{
+			uDPSocket=new DatagramSocket(portUDP);
 			exportServerUDP();
 			Logger.write(serverName,"Game server " + serverName +  " is up and running!");
 			System.out.println("Game server " + serverName +  " is up and running!");	
@@ -58,8 +57,9 @@ public class GameServerImpl extends GameServerPOA {
 	 }
 		
 	public void exportServerUDP(){		
-		//(new GameServerUDP(serverName,portUDP,hashPlayers)).start();	
-		(new GameServerUDP(this)).start();
+		
+		thUDP=(new GameServerUDP(uDPSocket));
+		thUDP.start();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -123,7 +123,7 @@ public class GameServerImpl extends GameServerPOA {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public String playerSignIn(String usernameParam, String passwordParam, String iPAdressParam){
 			
 		char auxHashIndex = ((usernameParam.trim()).toUpperCase()).charAt(0);
@@ -168,7 +168,7 @@ public class GameServerImpl extends GameServerPOA {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+
 	public String playerSignOut(String usernameParam, String iPAdressParam) {
 		
 		char auxHashIndex = ((usernameParam.trim()).toUpperCase()).charAt(0);
@@ -209,7 +209,7 @@ public class GameServerImpl extends GameServerPOA {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+
 	public String transferAccount(String usernameParam, String passwordParam, String oldIPAddressParam, String newIPAddressParam) {
 
 		char auxHashIndex = ((usernameParam.trim()).toUpperCase()).charAt(0);
@@ -258,7 +258,7 @@ public class GameServerImpl extends GameServerPOA {
 	
 
 	@SuppressWarnings("unchecked")
-	@Override
+
 	public String getPlayerStatus(String adminUsernameParam, String adminPasswordParam, String iPAdressParam)  {
 	
 		int playersOnline = 0;
@@ -299,7 +299,7 @@ public class GameServerImpl extends GameServerPOA {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+
 	public String suspendAccount(String adminUsernameParam, String adminPasswordParam, String iPAdressParam, String usernameSuspendParam) {
 
 		char auxHashIndex;
@@ -442,4 +442,11 @@ public class GameServerImpl extends GameServerPOA {
 				
 		return false;
 	}	
+	
+	public void stopServerUDP(){
+		thUDP.interrupt();
+		uDPSocket.close();
+		
+	}
+	
 }

@@ -34,7 +34,8 @@ public class LeaderReplicaFESender {
 	public void send(String messageParam) { 
 
 		try {
-
+			
+			System.out.println("Sending message back to FE...");
 			UDPMessage=new DatagramPacket(messageParam.getBytes(),messageParam.length(),hostFE,portFE);	
 			
 			synchronized (socketFE) {			

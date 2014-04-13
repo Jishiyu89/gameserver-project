@@ -32,14 +32,15 @@ public class GameServerFactory extends Thread {
 			e.printStackTrace();
 		}		
 		
-	}
+	}	
 	
 	
-	//TODO: Close Sockets!? 
-	//TODO: sync RM sender>> Call from the main thread
 	
 	public void serversReset() {		
 		try{ 
+			servantNA.stopServerUDP();
+			servantEU.stopServerUDP();
+			servantAS.stopServerUDP();
 			servantNA = null;
 			servantEU = null;
 			servantAS = null;		
