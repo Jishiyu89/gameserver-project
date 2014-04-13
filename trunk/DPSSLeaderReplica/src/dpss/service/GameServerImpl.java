@@ -65,15 +65,14 @@ public class GameServerImpl extends GameServerPOA {
 	@SuppressWarnings("unchecked")
 	public String createPlayerAccount(String firstNameParam, String lastNameParam, String usernameParam, String passwordParam, int ageParam, String iPAdressParam) {
 		
-			System.out.println("entrei!");
-		
+				
 			char auxHashIndex = ((usernameParam.trim()).toUpperCase()).charAt(0);
 			ArrayList<Player> auxArrPlayer = (ArrayList<Player>) hashPlayers.get(auxHashIndex);
 			
 			if (auxArrPlayer.contains(new Player(usernameParam))){			
 				
 				Logger.write(serverName,"Username ["+ usernameParam + "] already exists on game server " + serverName + "!");
-				return "Username ["+ usernameParam + "] already exists on game server " + serverName + "!";			
+				return "Username [" + usernameParam + "] already exists on the game server!";
 			}
 			else{			
 			
@@ -82,11 +81,8 @@ public class GameServerImpl extends GameServerPOA {
 					synchronized (auxArrPlayer) {
 						auxArrPlayer.add(new Player(firstNameParam, lastNameParam, usernameParam, ageParam, passwordParam, iPAdressParam));
 					}							
-					
-					//Logger.write(serverName, "Username ["+ usernameParam + "] successfully created on game server " + serverName + "!");
-					//return "Username ["+ usernameParam + "] successfully created on game server " + serverName + "!";	
-					
-					Logger.write(serverName, "Username ["+ usernameParam + "] successfully created on the requested game server!");
+								
+					Logger.write(serverName, "Username ["+ usernameParam + "] successfully created on the requested game server " + serverName + "!");
 					return "Username ["+ usernameParam + "] successfully created on the requested game server!";	
 					
 					
@@ -136,8 +132,8 @@ public class GameServerImpl extends GameServerPOA {
 		
 		if (!auxArrPlayer.contains(new Player(usernameParam))){		
 
-			Logger.write(serverName,"Username ["+ usernameParam + "] does not exists on game server " + serverName + "!");
-			return "Username ["+ usernameParam + "] does not exists on game server " + serverName + "!";			
+			Logger.write(serverName,"Username ["+ usernameParam + "] does not exist on game server " + serverName + "!");
+			return "Username ["+ usernameParam + "] does not exist on game server!";			
 		}
 		else		
 		{
@@ -146,11 +142,11 @@ public class GameServerImpl extends GameServerPOA {
 			
 			if (!auxPlayer.validatePWD(passwordParam)){
 				Logger.write(serverName,"Password for username ["+ usernameParam + "] is incorrect on game server " + serverName + "!");
-				return "Password for username ["+ usernameParam + "] is incorrect on game server " + serverName + "!";
+				return "Password for username ["+ usernameParam + "] is incorrect!";
 			}
 			else if (auxPlayer.getStatus()){
 				Logger.write(serverName,"User ["+ usernameParam + "] is already online on game server " + serverName + "!");
-				return "User ["+ usernameParam + "] is already online on game server " + serverName + "!";
+				return "User ["+ usernameParam + "] is already online on game server!";
 			}
 			else {
 
@@ -160,8 +156,8 @@ public class GameServerImpl extends GameServerPOA {
 						auxPlayer.setStatus(true);
 					}	
 					
-					Logger.write(serverName, "Username ["+ usernameParam + "] successfully signed in on game server " + serverName + "!");
-					return "Username ["+ usernameParam + "] successfully signed in on game server " + serverName + "!";	
+					Logger.write(serverName, "User ["+ usernameParam + "] successfully signed in on game server " + serverName + "!");
+					return "User ["+ usernameParam + "] successfully signed in on game server!";	
 					
 				}catch(Exception e){
 					Logger.write(serverName, "Unexpected server error on game server " + serverName + "!");
@@ -182,7 +178,7 @@ public class GameServerImpl extends GameServerPOA {
 		if (!auxArrPlayer.contains(new Player(usernameParam))){			
 
 			Logger.write(serverName,"Username ["+ usernameParam + "] does not exist on game server " + serverName + "!");
-			return "Username ["+ usernameParam + "] does not exist on game server " + serverName + "!";			
+			return "Username ["+ usernameParam + "] does not exist on game server!";			
 		}
 		else		
 		{
@@ -191,7 +187,7 @@ public class GameServerImpl extends GameServerPOA {
 		
 			if (!auxPlayer.getStatus()){
 				Logger.write(serverName,"User ["+ usernameParam + "] is not online on game server " + serverName + "!");
-				return "User ["+ usernameParam + "] is not online on game server " + serverName + "!";
+				return "User ["+ usernameParam + "] is not online on game server!";
 			}
 			else {
 				
@@ -201,8 +197,8 @@ public class GameServerImpl extends GameServerPOA {
 						auxPlayer.setStatus(false);					
 					}	
 									
-					Logger.write(serverName, "Username ["+ usernameParam + "] successfully signed out on game server " + serverName + "!");
-					return "Username ["+ usernameParam + "] successfully signed out on game server " + serverName + "!";	
+					Logger.write(serverName, "Username ["+ usernameParam + "] successfully signed out of game server " + serverName + "!");
+					return "Username ["+ usernameParam + "] successfully signed out of game server!";	
 					
 				}catch(Exception e){
 					Logger.write(serverName, "Unexpected server error on game server " + serverName + "!");
@@ -222,7 +218,7 @@ public class GameServerImpl extends GameServerPOA {
 		if (!auxArrPlayer.contains(new Player(usernameParam))){		
 
 			Logger.write(serverName,"Username ["+ usernameParam + "] does not exists on game server " + serverName + "!");
-			return "Username ["+ usernameParam + "] does not exists on game server " + serverName + "!";			
+			return "Username ["+ usernameParam + "] does not exists on game server!";			
 		}
 		else		
 		{
@@ -231,7 +227,7 @@ public class GameServerImpl extends GameServerPOA {
 			
 			if (!auxPlayer.validatePWD(passwordParam)){
 				Logger.write(serverName,"Password for username ["+ usernameParam + "] is incorrect on game server " + serverName + "!");
-				return "Password for username ["+ usernameParam + "] is incorrect on game server " + serverName + "!";
+				return "Password for username ["+ usernameParam + "] is incorrect!";
 			}
 			else {
 
@@ -249,7 +245,7 @@ public class GameServerImpl extends GameServerPOA {
 					}
 					
 					Logger.write(serverName, "Username ["+ usernameParam + "] successfully transferred from game server " + serverName + "!");
-					return "Username ["+ usernameParam + "] successfully transferred from game server " + serverName + "!";	
+					return "Username ["+ usernameParam + "] successfully transferred from game server!";	
 					
 				}catch(Exception e){
 					
@@ -297,7 +293,7 @@ public class GameServerImpl extends GameServerPOA {
 		}
 		else {
 			Logger.write(serverName, "Invalid Administator user name or password on game server " + serverName + "!");
-			return "Invalid Administator user name or password on game server " + serverName + "!";
+			return "Invalid Administator user name or password!";
 		}
 		
 	}
@@ -317,7 +313,7 @@ public class GameServerImpl extends GameServerPOA {
 			if (!auxArrPlayer.contains(new Player(usernameSuspendParam))){			
 	
 				Logger.write(serverName,"Username ["+ usernameSuspendParam + "] does not exist on game server " + serverName + " and could not be removed!");
-				return "Username ["+ usernameSuspendParam + "] does not exist on game server " + serverName + " and could not be removed!";			
+				return "Username ["+ usernameSuspendParam + "] does not exist on game server!";			
 			}
 			else		
 			{
@@ -330,7 +326,7 @@ public class GameServerImpl extends GameServerPOA {
 					}	
 									
 					Logger.write(serverName, "Username ["+ usernameSuspendParam + "] successfully removed from game server " + serverName + "!");
-					return "Username ["+ usernameSuspendParam + "] successfully removed from game server " + serverName + "!";	
+					return "Username ["+ usernameSuspendParam + "] successfully removed from game server!";	
 					
 				}catch(Exception e){
 					Logger.write(serverName, "Unexpected server error on game server " + serverName + "!");
