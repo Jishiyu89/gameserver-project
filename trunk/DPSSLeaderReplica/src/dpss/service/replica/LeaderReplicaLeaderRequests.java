@@ -129,8 +129,8 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 			Logger.write("LeaderReplica", "Reply from Leader Replica to request["+seqFIFO+"]:" + reply);
 			
 			//COMPARE AN REPLY
-			//compareFIFO.start();
-			new Thread(compareFIFO).start();
+			compareFIFO.run();
+			//new Thread(compareFIFO).start();
 			
 		}catch(Exception e){
 			e.printStackTrace();
