@@ -91,13 +91,13 @@ public class Replica extends Thread {
 		//serverEU.finalize();
 		serverEU=null;
 		//serverAS.finalize();
-		
+		serverAS=null;
 		try {
 			System.out.println("Replica 2 restarts!");
 			serverEU= new ServerImpl("EU",1000);
 			serverNA= new ServerImpl("NA",2000);
 			serverAS= new ServerImpl("AS",3000);
-			//socketReply=new DatagramSocket(1012);
+			socketReply=new DatagramSocket(1012);
 			
 			//hostR = InetAddress.getByName("localhost");	
 		} catch (Exception e) {
