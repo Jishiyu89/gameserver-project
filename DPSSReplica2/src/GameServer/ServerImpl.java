@@ -333,11 +333,11 @@ public class ServerImpl implements Runnable {
 				//	response= "Wrong Password.";
 				else{
 					
-					DatagramSocket aSocket = null;
+					//DatagramSocket aSocket = null;
 					int adminServerPortNum1=0,adminServerPortNum2=0;
 					DatagramPacket request1,request2;
 					
-					aSocket = new DatagramSocket();
+					//aSocket = new DatagramSocket();
 					InetAddress aHost = InetAddress.getByName("localhost");
 					
 					//figure out the port number of other 2 severs
@@ -423,5 +423,7 @@ public class ServerImpl implements Runnable {
 		}
 		return reply;
 	}
-
+	public void stop(){
+		this.aSocket.close();
+	}
 }
