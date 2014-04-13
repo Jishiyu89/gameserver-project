@@ -1,30 +1,28 @@
 package replica;
 
-import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.SocketException;
-import java.util.LinkedList;
+
+
 
 import system.SystemInterfaceImpl;
 
 
 
-public class Replica {
+public class Replica extends Thread{
 	
 	static DatagramSocket socketReply=null;
 	InetAddress hostR;
-	static SystemInterfaceImpl serverEU=null ;
-	static SystemInterfaceImpl serverNA=null ;
-	static SystemInterfaceImpl serverAS=null ;
+	SystemInterfaceImpl serverEU=null ;
+	SystemInterfaceImpl serverNA=null ;
+	SystemInterfaceImpl serverAS=null ;
 
 		public static void main(String[] args) {
 			
 		System.out.println("Replica3 Running...");
 			
-		//DatagramSocket socketA=null;	
 		int mPort = 6789;
 		InetAddress ipGroup = null;
 		MulticastSocket s=null;
@@ -38,14 +36,14 @@ public class Replica {
 			//Replica 2 
 			s = new MulticastSocket(mPort);
 			s.joinGroup(ipGroup);
-			//Replica R = new Replica();	
-			//R.start();
+			Replica R = new Replica();	
+			R.start();
 			while(true){
 							
 						DatagramPacket message = new DatagramPacket(buf, buf.length);
 						s.receive(message);
 						String str=new String(message.getData()).substring(0,message.getLength());
-						new Thread(new Process(str)).start();
+						new Thread(new Process(R.socketReply,R.serverNA,R.serverEU,R.serverAS,str)).start();
 						
 			}
 			
@@ -66,9 +64,9 @@ public class Replica {
 			serverNA = new SystemInterfaceImpl();			
 			serverEU= new SystemInterfaceImpl();								
 			serverAS = new SystemInterfaceImpl();
-			socketReply=new DatagramSocket(1012);
+			socketReply=new DatagramSocket(1013);
 		
-		hostR = InetAddress.getByName("localhost");	
+			hostR = InetAddress.getByName("localhost");	
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -76,22 +74,8 @@ public class Replica {
 		}
 		
 	}
-	public boolean Reply(String s){
-		
-		DatagramPacket message = new DatagramPacket(s.getBytes(), s.length(),hostR,1300);
-		synchronized(socketReply){
-			try {
-				socketReply.send(message);
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-		}
-		
-		return true;
-	}
 	
-	public void finalize(){
+	public void restart(){
 		socketReply.close();
 		socketReply=null;
 		//serverNA.finalize();
@@ -99,6 +83,20 @@ public class Replica {
 		//serverEU.finalize();
 		serverEU=null;
 		//serverAS.finalize();
+		serverAS=null;
+		try {
+			System.out.println("Replica 2 restarts!");
+			serverEU= new SystemInterfaceImpl();
+			serverNA= new SystemInterfaceImpl();
+			serverAS= new SystemInterfaceImpl();
+			socketReply=new DatagramSocket(1013);
+			
+			//hostR = InetAddress.getByName("localhost");	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
 			
 	}
 
