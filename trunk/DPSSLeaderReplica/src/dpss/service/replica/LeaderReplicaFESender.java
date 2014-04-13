@@ -18,12 +18,9 @@ public class LeaderReplicaFESender {
 	int portFE=9000;
 	int portFES=9001;
 
-	public LeaderReplicaFESender(String messageParam){
-		try {
-
-			System.out.println("Sending Reply to FE:" + messageParam );
-			
-			this.message = messageParam;
+	public LeaderReplicaFESender(){
+		try {			
+		
 			socketFE=new DatagramSocket(portFES);
 			hostFE = InetAddress.getByName("localhost");
 
@@ -34,21 +31,20 @@ public class LeaderReplicaFESender {
 		}	
 	}
 
-	public void send() { 
+	public void send(String messageParam) { 
 
 		try {
 
-			UDPMessage=new DatagramPacket(message.getBytes(),message.length(),hostFE,portFE);	
-			socketFE.send(UDPMessage);			
+			UDPMessage=new DatagramPacket(messageParam.getBytes(),messageParam.length(),hostFE,portFE);	
+			
+			synchronized (socketFE) {			
+				socketFE.send(UDPMessage);	
+			}			
+			
 		} catch (IOException e) {		
 			e.printStackTrace();
-		}
+		}		
 		
-		//Closing quietly
-		try {
-			socketFE.close();
-		}
-		catch (Exception e) {}
 	}	
 
 }

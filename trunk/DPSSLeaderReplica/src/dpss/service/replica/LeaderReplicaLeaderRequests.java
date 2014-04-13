@@ -13,21 +13,25 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 	GameServerFactory gameServers;
 	GameServerImpl gameServer=null;
 	LinkedList<Request> reqList;
+	LeaderReplicaCompare compareFIFO;
 	String[] requestMessageArray = new String[10];
 	RequestType type;
 	String reply;
 	String requestMessage=null;
 	int seqFIFO;
-	LeaderReplicaCompare compareFIFO;	
+	
 	WriteLog Logger = new WriteLog(); 	
 	
+	
 	// Auxiliar class to handle Leader's requests
-	public LeaderReplicaLeaderRequests(GameServerFactory gameServersParam, LinkedList<Request> reqListParam, Integer seqFIFOParam, String requestMessageParam) {
+	public LeaderReplicaLeaderRequests(GameServerFactory gameServersParam, LinkedList<Request> reqListParam, Integer seqFIFOParam, String requestMessageParam, LeaderReplicaCompare compareFIFOParam) {
 
 		this.gameServers=gameServersParam;
 		this.reqList=reqListParam;
 		this.requestMessage= requestMessageParam;
 		this.seqFIFO = seqFIFOParam;
+		this.compareFIFO =  compareFIFOParam;
+		
 	}
 
 	public void run() {
@@ -125,8 +129,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 			Logger.write("LeaderReplica", "Reply from Leader Replica to request["+seqFIFO+"]:" + reply);
 			
 			//COMPARE AN REPLY
-			compareFIFO = new LeaderReplicaCompare(reqList);
-			compareFIFO.compare();
+			compareFIFO.start();
 			
 		}catch(Exception e){
 			e.printStackTrace();

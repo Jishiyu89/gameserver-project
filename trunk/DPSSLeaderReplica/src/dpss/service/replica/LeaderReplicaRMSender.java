@@ -9,9 +9,7 @@ import java.net.UnknownHostException;
 
 public class LeaderReplicaRMSender {
 
-	///Socket to send to RM
-	
-	String message=null;
+	///Socket to send to RM	
 	DatagramPacket UDPMessage=null;
 	DatagramSocket socketRM=null;
 	InetAddress hostRM;
@@ -19,10 +17,8 @@ public class LeaderReplicaRMSender {
 	int portRMS=7002;
 	
 
-	public LeaderReplicaRMSender(String messageParam){
-		try {
-
-			this.message = messageParam;
+	public LeaderReplicaRMSender(){
+		try {			
 			socketRM=new DatagramSocket(portRMS);
 			hostRM = InetAddress.getByName("localhost");
 
@@ -33,21 +29,20 @@ public class LeaderReplicaRMSender {
 		}	
 	}
 
-	public void send() { 
+	public void send(String messageParam) { 
 
 		try {
-
-			UDPMessage=new DatagramPacket(message.getBytes(),message.length(),hostRM,portRM);	
-			socketRM.send(UDPMessage);			
+			
+			UDPMessage=new DatagramPacket(messageParam.getBytes(),messageParam.length(),hostRM,portRM);	
+			
+			synchronized (socketRM) {			
+				socketRM.send(UDPMessage);	
+			}
+			
 		} catch (IOException e) {		
 			e.printStackTrace();
-		}
-		
-		//Closing quietly
-		try {
-			socketRM.close();
-		}
-		catch (Exception e) {}
+		}		
+	
 	}	
 
 }

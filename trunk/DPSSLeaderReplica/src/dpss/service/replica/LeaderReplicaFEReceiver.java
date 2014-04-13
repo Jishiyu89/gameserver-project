@@ -23,6 +23,7 @@ public class LeaderReplicaFEReceiver extends Thread {
 	GameServerImpl gameServer;
 	LinkedList<Request> reqList;
 	LeaderReplicaLeaderRequests LeaderRequests;
+	LeaderReplicaCompare compareFIFO;
 	
 	
 	/* MULTICAST - Sender */			
@@ -31,12 +32,13 @@ public class LeaderReplicaFEReceiver extends Thread {
 	MulticastSocket s=null;
 	
 	
-	public LeaderReplicaFEReceiver(GameServerFactory gameServersParam, LinkedList<Request> reqListParam)	{
+	public LeaderReplicaFEReceiver(GameServerFactory gameServersParam, LinkedList<Request> reqListParam, LeaderReplicaCompare compareFIFOParam )	{
 		try {
 							
 				seqFIFO = 0;
 				this.gameServers = gameServersParam;
 				this.reqList = reqListParam;
+				this.compareFIFO = compareFIFOParam; 
 				socketA=new DatagramSocket(portA);
 				hostLR = InetAddress.getByName("localhost");	
 				
@@ -78,7 +80,7 @@ public class LeaderReplicaFEReceiver extends Thread {
 					
 					//Execute on Leader
 					System.out.println("3.LeaderReplicaFEReceiver> Executing on leader");
-					new Thread(new LeaderReplicaLeaderRequests(gameServers,reqList, seqFIFO, s)).start();
+					new Thread(new LeaderReplicaLeaderRequests(gameServers,reqList, seqFIFO, s, compareFIFO)).start();
 
 					//FIFO++
 					seqFIFO++;

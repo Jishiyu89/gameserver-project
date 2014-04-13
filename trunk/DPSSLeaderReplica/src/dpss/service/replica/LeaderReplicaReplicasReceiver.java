@@ -13,17 +13,19 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 	DatagramSocket socketR=null;
 	int portR=1300;
 	LinkedList<Request> reqList;
-	WriteLog Logger = new WriteLog(); 	
 	LeaderReplicaCompare compareFIFO;
+	WriteLog Logger = new WriteLog(); 	
 	
 	
-	public LeaderReplicaReplicasReceiver(LinkedList<Request> reqListParam)	{
+	
+	public LeaderReplicaReplicasReceiver(LinkedList<Request> reqListParam,LeaderReplicaCompare compareFIFOParam)	{
 				
 		try {
-			
+		
 			this.reqList = reqListParam;
+			this.compareFIFO = compareFIFOParam;
 			socketR=new DatagramSocket(portR);
-			compareFIFO = new LeaderReplicaCompare(reqList);
+			
 		} 
 		
 		catch (SocketException e) {			
@@ -66,7 +68,7 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 				Logger.write("LeaderReplica", "Reply from Replica" + codReplica + " to request["+seqFIFO+"]:" + replyReplica);	
 				
 				//COMPARE AND REPLY			
-				compareFIFO.compare();							
+				compareFIFO.start();							
 				
 				
 			}catch(Exception e){
