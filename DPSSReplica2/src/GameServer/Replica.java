@@ -62,7 +62,7 @@ public class Replica extends Thread {
 			serverAS= new ServerImpl("AS",3000);	
 			socketReply=new DatagramSocket(1012);
 		
-		hostR = InetAddress.getByName("localhost");	
+			hostR = InetAddress.getByName("localhost");	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
