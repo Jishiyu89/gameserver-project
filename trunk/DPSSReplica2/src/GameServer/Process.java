@@ -21,8 +21,10 @@ public class Process implements Runnable  {
 		this.sEU=EU;
 		this.sAS=AS;
 		this.s=s;
+		if(s==null)
+			System.out.println("NULL");
 		try {
-			InetAddress hostR = InetAddress.getByName("localhost");
+			hostR = InetAddress.getByName("localhost");
 		} catch (UnknownHostException e) {
 			
 			e.printStackTrace();
@@ -139,6 +141,7 @@ public void run(){
 	public boolean Reply(String str){
 		
 		DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostR,1300);
+		
 		synchronized(s){
 			try {
 				s.send(message);
