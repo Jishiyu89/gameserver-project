@@ -14,6 +14,7 @@ public class SystemInterfaceImpl  {
 
 	
 
+	private static final String Username = null;
 	public Hashtable<String, ArrayList<SystemInterfaceClient>> hash_data = new Hashtable<String, ArrayList<SystemInterfaceClient>>();
 	//HashTable hash = new HashTable();
 	SystemInterfaceClient cl;
@@ -495,7 +496,7 @@ public class SystemInterfaceImpl  {
 
 		if (status == 0) 
 		{
-			return "User is invalid";
+			return "Username ["+ Username + "] does not exist on game server!";
 		} 
 		
 		// Sign-in 
@@ -532,7 +533,7 @@ public class SystemInterfaceImpl  {
 				file4.close();
 			}
 			
-			return "Signed In successfully !! ";
+			return "User ["+ Username + "] successfully signed in on game server! ";
 		} 
 		
 		
@@ -569,7 +570,7 @@ public class SystemInterfaceImpl  {
 			{
 				file4.close();
 			}
-			return "You are Already Signed In ";
+			return "User ["+ Username + "] is already online on game server!";
 		} 
 		
 		return "";
@@ -734,7 +735,7 @@ public class SystemInterfaceImpl  {
 
 			else if (status == 0) 
 			{
-				return "User is invalid";
+				return "Username ["+ Username + "] does not exist on game server!";
 			} 
 			
 			else if (status == 10) 		
@@ -771,7 +772,7 @@ public class SystemInterfaceImpl  {
 					file4.close();
 				}
 				
-				return "You Are Signed Out";
+				return "Username ["+ Username + "] successfully signed out of game server!";
 			} 
 			
 			else if (status == 20) 
@@ -807,7 +808,7 @@ public class SystemInterfaceImpl  {
 				{
 					file4.close();
 				}
-				return "Already Signed Out";
+				return "User ["+ Username + "] is not online on game server!";
 			} 
 			
 						
@@ -1222,10 +1223,10 @@ public class SystemInterfaceImpl  {
 				file4.close();
 			}
 			
-			return "Player suspended";
+			return "Username ["+ Username + "] successfully removed from game server!";
 		} 
 
-		return "Player not found";
+		return "Username ["+ Username + "] does not exist on game server!";
 	}
 
 }
