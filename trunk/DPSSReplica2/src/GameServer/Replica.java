@@ -6,9 +6,6 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
-
-
-
 public class Replica extends Thread {
 	DatagramSocket socketReply=null;
 	InetAddress hostR;
@@ -50,7 +47,7 @@ public class Replica extends Thread {
 
 	public void run(){
 		byte[] bufferReply=new byte[1000];
-		DatagramPacket messageRM=new DatagramPacket(bufferReply, bufferReply.length, hostR,7000);
+		DatagramPacket messageRM=new DatagramPacket(bufferReply, bufferReply.length);
 		while(true){
 			try {
 				socketReply.receive(messageRM);
