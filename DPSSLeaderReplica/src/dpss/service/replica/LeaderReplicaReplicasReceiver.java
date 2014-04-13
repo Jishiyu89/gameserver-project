@@ -67,8 +67,9 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 				
 				Logger.write("LeaderReplica", "Reply from Replica" + codReplica + " to request["+seqFIFO+"]:" + replyReplica);	
 				
-				//COMPARE AND REPLY			
-				new Thread(compareFIFO).start();							
+				//COMPARE AND REPLY		
+				compareFIFO.run();
+				//new Thread(compareFIFO).start();							
 				
 				
 			}catch(Exception e){

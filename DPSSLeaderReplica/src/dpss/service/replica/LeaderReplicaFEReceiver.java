@@ -73,6 +73,7 @@ public class LeaderReplicaFEReceiver extends Thread {
 					//Add request into FIFO Queue
 					System.out.println("1.LeaderReplicaFEReceiver> Add request into FIFO Queue");
 					reqList.add(new Request(seqFIFO,typeReq));
+					System.out.println("size = " + reqList.size());
 					
 					//Multicast request
 					System.out.println("2.LeaderReplicaFEReceiver> Multicasting to group");
