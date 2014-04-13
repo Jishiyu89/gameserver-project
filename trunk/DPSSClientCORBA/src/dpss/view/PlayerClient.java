@@ -74,6 +74,8 @@ public class PlayerClient {
 				}
 			}
 			
+			
+			// Select an action based on user input from menu
 			switch(userChoice)
 			{
 			case 1: 
@@ -212,6 +214,8 @@ public class PlayerClient {
 		
 		Scanner keyboard = new Scanner(System.in);		
 		
+		// Get User information
+		
 		System.out.println("Please enter player's first name:");
 		playerFirstName=keyboard.next();
 		System.out.println("Please enter player's last name:");
@@ -320,6 +324,8 @@ public class PlayerClient {
 	
 	private boolean validateCreatePlayer(){		
 		
+		// Test cases for creating player
+		
 		if ((this.playerUserName.length() > 15) || (this.playerUserName.length() < 6)){
 			System.out.println("Sorry! Username typed doesn't meet the minimum requirements! (at least 6 and at most 15 characters )");
 			return false;
@@ -341,6 +347,8 @@ public class PlayerClient {
 	}
 	
 	private boolean validateSignInPlayer(){		
+		// Test cases to validate the sign-in operation
+		
 		if ((this.playerUserName.length() > 15) || (this.playerUserName.length() < 6)){
 			System.out.println("Sorry! Username typed doesn't meet the minimum requirements! (at least 6 and at most 15 characters )");
 			return false;
@@ -354,7 +362,7 @@ public class PlayerClient {
 	}
 	
 	private boolean validateSignOutPlayer(){
-		
+		// Test case to validate the sign-out operation
 		if ((this.playerUserName.length() > 15) || (this.playerUserName.length() < 6)){
 			System.out.println("Sorry! Username typed doesn't meet the minimum requirements! (at least 6 and at most 15 characters )");
 			return false;
@@ -363,6 +371,7 @@ public class PlayerClient {
 	}
 
 	private boolean validateTransferAccount(){		
+		// Test cases to check for before transfering the player's account
 		
 		if ((this.playerUserName.length() > 15) || (this.playerUserName.length() < 6)){
 			System.out.println("Sorry! Username typed doesn't meet the minimum requirements! (at least 6 and at most 15 characters )");
