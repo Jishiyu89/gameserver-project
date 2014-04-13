@@ -9,6 +9,7 @@ import java.net.MulticastSocket;
 public class Replica extends Thread {
 	DatagramSocket socketReply=null;
 	InetAddress hostR;
+	Thread thEU,thNA,thAS;
 	ServerImpl serverEU=null ;
 	ServerImpl serverNA=null ;
 	ServerImpl serverAS=null ;
@@ -66,8 +67,14 @@ public class Replica extends Thread {
 		System.out.println("factory created");		
 		try {
 			serverEU= new ServerImpl("EU",1000);
+			thEU=new Thread(serverEU);
+			thEU.start();
 			serverNA= new ServerImpl("NA",2000);
+			thNA=new Thread(serverNA);
+			thNA.start();
 			serverAS= new ServerImpl("AS",3000);	
+			thAS=new Thread(serverAS);
+			thAS.start();
 			socketReply=new DatagramSocket(1012);
 
 			hostR = InetAddress.getByName("localhost");	
@@ -81,15 +88,29 @@ public class Replica extends Thread {
 
 	public void restart(){
 		socketReply.close();
-		socketReply=null;		
+		socketReply=null;
+		thNA.interrupt();
+		serverNA.stop();
 		serverNA=null;
-		serverEU=null;		
+		thEU.interrupt();
+		serverEU.stop();
+		
+		serverEU=null;
+		thAS.interrupt();
+		serverAS.stop();
 		serverAS=null;
+		
 		try {
 			System.out.println("Replica 2 restarts!");
 			serverEU= new ServerImpl("EU",1000);
+			thEU=new Thread(serverEU);
+			thEU.start();
 			serverNA= new ServerImpl("NA",2000);
-			serverAS= new ServerImpl("AS",3000);
+			thNA=new Thread(serverNA);
+			thNA.start();
+			serverAS= new ServerImpl("AS",3000);	
+			thAS=new Thread(serverAS);
+			thAS.start();
 			socketReply=new DatagramSocket(1012);
 
 			
