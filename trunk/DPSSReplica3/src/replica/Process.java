@@ -1,18 +1,40 @@
 package replica;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+
+
+
 import system.SystemInterfaceImpl;
 
 
 
-public class Process  extends Replica implements Runnable  {
-	
+public class Process implements Runnable  {
 	String message;
 	SystemInterfaceImpl gameServer=null;
+	SystemInterfaceImpl sNA=null,sEU=null,sAS=null;
+	DatagramSocket s;
+	InetAddress hostR;
 	int idReplica = 3;
 	
-	Process(String m){
+	Process(DatagramSocket s,SystemInterfaceImpl NA,SystemInterfaceImpl EU,SystemInterfaceImpl AS,String m){
 		message=m;
-		
+		this.sNA=NA;
+		this.sEU=EU;
+		this.sAS=AS;
+		this.s=s;
+		if(s==null)
+			System.out.println("NULL");
+		try {
+			hostR = InetAddress.getByName("localhost");
+		} catch (UnknownHostException e) {
+			
+			e.printStackTrace();
+		}	
 	}
 public void run(){
 		
@@ -100,27 +122,40 @@ public void run(){
 		
 	}
 
-	
-	
-	private SystemInterfaceImpl IPConvert(String s){
-		String[] IP=s.split("\\.");
-		System.out.println(s);
-		System.out.println(IP[0]);
-		if (IP[0]==null) {
-			System.out.println("null>");
-			return null;
-		}		
-		else{ 
-			switch(Integer.parseInt(IP[0])){
-			case 132:System.out.println("132 here!");			 
-					return serverNA;
-			case 93:System.out.println("93 here!");
-					return serverEU;
-			default:System.out.println("wte here!");
-					return serverAS;
-			}
+private SystemInterfaceImpl IPConvert(String s){
+	String[] IP=s.split("\\.");
+	System.out.println(s);
+	System.out.println(IP[0]);
+	if (IP[0]==null) {
+		System.out.println("null>");
+		return null;
+	}		
+	else{ 
+		switch(Integer.parseInt(IP[0])){
+		case 132:System.out.println("132 here!");			 
+				return sNA;
+		case 93:System.out.println("93 here!");
+				return sEU;
+		default:System.out.println("wte here!");
+				return sAS;
 		}
-		
 	}
+	
+}
+public boolean Reply(String str){
+	
+	DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostR,1300);
+	
+	synchronized(s){
+		try {
+			s.send(message);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	return true;
+}
 
 }
