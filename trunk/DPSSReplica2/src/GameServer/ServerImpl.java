@@ -115,7 +115,7 @@ public class ServerImpl implements Runnable {
 			
 			//check the player exists or not
 			if (hash.get(index).contains(player))
-				reply= "["+IP+"]Fail to create player account.";
+				reply= "Username [" + player.userName+ "] already exists on the game server!";
 			else {
 				
 				//add player to the list
@@ -125,7 +125,6 @@ public class ServerImpl implements Runnable {
 					playerNumber++;
 				}
 				
-				//reply= "["+IP+"]Create Account " + player.userName+" successfully";
 				reply= "Username [" + player.userName+"] successfully created on the requested game server!";
 				
 			}
@@ -154,17 +153,18 @@ public class ServerImpl implements Runnable {
 		 
 			// Check the list whether contains the play which has same userName
 			if (!hash.get(listIndex).contains(player))
-				reply= "["+IP+"]Sorry, the "+name+" does not contains this user:"+player.userName;
+				reply= "Username ["+ player.userName + "] does not exist on game server!";					
+			
 			else{
 				int playIndex=hash.get(listIndex).indexOf(player);
 				//get the player
 				Player tempplay=hash.get(listIndex).get(playIndex);
 				// check the password 
 				if(!tempplay.getPSW().equals(password))
-					reply= "["+IP+"]User name or Password is wrong ";
+					reply="Password for username ["+ userName + "] is incorrect!";
 				else {
 					if(tempplay.getStatus())
-						reply= "["+IP+"]User ["+userName+"] already signed in.";
+						reply= "User ["+ userName + "] is already online on game server!";
 					else
 					{
 						synchronized(tempplay)
@@ -174,7 +174,8 @@ public class ServerImpl implements Runnable {
 							
 							onlinePlayerNumber++;
 						}
-						reply= "["+IP+"]Welcome "+userName;
+
+						reply="User ["+ userName + "] successfully signed in on game server!";
 					}
 				}
 		 	}
@@ -201,7 +202,7 @@ public class ServerImpl implements Runnable {
 			// check the list whether contains the user account
 			Player player=new Player(userName);
 			if (!hash.get(index).contains(player))
-				reply= "["+IP+"] Sorry the "+name+" does not contains this user:"+player.userName;
+				reply= "Username ["+ player.userName + "] does not exist on game server!";
 			else{
 				
 				//get index of player 
@@ -210,14 +211,14 @@ public class ServerImpl implements Runnable {
 				//change the status
 				Player tempp=hash.get(index).get(tempIndex);
 				if(!tempp.getStatus())
-					reply= "["+IP+"] User "+player.userName+" is not online.";
+					reply= "User ["+ player.userName + "] is not online on game server!";
 				else {
 								  
 					synchronized(tempp){
 						onlinePlayerNumber--;
 						tempp.setStatus(false);
 					}			  
-					reply= "["+IP+"] sSee you "+userName;
+					reply= "Username ["+ userName + "] successfully signed out of game server!";
 				}
 			}
 			bw.write("["+dateFormat.format(new Date())+"]Server["+name+"] Reply:"+reply );
@@ -246,7 +247,7 @@ public class ServerImpl implements Runnable {
 			Player player=new Player(userName);
 			
 			if (!hash.get(listIndex).contains(player))
-				reply= "["+oldIP+"] Sorry the "+name+" does not contains this user:"+player.userName;
+				reply= "Username ["+ player.userName + "] does not exists on game server!";
 			else{
 				
 				//get index of player 
@@ -255,7 +256,7 @@ public class ServerImpl implements Runnable {
 				Player tempplay=hash.get(listIndex).get(playerIndex);
 				// check the password 
 				if(!tempplay.getPSW().equals(password))
-					reply= "["+oldIP+"]User name or Password is wrong ";
+					reply= "Password for username ["+ player.userName + "] is incorrect!";
 				else {
 					
 					synchronized(hash.get(listIndex))
@@ -302,7 +303,7 @@ public class ServerImpl implements Runnable {
 						if(tempplay.getStatus())onlinePlayerNumber--;
 						playerNumber--;
 						hash.get(listIndex).remove(playerIndex);
-						reply="Transfer User ["+tempplay.userName+"] sucessfully.";
+						reply="Username ["+ tempplay.userName + "] successfully transferred from game server!";
 												
 					}
 				}
@@ -326,10 +327,10 @@ public class ServerImpl implements Runnable {
 				bw.newLine();
 				
 				//Check the name and password
-				if(!adminName.equals("Admin"))
-					response= "Wrong Administer Name.";
-				else if(!adminPassword.equals("Admin"))
-					response= "Wrong Password.";
+				if((!adminName.equals("Admin")) || (!adminPassword.equals("Admin")))
+					response= "Invalid Administator user name or password!";
+				//else if(!adminPassword.equals("Admin"))
+				//	response= "Wrong Password.";
 				else{
 					
 					DatagramSocket aSocket = null;
@@ -397,7 +398,7 @@ public class ServerImpl implements Runnable {
 		 
 			// Check the list whether contains the play which has same userName
 			if (!hash.get(listIndex).contains(player))
-				reply= "["+IP+"]Sorry, the "+name+" does not contains this user:"+player.userName;
+				reply="Username ["+ player.userName + "] does not exist on game server!";
 			else{
 				int playerIndex=hash.get(listIndex).indexOf(player);
 				//get the player
@@ -410,7 +411,7 @@ public class ServerImpl implements Runnable {
 							hash.get(listIndex).remove(playerIndex);					
 							
 						}
-						reply= "["+IP+"]Delete "+userName;
+						reply= "Username ["+ userName + "] successfully removed from game server!";
 				
 		 	}
 		 	bw.write("["+dateFormat.format(new Date())+"]Server["+name+"] Reply:"+reply );
