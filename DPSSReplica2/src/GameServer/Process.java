@@ -153,13 +153,17 @@ public class Process implements Runnable  {
 	}
 	public boolean Reply(String str) throws Exception{
 
+		System.out.println("Reply 1");
 		DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostR,1300);
-
-		synchronized(s){
+		System.out.println("Reply 2");
+		//synchronized(s){
 			try {
-				s.send(message);
+				System.out.println("Reply 3");
+				//synchronized(s){
+					s.send(message);
+				//}
 				
-				bw.write("["+dateFormat.format(new Date())+"] Reply sent to Leader Replica:" + message);
+				bw.write("["+dateFormat.format(new Date())+"] Reply sent to Leader Replica:" + str);
 				bw.newLine();
 			 	bw.flush();
 			 	
@@ -171,7 +175,7 @@ public class Process implements Runnable  {
 			 	
 				e.printStackTrace();
 			}
-		}		
+		//}		
 
 		return true;
 	}
