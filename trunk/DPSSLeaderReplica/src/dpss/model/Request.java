@@ -26,7 +26,7 @@ public class Request {
 	
 	public boolean getAllReplies(){
 		
-		if (response1 != null && response2!=null)
+		if (response1 != null && response2!=null  && response3!=null)
 			return true;
 		else
 			return false;
@@ -34,10 +34,8 @@ public class Request {
 	
 	
 	public String getVotedReply(){		
-		
-		return response1;
-						
-			/*if (response1.equals(response2)  && response1.equals(response3)){				
+	
+			if (response1.equals(response2)  && response1.equals(response3)){				
 				diffResponse = -1;
 				return response1;				
 			}
@@ -52,7 +50,7 @@ public class Request {
 			else {
 				diffResponse = 1;
 				return response2;
-			}		*/
+			}		
 			
 	}
 	@Override 

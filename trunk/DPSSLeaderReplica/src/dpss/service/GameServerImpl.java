@@ -339,7 +339,8 @@ public class GameServerImpl {
 		}
 		else {
 			Logger.write(serverName, "Invalid Administator user name or password on game server " + serverName + "!");
-			return "Invalid Administator user name or password on game server " + serverName + "!";
+			return "Invalid Administator user name or password!";
+			
 		}			
 		
 	}	
