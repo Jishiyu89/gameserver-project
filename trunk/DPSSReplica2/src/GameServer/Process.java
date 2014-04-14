@@ -19,7 +19,6 @@ public class Process implements Runnable  {
 	InetAddress hostR;
 	BufferedWriter bw;
 	SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
 	int idReplica = 2;
 	String nameReplica = "Replica2";	
 
