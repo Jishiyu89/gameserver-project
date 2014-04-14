@@ -5,8 +5,6 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
-
-
 import system.SystemInterfaceImpl;
 
 
@@ -15,6 +13,7 @@ public class Replica extends Thread{
 	
 	static DatagramSocket socketReply=null;
 	InetAddress hostR;
+	Thread thEU,thNA,thAS;
 	SystemInterfaceImpl serverEU=null ;
 	SystemInterfaceImpl serverNA=null ;
 	SystemInterfaceImpl serverAS=null ;
@@ -61,10 +60,10 @@ public class Replica extends Thread{
 				
 		try {
 			
-			serverNA = new SystemInterfaceImpl();			
-			serverEU= new SystemInterfaceImpl();								
-			serverAS = new SystemInterfaceImpl();
-			socketReply=new DatagramSocket(1013);
+			serverNA = new SystemInterfaceImpl(5051);			
+			serverEU= new SystemInterfaceImpl(5052);								
+			serverAS = new SystemInterfaceImpl(5053);
+			socketReply=new DatagramSocket(7103);
 		
 			hostR = InetAddress.getByName("localhost");	
 		
@@ -78,26 +77,34 @@ public class Replica extends Thread{
 	public void restart(){
 		socketReply.close();
 		socketReply=null;
-		//serverNA.finalize();
+		thNA.interrupt();
+		serverNA.stop();
 		serverNA=null;
-		//serverEU.finalize();
+		thEU.interrupt();
+		serverEU.stop();
+		
 		serverEU=null;
-		//serverAS.finalize();
+		thAS.interrupt();
+		serverAS.stop();
 		serverAS=null;
+		
 		try {
-			System.out.println("Replica 2 restarts!");
-			serverEU= new SystemInterfaceImpl();
-			serverNA= new SystemInterfaceImpl();
-			serverAS= new SystemInterfaceImpl();
-			socketReply=new DatagramSocket(1013);
+			System.out.println("Replica 3 restarts!");
+			serverEU= new SystemInterfaceImpl(5052);
+			thEU=new Thread(serverEU);
+			thEU.start();
+			serverNA= new SystemInterfaceImpl(5051);
+			thNA=new Thread(serverNA);
+			thNA.start();
+			serverAS= new SystemInterfaceImpl(5053);	
+			thAS=new Thread(serverAS);
+			thAS.start();
+			socketReply=new DatagramSocket(7103);
+
 			
-			//hostR = InetAddress.getByName("localhost");	
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {			
 			e.printStackTrace();
 		}	
-		
-			
 	}
 
 }
