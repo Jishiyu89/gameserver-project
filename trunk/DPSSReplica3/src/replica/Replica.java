@@ -60,9 +60,15 @@ public class Replica extends Thread{
 				
 		try {
 			
-			serverNA = new SystemInterfaceImpl(5051);			
-			serverEU= new SystemInterfaceImpl(5052);								
+			serverNA = new SystemInterfaceImpl(5051);
+			thNA=new Thread(serverNA);
+			thNA.start();
+			serverEU= new SystemInterfaceImpl(5052);
+			thEU=new Thread(serverEU);
+			thEU.start();
 			serverAS = new SystemInterfaceImpl(5053);
+			thAS=new Thread(serverAS);
+			thAS.start();
 			socketReply=new DatagramSocket(7103);
 		
 			hostR = InetAddress.getByName("localhost");	
