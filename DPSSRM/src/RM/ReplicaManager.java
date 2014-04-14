@@ -67,7 +67,7 @@ public class ReplicaManager extends Thread{
 					 
 					 if (count1>2)
 					 {
-						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7001);
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7101);
 						 count1=0;
 						 socketRM.send(replyMsg);
 						 bw.write("["+dateFormat.format(new Date())+"] Restart order sent to Replica1 (Leader)");
@@ -76,7 +76,7 @@ public class ReplicaManager extends Thread{
 					 }
 					 else if (count2>2)
 					 {
-						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7002);
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7102);
 						 count2=0;
 						 socketRM.send(replyMsg);
 						 
@@ -86,7 +86,7 @@ public class ReplicaManager extends Thread{
 					 }
 					 else if (count3>2)
 					 {
-						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7003);
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7103);
 						 count3=0;
 						 socketRM.send(replyMsg);
 						 
