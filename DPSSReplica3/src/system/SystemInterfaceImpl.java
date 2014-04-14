@@ -502,7 +502,7 @@ public class SystemInterfaceImpl implements Runnable {
 
 		if (status == 0) 
 		{
-			return "Username ["+ Username + "] does not exist on game server!";
+			return "Username ["+ Username + "] does not exist on gam8e server!";
 		} 
 		else if (status == 5) 
 		{
