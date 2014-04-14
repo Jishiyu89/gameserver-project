@@ -400,31 +400,38 @@ public class ServerImpl implements Runnable {
 			bw.write("["+dateFormat.format(new Date())+"]Server["+name+"]:Get the request for Suspend Account from AdminClient["+IP+"]."); 
 			bw.newLine();
 			
-			//Find out which list this user belongs to
-			int listIndex= userName.charAt(0)-'a';
-			Player player=new Player(userName);
-		 
-			// Check the list whether contains the play which has same userName
-			if (!hash.get(listIndex).contains(player))
-				reply="Username ["+ player.userName + "] does not exist on game server!";
+			if((!adminUsername.equals("Admin")) || (!adminPassword.equals("Admin")))
+				reply= "Invalid Administator user name or password!";
 			else{
-				int playerIndex=hash.get(listIndex).indexOf(player);
-				//get the player
-				Player tempplay=hash.get(listIndex).get(playerIndex);
-						synchronized(hash.get(listIndex))
-						{
-							//remove the player from the list
-							if(tempplay.getStatus())onlinePlayerNumber--;
-							playerNumber--;
-							hash.get(listIndex).remove(playerIndex);					
-							
-						}
-						reply= "Username ["+ userName + "] successfully removed from game server!";
 				
-		 	}
-		 	bw.write("["+dateFormat.format(new Date())+"]Server["+name+"] Reply:"+reply );
-		 	bw.newLine();
-		 	bw.flush();
+				
+				//Find out which list this user belongs to
+				int listIndex= userName.charAt(0)-'a';
+				Player player=new Player(userName);
+			 
+				// Check the list whether contains the play which has same userName
+				if (!hash.get(listIndex).contains(player))
+					reply="Username ["+ player.userName + "] does not exist on game server!";
+				else{
+					int playerIndex=hash.get(listIndex).indexOf(player);
+					//get the player
+					Player tempplay=hash.get(listIndex).get(playerIndex);
+							synchronized(hash.get(listIndex))
+							{
+								//remove the player from the list
+								if(tempplay.getStatus())onlinePlayerNumber--;
+								playerNumber--;
+								hash.get(listIndex).remove(playerIndex);					
+								
+							}
+							reply= "Username ["+ userName + "] successfully removed from game server!";
+					
+			 	}
+			 	bw.write("["+dateFormat.format(new Date())+"]Server["+name+"] Reply:"+reply );
+			 	bw.newLine();
+			 	bw.flush();
+			 	
+			}
 		}catch (Exception e)
 		{
 			e.printStackTrace();
