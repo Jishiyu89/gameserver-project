@@ -1,11 +1,13 @@
 package system;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -946,7 +948,7 @@ public class SystemInterfaceImpl implements Runnable {
 				Logger log1 = Logger.getLogger("Log for creation of server :");
 				log1.setUseParentHandlers(false);
 				FileHandler file1 = null;
-				String logname = "Log : " + region + "on server.log";
+				String logname = region + "on server.log";
 				try 
 				{
 					File new_file = new File(logname);
@@ -978,7 +980,7 @@ public class SystemInterfaceImpl implements Runnable {
 				Logger log1 = Logger.getLogger("Log for creation of server :");
 				log1.setUseParentHandlers(false);
 				FileHandler file3 = null;
-				String logname = "Log : " + region + " on server.log";
+				String logname = region + " on server.log";
 				
 				try {
 					File new_file = new File(logname);
@@ -1010,14 +1012,14 @@ public class SystemInterfaceImpl implements Runnable {
 				Logger log1 = Logger.getLogger("Log for creation of server :");
 				log1.setUseParentHandlers(false);
 				FileHandler file1 = null;
-				String logname = "Log : " + region + "on server.log";
+				String logname = region + "on server.log";
 				
 				try 
 				{
 					File new_file = new File(logname);
 					
 					if (new_file.exists()) 
-					{
+					{						
 						file1 = new FileHandler(logname, true);
 					} 
 					else 
@@ -1144,13 +1146,16 @@ public class SystemInterfaceImpl implements Runnable {
 					file4.close();
 				}
 				
-				return "User suspended";
+				//return "User suspended";
+				return "Username ["+ Username + "] successfully transferred from game server!";
 			} 
 
 			else if (status == 30) 
-				return "Invalid Username";
+				//return "Invalid Username";
+				return "Username ["+ Username + "] does not exists on game server!";
 
-			return "Player not found";
+			//return "Player not found";
+			return "Username ["+ Username + "] does not exists on game server!";
 		}
 
 
