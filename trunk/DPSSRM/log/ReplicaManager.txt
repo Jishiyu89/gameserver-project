@@ -1,0 +1,30 @@
+[2014-04-13 20:27:33] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:28:14] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:28:37] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:28:37] Restart order sent to Replica2
+[2014-04-13 20:29:46] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:32:37] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:32:43] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:32:49] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:32:49] Restart order sent to Replica2
+[2014-04-13 20:39:03] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:42:44] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:42:56] Leader Replica informed Replica2 generated wrong result
+[2014-04-13 20:42:56] Restart order sent to Replica2
+[2014-04-13 21:24:28] Leader Replica informed Replica1 generated wrong result
+[2014-04-13 21:24:50] Leader Replica informed Replica1 generated wrong result
+[2014-04-13 21:24:56] Leader Replica informed Replica1 generated wrong result
+[2014-04-13 21:24:56] Restart order sent to Replica1 (Leader)
+[2014-04-13 21:30:39] Leader Replica informed Replica1 generated wrong result
+[2014-04-13 21:30:46] Leader Replica informed Replica1 generated wrong result
+[2014-04-13 21:30:51] Leader Replica informed Replica1 generated wrong result
+[2014-04-13 21:30:51] Restart order sent to Replica1 (Leader)
+[2014-04-13 22:51:34] Leader Replica informed Replica3 generated wrong result
+[2014-04-13 23:12:32] Leader Replica informed Replica3 generated wrong result
+[2014-04-13 23:14:49] Leader Replica informed Replica3 generated wrong result
+[2014-04-13 23:37:03] Leader Replica informed Replica3 generated wrong result
+[2014-04-13 23:42:09] Leader Replica informed Replica3 generated wrong result
+[2014-04-13 23:46:52] Leader Replica informed Replica3 generated wrong result
+[2014-04-13 23:47:51] Leader Replica informed Replica3 generated wrong result
+[2014-04-13 23:48:12] Leader Replica informed Replica1 generated wrong result
+[2014-04-13 23:55:13] Leader Replica informed Replica1 generated wrong result
