@@ -105,6 +105,6 @@ public class ReplicaManager extends Thread{
 	public static void main(String arg[]){
 		ReplicaManager RM=new ReplicaManager();
 		RM.start();
-		System.out.println("Replica Manager (RM) running!");
+		System.out.println("Replica Manager (RM) running...");
 	}
 }
