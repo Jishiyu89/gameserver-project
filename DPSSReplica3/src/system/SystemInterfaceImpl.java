@@ -15,9 +15,8 @@ public class SystemInterfaceImpl  {
 	
 
 	private static final String Username = null;
-	public Hashtable<String, ArrayList<SystemInterfaceClient>> hash_data = new Hashtable<String, ArrayList<SystemInterfaceClient>>();
-	//HashTable hash = new HashTable();
-	SystemInterfaceClient cl;
+	public Hashtable<String, ArrayList<SystemInterfacePlay>> hash_data = new Hashtable<String, ArrayList<SystemInterfacePlay>>();
+	SystemInterfacePlay cl;
 	String OldIPAddress;
 	
 	
@@ -25,18 +24,18 @@ public class SystemInterfaceImpl  {
 			String Age, String Username, String Password, String IPaddress) {
 		
 		
-		SystemInterfaceClient client1 = new SystemInterfaceClient();
+		SystemInterfacePlay Play1 = new SystemInterfacePlay();
 		
-		client1.FirstName = FirstName;
-		client1.LastName = LastName;
-		client1.Age = Age;
-		client1.Username = Username;
-		client1.Password = Password;
-		client1.IPaddress = IPaddress;
+		Play1.FirstName = FirstName;
+		Play1.LastName = LastName;
+		Play1.Age = Age;
+		Play1.Username = Username;
+		Play1.Password = Password;
+		Play1.IPaddress = IPaddress;
 		
 		
 		
-		ArrayList<SystemInterfaceClient> list = new ArrayList<SystemInterfaceClient>();
+		ArrayList<SystemInterfacePlay> list = new ArrayList<SystemInterfacePlay>();
 		int input = 0;
 		int length = 0;
 		boolean entry = true;
@@ -45,7 +44,7 @@ public class SystemInterfaceImpl  {
 		
 		
 		String str1 = Username.substring(0, 1);
-		String region = new SystemInterfaceClient().get_loc(IPaddress);
+		String region = new SystemInterfacePlay().get_loc(IPaddress);
 		
 		
 		if (region.equalsIgnoreCase("NORTHAMERICA")) 
@@ -193,7 +192,7 @@ public class SystemInterfaceImpl  {
 			{
 				for (input = 0; input < length; input++) 
 				{
-					if (client1.Username.equalsIgnoreCase(hash_data.get(str1).get(input).Username)) 
+					if (Play1.Username.equalsIgnoreCase(hash_data.get(str1).get(input).Username)) 
 					{
 						entry = false;
 						break;
@@ -204,7 +203,7 @@ public class SystemInterfaceImpl  {
 
 		if (entry) {
 
-			client1.isSignedIn = false;
+			Play1.isSignedIn = false;
 			synchronized (hash_data) 		
 			{
 			
@@ -218,13 +217,13 @@ public class SystemInterfaceImpl  {
 					}
 				}
 
-				list.add(client1);
+				list.add(Play1);
 				hash_data.put(str1, list);
 
 				Logger log1 = Logger.getLogger("Logs");	
 				log1.setUseParentHandlers(false);
 				FileHandler f_handle = null;
-				String log_Name = client1.Username +".log";
+				String log_Name = Play1.Username +".log";
 				
 				try 
 				{
@@ -335,12 +334,12 @@ public class SystemInterfaceImpl  {
 	{
 		
 		
-        SystemInterfaceClient client1 = new SystemInterfaceClient();
+        SystemInterfacePlay Play1 = new SystemInterfacePlay();
 		
 		
-		client1.Username = Username;
-		client1.Password = Password;
-		client1.IPaddress = IPaddress;
+		Play1.Username = Username;
+		Play1.Password = Password;
+		Play1.IPaddress = IPaddress;
 		
 		
 		String str2 = IPaddress.substring(0, IPaddress.indexOf("."));
@@ -464,15 +463,15 @@ public class SystemInterfaceImpl  {
 
 			for (int i = 0; i < hash_data.get(str1).size(); i++) 
 			{
-				SystemInterfaceClient client2 = hash_data.get(str1).get(i);
+				SystemInterfacePlay Play2 = hash_data.get(str1).get(i);
 
-				if (Username.equalsIgnoreCase(client2.Username)) 
+				if (Username.equalsIgnoreCase(Play2.Username)) 
 				{
-					if (Password.equalsIgnoreCase(client2.Password)) 
+					if (Password.equalsIgnoreCase(Play2.Password)) 
 					{
-						client1 = client2;
+						Play1 = Play2;
 						
-						if (!client2.isSignedIn) 
+						if (!Play2.isSignedIn) 
 						{
 							hash_data.get(str1).get(i).isSignedIn = true;
 	
@@ -505,7 +504,7 @@ public class SystemInterfaceImpl  {
 			Logger log1 = Logger.getLogger("Sign In");
 			log1.setUseParentHandlers(false);
 			FileHandler file4 = null;
-			String log_Name = client1.Username +".log";
+			String log_Name = Play1.Username +".log";
 
 			try 
 			{
@@ -543,7 +542,7 @@ public class SystemInterfaceImpl  {
 			Logger log1 = Logger.getLogger("You are already Signed In");
 			log1.setUseParentHandlers(false);
 			FileHandler file4 = null;
-			String log_Name = client1.Username + ".log";
+			String log_Name = Play1.Username + ".log";
 			
 			try
 			{
@@ -586,9 +585,9 @@ public class SystemInterfaceImpl  {
 		
 		
 		
-		SystemInterfaceClient client1 = new SystemInterfaceClient();
-		client1.Username = Username;
-		client1.IPaddress = IPaddress;
+		SystemInterfacePlay Play1 = new SystemInterfacePlay();
+		Play1.Username = Username;
+		Play1.IPaddress = IPaddress;
 	
 			String IP = IPaddress.substring(0, IPaddress.indexOf("."));
 
@@ -707,13 +706,13 @@ public class SystemInterfaceImpl  {
 
 				for (int i = 0; i < hash_data.get(str1).size(); i++) 
 				{
-					SystemInterfaceClient client2 = hash_data.get(str1).get(i);
+					SystemInterfacePlay Play2 = hash_data.get(str1).get(i);
 
-					if (Username.equalsIgnoreCase(client2.Username))
+					if (Username.equalsIgnoreCase(Play2.Username))
 					{
-						client1 = client2;
+						Play1 = Play2;
 						
-						if (client2.isSignedIn) 
+						if (Play2.isSignedIn) 
 						{
 							hash_data.get(str1).get(i).isSignedIn = false;
 							//  return you have signed-out;
@@ -744,7 +743,7 @@ public class SystemInterfaceImpl  {
 				Logger log = Logger.getLogger("Creation Log");
 				log.setUseParentHandlers(false);
 				FileHandler file4 = null;
-				String log_Name = client1.Username +".log";
+				String log_Name = Play1.Username +".log";
 				
 				try 
 				{
@@ -781,7 +780,7 @@ public class SystemInterfaceImpl  {
 				Logger log = Logger.getLogger(" Log");
 				log.setUseParentHandlers(false);
 				FileHandler file4 = null;
-				String log_Name = client1.Username + ".log";
+				String log_Name = Play1.Username + ".log";
 				
 				try
 				{
@@ -829,15 +828,15 @@ public class SystemInterfaceImpl  {
 	
 	
 
-	 String getStatus(Hashtable<String, ArrayList<SystemInterfaceClient>> hash_data) 
+	 String getStatus(Hashtable<String, ArrayList<SystemInterfacePlay>> hash_data) 
 	 {
 		int online = 0;
 		int offline = 0;
-		Enumeration<ArrayList<SystemInterfaceClient>> enumerate = hash_data.elements();
+		Enumeration<ArrayList<SystemInterfacePlay>> enumerate = hash_data.elements();
 		
 		while (enumerate.hasMoreElements()) 
 		{
-			ArrayList<SystemInterfaceClient> list = (ArrayList<SystemInterfaceClient>) enumerate.nextElement();
+			ArrayList<SystemInterfacePlay> list = (ArrayList<SystemInterfacePlay>) enumerate.nextElement();
 			
 			for (int i = 0; i < list.size(); i++) 
 			{
@@ -860,9 +859,9 @@ public class SystemInterfaceImpl  {
 	public String transferAccount(String Username, String Password,	String OldIPAddress, String NewIPAddress) 
 	{
 			
-			SystemInterfaceClient client1 = new SystemInterfaceClient();
-			client1.Username = Username;
-			client1.Password = Password;
+			SystemInterfacePlay Play1 = new SystemInterfacePlay();
+			Play1.Username = Username;
+			Play1.Password = Password;
 			
 			
 			
@@ -979,9 +978,9 @@ public class SystemInterfaceImpl  {
 
 				for (int i = 0; i < hash_data.get(str1).size(); i++) 
 				{
-					SystemInterfaceClient client = hash_data.get(str1).get(i);
+					SystemInterfacePlay Play = hash_data.get(str1).get(i);
 
-					if (Username.equalsIgnoreCase(client.Username)) 
+					if (Username.equalsIgnoreCase(Play.Username)) 
 					{
 						
 						status=10;
@@ -1172,9 +1171,9 @@ public class SystemInterfaceImpl  {
 
 			for (int i = 0; i < hash_data.get(str1).size(); i++) 
 			{
-				SystemInterfaceClient client2 = hash_data.get(str1).get(i);
+				SystemInterfacePlay Play2 = hash_data.get(str1).get(i);
 
-				if (UsernameToSuspend.equalsIgnoreCase(client2.Username)) 
+				if (UsernameToSuspend.equalsIgnoreCase(Play2.Username)) 
 				{
 					
 					status=10;
