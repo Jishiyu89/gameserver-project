@@ -12,7 +12,7 @@ public class LeaderReplicaRMReceiver extends Thread {
 	String message=null;
 	DatagramPacket UDPMessage=null;
 	DatagramSocket socketRM=null;
-	int portRM=7001;
+	int portRM=7101;
 	WriteLog Logger = new WriteLog(); 	
 	
 	public LeaderReplicaRMReceiver(GameServerFactory gameServersParam){
