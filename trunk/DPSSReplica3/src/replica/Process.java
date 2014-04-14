@@ -1,5 +1,7 @@
 package replica;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -8,6 +10,9 @@ import java.net.UnknownHostException;
 
 
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import system.SystemInterfaceImpl;
 
@@ -19,7 +24,10 @@ public class Process implements Runnable  {
 	SystemInterfaceImpl sNA=null,sEU=null,sAS=null;
 	DatagramSocket s;
 	InetAddress hostR;
+	BufferedWriter bw;
+	SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	int idReplica = 3;
+	String nameReplica = "Replica3";
 	
 	Process(DatagramSocket s,SystemInterfaceImpl NA,SystemInterfaceImpl EU,SystemInterfaceImpl AS,String m){
 		message=m;
@@ -31,7 +39,8 @@ public class Process implements Runnable  {
 			System.out.println("NULL");
 		try {
 			hostR = InetAddress.getByName("localhost");
-		} catch (UnknownHostException e) {
+			bw=new BufferedWriter( new FileWriter("log/"+nameReplica+".txt",true));
+		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}	
@@ -45,6 +54,11 @@ public void run(){
 		
 			try {
 				System.out.println(message);
+				
+				bw.write("["+dateFormat.format(new Date())+"] Request received from Leader Replica:" + message);
+				bw.newLine();
+			 	bw.flush();
+			 	
 				String[] requestInformation=new String[10];
 				requestInformation=message.split("->");
 				seq=Integer.parseInt(requestInformation[0]);
@@ -142,19 +156,31 @@ private SystemInterfaceImpl IPConvert(String s){
 	}
 	
 }
-public boolean Reply(String str){
+
+public boolean Reply(String str) throws Exception{
+
 	
 	DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostR,1300);
 	
-	synchronized(s){
-		try {
-			s.send(message);
-		} catch (IOException e) {
+			try {
+						
+				s.send(message);
+		
 			
+			bw.write("["+dateFormat.format(new Date())+"] Reply sent to Leader Replica:" + str);
+			bw.newLine();
+		 	bw.flush();
+		 	
+		} catch (IOException e) {
+
+			bw.write("["+dateFormat.format(new Date())+"] Error when sending reply to Leader Replica");
+			bw.newLine();
+		 	bw.flush();
+		 	
 			e.printStackTrace();
 		}
-	}
-	
+		
+
 	return true;
 }
 

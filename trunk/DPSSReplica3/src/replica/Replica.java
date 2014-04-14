@@ -54,7 +54,21 @@ public class Replica extends Thread{
 		}
 	}
 	
+		public void run(){
+			byte[] bufferReply=new byte[1000];
+			DatagramPacket messageRM=new DatagramPacket(bufferReply, bufferReply.length);
+			while(true){
+				try {
+					socketReply.receive(messageRM);
+				} catch (IOException e) {
 
+					e.printStackTrace();
+				}
+				String strRM=new String(messageRM.getData()).substring(0, messageRM.getLength());
+				if(strRM.equals("Restart"))
+					restart();
+			}
+		}
 		
 	public Replica() {		
 				

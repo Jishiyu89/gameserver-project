@@ -1,0 +1,18 @@
+[2014-04-14 10:52:30] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->182.xxx.xxx.xxx
+[2014-04-14 10:52:30] Reply sent to Leader Replica:0->3->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:52:40] Request received from Leader Replica:1->PlayerSignIn->dasdas->asdasd->182.xxx.xxx.xxx
+[2014-04-14 10:52:40] Reply sent to Leader Replica:1->3->Username [dasdas] does not exist on game server!
+[2014-04-14 10:53:21] Request received from Leader Replica:2->TransferAccount->deyvid->deyvid->182.xxx.xxx.xxx->132.xxx.xxx.xxx
+[2014-04-14 10:53:21] Reply sent to Leader Replica:2->3->Username [deyvid] successfully transferred from game server!
+[2014-04-14 10:54:56] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->182.xxx.xxx.xxx
+[2014-04-14 10:54:56] Reply sent to Leader Replica:0->3->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:55:01] Request received from Leader Replica:1->PlayerSignIn->deyvid->deyvid->182.xxx.xxx.xxx
+[2014-04-14 10:55:01] Reply sent to Leader Replica:1->3->User [deyvid] successfully signed in on game server!
+[2014-04-14 10:55:16] Request received from Leader Replica:2->PlayerSignIn->asdasda->asdasda->182.xxx.xxx.xxx
+[2014-04-14 10:55:16] Reply sent to Leader Replica:2->3->Username [asdasda] does not exist on gam8e server!
+[2014-04-14 10:55:30] Request received from Leader Replica:3->PlayerSignIn->asdasda->asdasda->182.xxx.xxx.xxx
+[2014-04-14 10:55:30] Reply sent to Leader Replica:3->3->Username [asdasda] does not exist on gam8e server!
+[2014-04-14 10:55:41] Request received from Leader Replica:4->PlayerSignIn->dasdasda->asdasdas->182.xxx.xxx.xxx
+[2014-04-14 10:55:41] Reply sent to Leader Replica:4->3->Username [dasdasda] does not exist on gam8e server!
+[2014-04-14 10:56:26] Request received from Leader Replica:5->CreatePlayerAccount->deyvid2->deyvid2->deyvid2->deyvid2->19->182.xxx.xxx.xxx
+[2014-04-14 10:56:26] Reply sent to Leader Replica:5->3->Username [deyvid2] successfully created on the requested game server!
