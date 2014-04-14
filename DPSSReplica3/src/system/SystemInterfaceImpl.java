@@ -1330,10 +1330,10 @@ public class SystemInterfaceImpl implements Runnable {
 				file4.close();
 			}
 			
-			return "Username ["+ Username + "] successfully removed from game server!";
+			return "Username ["+ UsernameToSuspend + "] successfully removed from game server!";
 		} 
 
-		return "Username ["+ Username + "] does not exist on game server!";
+		return "Username ["+ UsernameToSuspend + "] does not exist on game server!";
 	}
 	public synchronized void run() {
 		
