@@ -1163,177 +1163,183 @@ public class SystemInterfaceImpl implements Runnable {
 	public String suspendAccount(String AdminUsername, String AdminPassword,
 			String AdminIP, String UsernameToSuspend) {
 		
+		if((!AdminUsername.equals("Admin")) || (!AdminPassword.equals("Admin")))
+			return "Invalid Administator user name or password!";
 		
-		
-		String IP = AdminIP.substring(0, AdminIP.indexOf("."));
-		String region = "";
-		
-		if (IP.equals("132")) 
-		{
-
-			region = "NORTHAMERICA";
-			Logger log = Logger.getLogger("Log for creation of server :");
-			log.setUseParentHandlers(false);
-			FileHandler file1 = null;
-			String log_Name = "Log : " + region + "on server.log";
-			try 
-			{
-				File new_file = new File(log_Name);
-				
-				if (new_file.exists()) 
-				
-					file1 = new FileHandler(log_Name, true);
-				 
-				else 
-				
-					file1 = new FileHandler(log_Name);
-				
-
-				log.addHandler(file1);
-				SimpleFormatter f = new SimpleFormatter();
-				file1.setFormatter(f);
-				log.info("Player Suspended ");
-			} 
-			catch (Exception e)
-			{
-				log.info("Exception occured" + e.getMessage());
-				e.printStackTrace();
-			} 
-			finally 
-			{
-				file1.close();
-			}
-		} 
-		else if (IP.equals("93")) 
-		{
-			region = "EUROPE";
-			Logger log = Logger.getLogger("Log for server :");
-			log.setUseParentHandlers(false);
-			FileHandler file3 = null;
-			String log_Name =  region + " on server.log";
+		else{
 			
-			try {
-				File new_file = new File(log_Name);
-				if (new_file.exists()) 
-					file3 = new FileHandler(log_Name, true);
-				else 
-					file3 = new FileHandler(log_Name);
-				
-
-				log.addHandler(file3);
-				SimpleFormatter f = new SimpleFormatter();
-				file3.setFormatter(f);
-				log.info("Player suspended ");
-			} 
-			catch (Exception e)
-			{
-				log.info("Exception occured " + e.getMessage());
-				e.printStackTrace();
-			}
-			finally 
-			{
-				file3.close();
-			}
-		} 
 		
-		else if (IP.equals("182")) 
-		{
-
-			region = "ASIA";
-			Logger log = Logger.getLogger("Log for server :");
-			log.setUseParentHandlers(false);
-			FileHandler file1 = null;
-			String log_Name = region + " on server.log";
 			
-			try 
+			String IP = AdminIP.substring(0, AdminIP.indexOf("."));
+			String region = "";
+			
+			if (IP.equals("132")) 
 			{
-				File new_file = new File(log_Name);
-				
-				if (new_file.exists()) 
-				
-					file1 = new FileHandler(log_Name, true);
-				
-				else file1 = new FileHandler(log_Name);
-				
-
-				log.addHandler(file1);
-				SimpleFormatter f = new SimpleFormatter();
-				file1.setFormatter(f);
-				log.info("Suspend player ");
-			} 
-	    catch (Exception e)
-			{
-				log.info("Exception occured " + e.getMessage());
-				e.printStackTrace();
-			} 
-			finally 
-			{
-				file1.close();
-			}
-		}
-		
-		String str1 = UsernameToSuspend.substring(0, 1);
-		int status = 0;
-		if (hash_data.containsKey(str1)) 
-		{
-
-			for (int i = 0; i < hash_data.get(str1).size(); i++) 
-			{
-				SystemInterfacePlay Play2 = hash_data.get(str1).get(i);
-
-				if (UsernameToSuspend.equalsIgnoreCase(Play2.Username)) 
+	
+				region = "NORTHAMERICA";
+				Logger log = Logger.getLogger("Log for creation of server :");
+				log.setUseParentHandlers(false);
+				FileHandler file1 = null;
+				String log_Name = region + "on server.log";
+				try 
 				{
+					File new_file = new File(log_Name);
 					
-					status=10;
-					hash_data.get(str1).remove(i);			
-					break;
+					if (new_file.exists()) 
 					
+						file1 = new FileHandler(log_Name, true);
+					 
+					else 
+					
+						file1 = new FileHandler(log_Name);
+					
+	
+					log.addHandler(file1);
+					SimpleFormatter f = new SimpleFormatter();
+					file1.setFormatter(f);
+					log.info("Player Suspended ");
+				} 
+				catch (Exception e)
+				{
+					log.info("Exception occured" + e.getMessage());
+					e.printStackTrace();
+				} 
+				finally 
+				{
+					file1.close();
 				}
-									
 			} 
-				
-		}
-		
-		if (status == 10) 
-		{
-			Logger log = Logger.getLogger("Suspend Log ");
-			log.setUseParentHandlers(false);
-			FileHandler file4 = null;
-			String log_Name = region + ".log";
-
-			try 
+			else if (IP.equals("93")) 
 			{
-				File files = new File(log_Name);
+				region = "EUROPE";
+				Logger log = Logger.getLogger("Log for server :");
+				log.setUseParentHandlers(false);
+				FileHandler file3 = null;
+				String log_Name =  region + " on server.log";
 				
-				if (files.exists()) 
-				
-					file4 = new FileHandler(log_Name, true);
-				
-				else
-				
-					file4 = new FileHandler(log_Name);
-				
-
-				log.addHandler(file4);
-				SimpleFormatter f = new SimpleFormatter();
-				file4.setFormatter(f);
-				log.info("Suspend player ");
+				try {
+					File new_file = new File(log_Name);
+					if (new_file.exists()) 
+						file3 = new FileHandler(log_Name, true);
+					else 
+						file3 = new FileHandler(log_Name);
+					
+	
+					log.addHandler(file3);
+					SimpleFormatter f = new SimpleFormatter();
+					file3.setFormatter(f);
+					log.info("Player suspended ");
+				} 
+				catch (Exception e)
+				{
+					log.info("Exception occured " + e.getMessage());
+					e.printStackTrace();
+				}
+				finally 
+				{
+					file3.close();
+				}
 			} 
-			catch (Exception e)
+			
+			else if (IP.equals("182")) 
 			{
-				log.info("Exception occured " + e.getMessage());
-				e.printStackTrace();
-			}
-			 
-			finally 
-			{
-				file4.close();
+	
+				region = "ASIA";
+				Logger log = Logger.getLogger("Log for server :");
+				log.setUseParentHandlers(false);
+				FileHandler file1 = null;
+				String log_Name = region + " on server.log";
+				
+				try 
+				{
+					File new_file = new File(log_Name);
+					
+					if (new_file.exists()) 
+					
+						file1 = new FileHandler(log_Name, true);
+					
+					else file1 = new FileHandler(log_Name);
+					
+	
+					log.addHandler(file1);
+					SimpleFormatter f = new SimpleFormatter();
+					file1.setFormatter(f);
+					log.info("Suspend player ");
+				} 
+		    catch (Exception e)
+				{
+					log.info("Exception occured " + e.getMessage());
+					e.printStackTrace();
+				} 
+				finally 
+				{
+					file1.close();
+				}
 			}
 			
-			return "Username ["+ UsernameToSuspend + "] successfully removed from game server!";
-		} 
-
-		return "Username ["+ UsernameToSuspend + "] does not exist on game server!";
+			String str1 = UsernameToSuspend.substring(0, 1);
+			int status = 0;
+			if (hash_data.containsKey(str1)) 
+			{
+	
+				for (int i = 0; i < hash_data.get(str1).size(); i++) 
+				{
+					SystemInterfacePlay Play2 = hash_data.get(str1).get(i);
+	
+					if (UsernameToSuspend.equalsIgnoreCase(Play2.Username)) 
+					{
+						
+						status=10;
+						hash_data.get(str1).remove(i);			
+						break;
+						
+					}
+										
+				} 
+					
+			}
+			
+			if (status == 10) 
+			{
+				Logger log = Logger.getLogger("Suspend Log ");
+				log.setUseParentHandlers(false);
+				FileHandler file4 = null;
+				String log_Name = region + ".log";
+	
+				try 
+				{
+					File files = new File(log_Name);
+					
+					if (files.exists()) 
+					
+						file4 = new FileHandler(log_Name, true);
+					
+					else
+					
+						file4 = new FileHandler(log_Name);
+					
+	
+					log.addHandler(file4);
+					SimpleFormatter f = new SimpleFormatter();
+					file4.setFormatter(f);
+					log.info("Suspend player ");
+				} 
+				catch (Exception e)
+				{
+					log.info("Exception occured " + e.getMessage());
+					e.printStackTrace();
+				}
+				 
+				finally 
+				{
+					file4.close();
+				}
+				
+				return "Username ["+ UsernameToSuspend + "] successfully removed from game server!";
+			} 
+	
+			return "Username ["+ UsernameToSuspend + "] does not exist on game server!";
+		}	
 	}
 	public synchronized void run() {
 		
