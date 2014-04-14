@@ -38,7 +38,7 @@ public class SystemInterfaceImpl implements Runnable {
 		
 	}
 	public String createPlayerAccount(String FirstName, String LastName,
-			String Age, String Username, String Password, String IPaddress) {
+			 String Username, String Password, String Age,String IPaddress) {
 		
 		
 		SystemInterfacePlay Play1 = new SystemInterfacePlay();
@@ -190,15 +190,7 @@ public class SystemInterfaceImpl implements Runnable {
 				file2.close();
 			}
 		}
-
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		// Check Hash table
 		if (hash_data.containsKey(str1)) 
@@ -361,10 +353,7 @@ public class SystemInterfaceImpl implements Runnable {
 		String str2 = IPaddress.substring(0, IPaddress.indexOf("."));
 		String region = "";
 		
-		
-		
-		
-		
+				
 		if (str2.equals("132")) 
 		{
 
@@ -474,9 +463,10 @@ public class SystemInterfaceImpl implements Runnable {
 		
 		String str1 = Username.substring(0, 1);
 		int status = 0;
+		System.out.println(Username);
+		System.out.println(Password);
 		if (hash_data.containsKey(str1)) 
 		{
-
 			for (int i = 0; i < hash_data.get(str1).size(); i++) 
 			{
 				SystemInterfacePlay Play2 = hash_data.get(str1).get(i);
@@ -486,7 +476,6 @@ public class SystemInterfaceImpl implements Runnable {
 					if (Password.equalsIgnoreCase(Play2.Password)) 
 					{
 						Play1 = Play2;
-						
 						if (!Play2.isSignedIn) 
 						{
 							hash_data.get(str1).get(i).isSignedIn = true;
@@ -548,7 +537,7 @@ public class SystemInterfaceImpl implements Runnable {
 				file4.close();
 			}
 			
-			return "User ["+ Username + "] successfully signed in on game server! ";
+			return "User ["+ Username + "] successfully signed in on game server!";
 		} 
 		
 		
@@ -588,7 +577,7 @@ public class SystemInterfaceImpl implements Runnable {
 			return "User ["+ Username + "] is already online on game server!";
 		} 
 		
-		return "";
+		return "Username ["+ Username + "] does not exist on game server!";
 
 		
 		
@@ -719,13 +708,15 @@ public class SystemInterfaceImpl implements Runnable {
 			
 			if (hash_data.containsKey(str1)) 
 			{
-
+				//System.out.println(hash_data.containsKey(str1));
 				for (int i = 0; i < hash_data.get(str1).size(); i++) 
 				{
 					SystemInterfacePlay Play2 = hash_data.get(str1).get(i);
 
 					if (Username.equalsIgnoreCase(Play2.Username))
 					{
+						//System.out.println("Find one:"+Username);
+						//System.out.println("Find one:"+Play2.isSignedIn);
 						Play1 = Play2;
 						
 						if (Play2.isSignedIn) 
@@ -748,7 +739,7 @@ public class SystemInterfaceImpl implements Runnable {
 
 			}
 
-			else if (status == 0) 
+			if (status == 0) 
 			{
 				return "Username ["+ Username + "] does not exist on game server!";
 			} 
@@ -877,16 +868,17 @@ public class SystemInterfaceImpl implements Runnable {
 					
 					request2= new DatagramPacket("Status".getBytes(),"Status".length(),aHost, adminServerPortNum2);// Send the Password of Administer
 					Socket.send(request2);
-					
+					response=getStatus(hash_data);
+					System.out.println(response);
 					//receive reply
 					byte[] buffer = new byte[1000];
 					DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
 					Socket.receive(reply);
-					
-					response=getStatus(hash_data)+new String(reply.getData()).substring(0,reply.getLength());
+					System.out.println(response);
+					response=response+"#"+new String(reply.getData()).substring(0,reply.getLength());
 					Socket.receive(reply);
-
-					response=response+new String(reply.getData()).substring(0,reply.getLength());
+					System.out.println(response);
+					response=response+"#"+new String(reply.getData()).substring(0,reply.getLength());
 					
 				}
 			
@@ -921,8 +913,13 @@ public class SystemInterfaceImpl implements Runnable {
 				
 			}
 		}
-		
-		return online + " online player(s) " + offline + " offline player(s)";
+		String string=null;
+		switch(portNumber){
+		case 5051: string="Server NA:";break;
+		case 5052: string="Server EU:";break;
+		case 5053: string="Server AS:";break;
+		}
+		return string+"Total players:"+(online+offline) + " Online:" +online+  " Offline: "+offline;
 	}
 
 
@@ -1055,15 +1052,23 @@ public class SystemInterfaceImpl implements Runnable {
 
 					if (Username.equalsIgnoreCase(Play.Username)) 
 					{
-						
+						System.out.println("Find!");
+						System.out.println("Username:"+Play.Username);
+						System.out.println("Username:"+Play.Password);
+						if(Password.equalsIgnoreCase(Play.Password))
+					{
+						Play1=Play;
 						status=10;
 						hash_data.get(str1).remove(i);
+						System.out.println("removed! size:"+hash_data.get(str1).size());
 						break;
 						
 					}
 					else 
 					{
 						status = 30;
+						break;
+					}
 					}
 								
 				} 
@@ -1107,11 +1112,11 @@ public class SystemInterfaceImpl implements Runnable {
 						
 						switch(Integer.parseInt(IPpart[0])){
 						case 93:
-							ServerPortNum=5051;
+							ServerPortNum=5052;
 							
 							break;
 						case 132:
-							ServerPortNum=5052;
+							ServerPortNum=5051;
 							
 							break;
 						case 182:
@@ -1124,9 +1129,9 @@ public class SystemInterfaceImpl implements Runnable {
 						request= new DatagramPacket("Transfer".getBytes(),"Transfer".length(),aHost, ServerPortNum);
 						socket.send(request);
 						
-						String message=Play.FirstName+"->"+Play.LastName+"->"+Play.Username+"->"+Play.Password+"->"
-								+Play.Age+"->"+OldIPAddress+"->"+NewIPAddress;
-						
+						String message=Play1.FirstName+"->"+Play1.LastName+"->"+Play1.Username+"->"+Play1.Password+"->"
+								+Play1.Age+"->"+OldIPAddress+"->"+NewIPAddress;
+						System.out.println(message);
 						request= new DatagramPacket(message.getBytes(),message.length(),aHost, ServerPortNum);
 						socket.send(request);
 						
@@ -1151,8 +1156,8 @@ public class SystemInterfaceImpl implements Runnable {
 			} 
 
 			else if (status == 30) 
-				//return "Invalid Username";
-				return "Username ["+ Username + "] does not exists on game server!";
+				//return "Wrong password";
+				return "Password for username ["+ Username + "] is incorrect!";
 
 			//return "Player not found";
 			return "Username ["+ Username + "] does not exists on game server!";
@@ -1371,7 +1376,7 @@ public class SystemInterfaceImpl implements Runnable {
 					String[] playerInformation=new String[10];
 					playerInformation=new String(request.getData()).substring(0,request.getLength()).split("->");
 					createPlayerAccount(playerInformation[0],playerInformation[1],playerInformation[2],
-							playerInformation[4],playerInformation[3],playerInformation[6]);
+							playerInformation[3],playerInformation[4],playerInformation[6]);
 						
 					
 				}
