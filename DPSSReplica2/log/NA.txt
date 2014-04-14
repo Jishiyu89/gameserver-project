@@ -80,3 +80,5 @@
 [2014-04-14 10:19:25]Server[NA] Reply:Username [asdasda] does not exist on game server!
 [2014-04-14 10:32:52]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
 [2014-04-14 10:32:52]Server[NA] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:51:40]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 10:51:40]Server[NA] Reply to:Username [deyvid] successfully created on the requested game server!
