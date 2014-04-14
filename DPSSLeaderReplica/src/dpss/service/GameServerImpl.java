@@ -292,7 +292,7 @@ public class GameServerImpl {
 			responseFromOtherServers = getCountsFromOtherServers();
 			
 			Logger.write(serverName, "Result returned to Administator user:" + "Server " + serverName + ":"+ "Total players:" + playersOnServer + " Online:" + playersOnline + " Offline: " + (playersOnServer-playersOnline) + " * " + responseFromOtherServers);
-			return "Server " + serverName + ":"+ "Total players:" + playersOnServer + " Online:" + playersOnline + " Offline: " + (playersOnServer-playersOnline) + " * " + responseFromOtherServers;
+			return "Server " + serverName + ":"+ "Total players:" + playersOnServer + " Online:" + playersOnline + " Offline: " + (playersOnServer-playersOnline) + "->" + responseFromOtherServers;
 		}
 		else {
 			Logger.write(serverName, "Invalid Administator user name or password on game server " + serverName + "!");
@@ -387,7 +387,7 @@ public class GameServerImpl {
 			}catch(IOException e){ System.out.println("IO" + e.getMessage());
 			}finally{ if(uDPSocket != null) uDPSocket.close();}
 			
-			return (partner1Reponse + " * " + partner2Reponse);				
+			return (partner1Reponse + "->" + partner2Reponse);				
 	}
 	
 	private boolean accountTransmission(Player auxPlayerParam, String oldIPAddressParam, String newIPAddressParam) {
@@ -447,9 +447,12 @@ public class GameServerImpl {
 	}	
 	
 	public void stopServerUDP(){
-		thUDP.interrupt();
-		uDPSocket.close();
 		
+		//Closing quietly
+		try {
+			thUDP.interrupt();
+			uDPSocket.close();
+		} catch (Exception e){}		
 	}
 	
 }
