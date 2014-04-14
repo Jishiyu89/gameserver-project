@@ -1,5 +1,6 @@
 package replica;
 
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -32,7 +33,7 @@ public class Replica extends Thread{
 			//Group members
 			ipGroup = InetAddress.getByName("228.6.3.21");
 					
-			//Replica 2 
+			//Replica 3 
 			s = new MulticastSocket(mPort);
 			s.joinGroup(ipGroup);
 			Replica R = new Replica();	
@@ -53,10 +54,9 @@ public class Replica extends Thread{
 		}
 	}
 	
-	
-	public Replica() {
+
 		
-		
+	public Replica() {		
 				
 		try {
 			
@@ -73,8 +73,7 @@ public class Replica extends Thread{
 		
 			hostR = InetAddress.getByName("localhost");	
 		
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {			
 			e.printStackTrace();
 		}
 		

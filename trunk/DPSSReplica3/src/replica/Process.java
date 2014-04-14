@@ -132,11 +132,11 @@ private SystemInterfaceImpl IPConvert(String s){
 	}		
 	else{ 
 		switch(Integer.parseInt(IP[0])){
-		case 132:System.out.println("132 here!");			 
+		case 132:		 
 				return sNA;
-		case 93:System.out.println("93 here!");
+		case 93:
 				return sEU;
-		default:System.out.println("wte here!");
+		default:
 				return sAS;
 		}
 	}
