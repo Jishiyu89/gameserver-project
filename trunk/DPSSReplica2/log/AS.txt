@@ -35,4 +35,12 @@
 [2014-03-04 22:34:58] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 22:34:58] Get response from ServerNA: 0 online, 1 offline. [2014-03-04 22:34:58] Server [AS]Send reply to Administer[182.0.35.54]:AS: 0 online, 0 offline EU: 0 online, 0 offline. NA: 0 online, 1 offline. [2014-03-04 22:35:23]Server[AS]:Get the request for Sign In from PlayerClient[182.238.3.135].
 [2014-03-04 22:35:23]Server[AS] Reply:[182.238.3.135]Sorry, the AS does not contains this user:A
 [2014-03-04 22:37:20]Server[AS]:Get the request for Create Player Account from PlayerClient[182.0.35.54].
-[2014-03-04 22:37:20] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 22:37:20] Get response from ServerNA: 0 online, 0 offline. [2014-03-04 22:37:20] Server [AS]Send reply to Administer[182.0.35.54]:AS: 0 online, 0 offline EU: 0 online, 0 offline. NA: 0 online, 0 offline. 
+[2014-03-04 22:37:20] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 22:37:20] Get response from ServerNA: 0 online, 0 offline. [2014-03-04 22:37:20] Server [AS]Send reply to Administer[182.0.35.54]:AS: 0 online, 0 offline EU: 0 online, 0 offline. NA: 0 online, 0 offline. [2014-04-14 01:09:44]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 01:09:44]Server[AS] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 01:17:34]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 01:17:34]Server[AS] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 01:17:39]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 01:17:39]Server[AS] Reply:User [deyvid] successfully signed in on game server!
+[2014-04-14 02:05:11]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 02:05:11] Get response from ServerServer EU:Total players:0 Online:0 Offline: 0[2014-04-14 02:05:11] Get response from ServerServer NA:Total players:0 Online:0 Offline: 0[2014-04-14 02:05:11] Server [AS]Send reply to Administer[182.xxx.xxx.xxx]:Server AS:Total players:0 Online:0 Offline: 0#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:0 Online:0 Offline: 0[2014-04-14 02:06:18]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 02:06:18] Server [AS]Send reply to Administer[182.xxx.xxx.xxx]:Invalid Administator user name or password!

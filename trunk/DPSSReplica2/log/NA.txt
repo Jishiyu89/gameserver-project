@@ -43,3 +43,31 @@
 [2014-03-04 22:36:37]Server[NA]:Get the request for Create Player Account from PlayerClient[132.33.62.56].
 [2014-03-04 22:36:37] Get response from ServerEU: 0 online, 0 offline. [2014-03-04 22:36:37] Get response from ServerAS: 0 online, 0 offline. [2014-03-04 22:36:37] Server [NA]Send reply to Administer[132.33.62.56]:NA: 1 online, 0 offline EU: 0 online, 0 offline. AS: 0 online, 0 offline. [2014-03-04 22:36:48]Server[NA]:Get the request for Suspend Account from AdminClient[132.33.62.56].
 [2014-03-04 22:36:48]Server[NA] Reply:[132.33.62.56]Delete A
+[2014-04-14 01:54:40]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 01:54:40] Get response from ServerServer EU:Total players:0 Online:0 Offline: 0[2014-04-14 01:54:40] Get response from ServerServer AS:Total players:0 Online:0 Offline: 0[2014-04-14 01:54:40] Server [NA]Send reply to Administer[132.xxx.xxx.xxx]:Server NA:Total players:0 Online:0 Offline: 0#Server EU:Total players:0 Online:0 Offline: 0#Server AS:Total players:0 Online:0 Offline: 0[2014-04-14 02:01:14]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:01:14] Get response from ServerServer EU:Total players:0 Online:0 Offline: 0[2014-04-14 02:01:14] Get response from ServerServer AS:Total players:0 Online:0 Offline: 0[2014-04-14 02:01:14] Server [NA]Send reply to Administer[132.xxx.xxx.xxx]:Server NA:Total players:0 Online:0 Offline: 0#Server EU:Total players:0 Online:0 Offline: 0#Server AS:Total players:0 Online:0 Offline: 0[2014-04-14 02:09:17]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:09:17]Server[NA] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 02:09:37]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:09:37]Server[NA] Reply to:Username [deyvid] already exists on the game server!
+[2014-04-14 02:09:51]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:09:51]Server[NA] Reply:User [deyvid] successfully signed in on game server!
+[2014-04-14 02:10:50]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:10:50] Get response from ServerServer EU:Total players:0 Online:0 Offline: 0[2014-04-14 02:10:50] Get response from ServerServer AS:Total players:0 Online:0 Offline: 0[2014-04-14 02:10:50] Server [NA]Send reply to Administer[132.xxx.xxx.xxx]:Server NA:Total players:1 Online:1 Offline: 0#Server EU:Total players:0 Online:0 Offline: 0#Server AS:Total players:0 Online:0 Offline: 0[2014-04-14 02:12:05]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:12:05]Server[NA] Reply:User [deyvid] is already online on game server!
+[2014-04-14 02:12:47]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:12:47]Server[NA] Reply:Password for username [deyvid] is incorrect!
+[2014-04-14 02:14:29]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:14:29]Server[NA] Reply:Username [deyviddeyvid] does not exist on game server!
+[2014-04-14 02:14:54]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:14:54]Server[NA] Reply:Username [deyvid] successfully signed out of game server!
+[2014-04-14 02:15:14]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:15:14]Server[NA] Reply:Username [deyviddeyvid] does not exist on game server!
+[2014-04-14 02:15:38]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:15:38]Server[NA] Reply:User [deyvid] is not online on game server!
+[2014-04-14 02:17:44]Server[NA]:Get the request for Transfer Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:17:44] Transfer User [deyvid] sucessfully.[2014-04-14 02:18:11]Server[NA]:Get the request for Transfer Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:19:39]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:19:39]Server[NA] Reply to:Username [shuliu] successfully created on the requested game server!
+[2014-04-14 02:19:52]Server[NA]:Get the request for Transfer Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:21:08]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 02:21:08] Get response from ServerServer EU:Total players:1 Online:0 Offline: 1[2014-04-14 02:21:08] Get response from ServerServer AS:Total players:0 Online:0 Offline: 0[2014-04-14 02:21:08] Server [NA]Send reply to Administer[132.xxx.xxx.xxx]:Server NA:Total players:1 Online:0 Offline: 1#Server EU:Total players:1 Online:0 Offline: 1#Server AS:Total players:0 Online:0 Offline: 0
