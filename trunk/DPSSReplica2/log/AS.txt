@@ -43,4 +43,30 @@
 [2014-04-14 01:17:39]Server[AS] Reply:User [deyvid] successfully signed in on game server!
 [2014-04-14 02:05:11]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
 [2014-04-14 02:05:11] Get response from ServerServer EU:Total players:0 Online:0 Offline: 0[2014-04-14 02:05:11] Get response from ServerServer NA:Total players:0 Online:0 Offline: 0[2014-04-14 02:05:11] Server [AS]Send reply to Administer[182.xxx.xxx.xxx]:Server AS:Total players:0 Online:0 Offline: 0#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:0 Online:0 Offline: 0[2014-04-14 02:06:18]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
-[2014-04-14 02:06:18] Server [AS]Send reply to Administer[182.xxx.xxx.xxx]:Invalid Administator user name or password!
+[2014-04-14 02:06:18] Server [AS]Send reply to Administer[182.xxx.xxx.xxx]:Invalid Administator user name or password![2014-04-14 09:24:24]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 09:24:24]Server[AS] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:25:32]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 09:25:32]Server[AS] Reply:User [deyvid] successfully signed in on game server!
+[2014-04-14 09:25:48]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 09:25:48]Server[AS] Reply:Username [deyvid] successfully signed out of game server!
+[2014-04-14 09:25:58]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 09:25:58]Server[AS] Reply:Password for username [deyvid] is incorrect!
+[2014-04-14 09:26:25]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 09:26:25]Server[AS] Reply:Username [deyvid3] does not exist on game server!
+[2014-04-14 09:26:34]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 09:26:34]Server[AS] Reply:User [deyvid] successfully signed in on game server!
+[2014-04-14 09:26:37]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 09:26:37]Server[AS] Reply:User [deyvid] is already online on game server!
+[2014-04-14 10:04:26]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:04:26]Server[AS] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:04:48]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:04:48] Get response from ServerServer EU:Total players:0 Online:0 Offline: 0[2014-04-14 10:04:48] Get response from ServerServer NA:Total players:0 Online:0 Offline: 0[2014-04-14 10:04:48] Server [AS]Send reply to Administer[182.xxx.xxx.xxx]:Server AS:Total players:1 Online:0 Offline: 1#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:0 Online:0 Offline: 0[2014-04-14 10:06:16]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:06:16] Server [AS]Send reply to Administer[182.xxx.xxx.xxx]:Invalid Administator user name or password![2014-04-14 10:08:03]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:08:03]Server[AS] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:08:21]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:08:21] Server [AS]Send reply to Administer[182.xxx.xxx.xxx]:Invalid Administator user name or password![2014-04-14 10:15:11]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:15:11]Server[AS] Reply:Username [sdasda] does not exist on game server!
+[2014-04-14 10:15:29]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:15:29]Server[AS] Reply:Username [dasdas] does not exist on game server!
+[2014-04-14 10:15:36]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:15:36]Server[AS] Reply:Username [asdasda] does not exist on game server!

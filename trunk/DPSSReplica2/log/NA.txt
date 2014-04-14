@@ -70,4 +70,13 @@
 [2014-04-14 02:19:39]Server[NA] Reply to:Username [shuliu] successfully created on the requested game server!
 [2014-04-14 02:19:52]Server[NA]:Get the request for Transfer Account from PlayerClient[132.xxx.xxx.xxx].
 [2014-04-14 02:21:08]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
-[2014-04-14 02:21:08] Get response from ServerServer EU:Total players:1 Online:0 Offline: 1[2014-04-14 02:21:08] Get response from ServerServer AS:Total players:0 Online:0 Offline: 0[2014-04-14 02:21:08] Server [NA]Send reply to Administer[132.xxx.xxx.xxx]:Server NA:Total players:1 Online:0 Offline: 1#Server EU:Total players:1 Online:0 Offline: 1#Server AS:Total players:0 Online:0 Offline: 0
+[2014-04-14 02:21:08] Get response from ServerServer EU:Total players:1 Online:0 Offline: 1[2014-04-14 02:21:08] Get response from ServerServer AS:Total players:0 Online:0 Offline: 0[2014-04-14 02:21:08] Server [NA]Send reply to Administer[132.xxx.xxx.xxx]:Server NA:Total players:1 Online:0 Offline: 1#Server EU:Total players:1 Online:0 Offline: 1#Server AS:Total players:0 Online:0 Offline: 0[2014-04-14 10:09:31]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 10:09:31]Server[NA] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:19:19]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 10:19:19]Server[NA] Reply:Username [asdasa] does not exist on game server!
+[2014-04-14 10:19:22]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 10:19:22]Server[NA] Reply:Username [asdasda] does not exist on game server!
+[2014-04-14 10:19:25]Server[NA]:Get the request for Sign In from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 10:19:25]Server[NA] Reply:Username [asdasda] does not exist on game server!
+[2014-04-14 10:32:52]Server[NA]:Get the request for Create Player Account from PlayerClient[132.xxx.xxx.xxx].
+[2014-04-14 10:32:52]Server[NA] Reply to:Username [deyvid] successfully created on the requested game server!

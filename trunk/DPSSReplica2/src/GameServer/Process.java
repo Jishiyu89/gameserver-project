@@ -132,19 +132,18 @@ public class Process implements Runnable  {
 
 	private ServerImpl IPConvert(String s){
 		String[] IP=s.split("\\.");
-		System.out.println(s);
-		System.out.println(IP[0]);
+
 		if (IP[0]==null) {
 			System.out.println("null>");
 			return null;
 		}		
 		else{ 
 			switch(Integer.parseInt(IP[0])){
-			case 132:System.out.println("132 here!");			 
+			case 132:			 
 			return sNA;
-			case 93:System.out.println("93 here!");
+			case 93:
 			return sEU;
-			default:System.out.println("wte here!");
+			default:
 			return sAS;
 			}
 		}
