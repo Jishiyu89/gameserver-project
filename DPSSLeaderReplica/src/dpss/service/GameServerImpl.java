@@ -58,7 +58,7 @@ public class GameServerImpl {
 		
 	public void exportServerUDP(){		
 		
-		thUDP=(new GameServerUDP(uDPSocket));
+		thUDP=(new GameServerUDP(uDPSocket, this));
 		thUDP.start();
 	}
 	
@@ -95,6 +95,9 @@ public class GameServerImpl {
 	
 	@SuppressWarnings("unchecked")
 	public String createPlayerAccountViaUDP(String firstNameParam, String lastNameParam, String usernameParam, String passwordParam, String ageParam, String iPAdressParam) {
+		
+		
+		System.out.println("entrei--- tranfer>>>");
 		
 			char auxHashIndex = ((usernameParam.trim()).toUpperCase()).charAt(0);
 			ArrayList<Player> auxArrPlayer = (ArrayList<Player>) hashPlayers.get(auxHashIndex);

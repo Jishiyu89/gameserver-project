@@ -23,7 +23,8 @@ public class GameServerUDP  extends Thread {
 	DatagramSocket uDPSocket = null;
 	DatagramPacket request;
 	
-	public GameServerUDP( DatagramSocket uDPSocketParam){
+	public GameServerUDP( DatagramSocket uDPSocketParam, GameServerImpl gameServerSrcParam){
+		this.gameServerSrc = gameServerSrcParam;
 		this.uDPSocket = uDPSocketParam;
 	}
 	
@@ -99,7 +100,8 @@ public class GameServerUDP  extends Thread {
 		request = new DatagramPacket(buffer, buffer.length);
 		uDPSocket.receive(request);
 		requestMsg = new String(request.getData()).substring(0,request.getLength());
-		playerData = requestMsg.split(";");
+		playerData = requestMsg.split(";");		
+		
 		response = gameServerSrc.createPlayerAccountViaUDP(playerData[0], playerData[1], playerData[2], playerData[3],playerData[4],playerData[5]);
 
 		//Sending Reply 02 (OK, NOK)
