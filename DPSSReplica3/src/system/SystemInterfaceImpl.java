@@ -32,7 +32,7 @@ public class SystemInterfaceImpl implements Runnable {
 		try {
 			aSocket=new DatagramSocket(x);
 		} catch (SocketException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -203,7 +203,6 @@ public class SystemInterfaceImpl implements Runnable {
 				{
 					if (Play1.Username.equalsIgnoreCase(hash_data.get(str1).get(input).Username)) 
 					{
-						//TODO
 						entry = false;
 						break;
 					}
@@ -491,6 +490,9 @@ public class SystemInterfaceImpl implements Runnable {
 						}
 
 					} 
+					else
+						status = 5;
+						break;
 		
 				} 
 			
@@ -502,7 +504,10 @@ public class SystemInterfaceImpl implements Runnable {
 		{
 			return "Username ["+ Username + "] does not exist on game server!";
 		} 
-		
+		else if (status == 5) 
+		{
+			return "Password for username ["+ Username + "] is incorrect!";
+		}
 		// Sign-in 
 		else if (status == 10) 
 		{
