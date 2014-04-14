@@ -70,3 +70,20 @@
 [2014-04-14 10:15:29]Server[AS] Reply:Username [dasdas] does not exist on game server!
 [2014-04-14 10:15:36]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
 [2014-04-14 10:15:36]Server[AS] Reply:Username [asdasda] does not exist on game server!
+[2014-04-14 10:52:30]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:52:30]Server[AS] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:52:40]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:52:40]Server[AS] Reply:Username [dasdas] does not exist on game server!
+[2014-04-14 10:53:21]Server[AS]:Get the request for Transfer Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:53:21] Transfer User [deyvid] sucessfully.[2014-04-14 10:54:56]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:54:56]Server[AS] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:55:01]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:55:01]Server[AS] Reply:User [deyvid] successfully signed in on game server!
+[2014-04-14 10:55:16]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:55:16]Server[AS] Reply:Username [asdasda] does not exist on game server!
+[2014-04-14 10:55:30]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:55:30]Server[AS] Reply:Username [asdasda] does not exist on game server!
+[2014-04-14 10:55:41]Server[AS]:Get the request for Sign In from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:55:41]Server[AS] Reply:Username [dasdasda] does not exist on game server!
+[2014-04-14 10:56:26]Server[AS]:Get the request for Create Player Account from PlayerClient[182.xxx.xxx.xxx].
+[2014-04-14 10:56:26]Server[AS] Reply to:Username [deyvid2] successfully created on the requested game server!

@@ -61,3 +61,5 @@
 [2014-04-14 10:10:00] Server [EU]Send reply to Administer[93.xxx.xxx.xxx]:Invalid Administator user name or password![2014-04-14 10:10:09]Server[EU]:Get the request for Create Player Account from PlayerClient[93.xxx.xxx.xxx].
 [2014-04-14 10:10:09] Server [EU]Send reply to Administer[93.xxx.xxx.xxx]:Invalid Administator user name or password![2014-04-14 10:31:15]Server[EU]:Get the request for Sign In from PlayerClient[93.xxx.xxx.xxx].
 [2014-04-14 10:31:15]Server[EU] Reply:Username [dasdas] does not exist on game server!
+[2014-04-14 10:43:50]Server[EU]:Get the request for Sign In from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 10:43:50]Server[EU] Reply:Username [sdasda] does not exist on game server!

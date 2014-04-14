@@ -154,12 +154,11 @@ public class Process implements Runnable  {
 		
 		DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostR,1300);
 		
-		//synchronized(s){
+		
 			try {
-				
-				//synchronized(s){
+					
 					s.send(message);
-				//}
+			
 				
 				bw.write("["+dateFormat.format(new Date())+"] Reply sent to Leader Replica:" + str);
 				bw.newLine();

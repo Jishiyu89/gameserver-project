@@ -1,0 +1,78 @@
+[2014-04-14 09:24:24] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->18->182.xxx.xxx.xxx
+[2014-04-14 09:24:24] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:25:32] Request received from Leader Replica:1->PlayerSignIn->deyvid->deyvid->182.xxx.xxx.xxx
+[2014-04-14 09:25:32] Reply sent to Leader Replica:1->2->User [deyvid] successfully signed in on game server!
+[2014-04-14 09:25:48] Request received from Leader Replica:2->PlayerSignOut->deyvid->182.xxx.xxx.xxx
+[2014-04-14 09:25:48] Reply sent to Leader Replica:2->2->Username [deyvid] successfully signed out of game server!
+[2014-04-14 09:25:58] Request received from Leader Replica:3->PlayerSignIn->deyvid->addasd->182.xxx.xxx.xxx
+[2014-04-14 09:25:58] Reply sent to Leader Replica:3->2->Password for username [deyvid] is incorrect!
+[2014-04-14 09:26:25] Request received from Leader Replica:4->PlayerSignIn->deyvid3->deyvid->182.xxx.xxx.xxx
+[2014-04-14 09:26:25] Reply sent to Leader Replica:4->2->Username [deyvid3] does not exist on game server!
+[2014-04-14 09:26:34] Request received from Leader Replica:5->PlayerSignIn->deyvid->deyvid->182.xxx.xxx.xxx
+[2014-04-14 09:26:34] Reply sent to Leader Replica:5->2->User [deyvid] successfully signed in on game server!
+[2014-04-14 09:26:37] Request received from Leader Replica:6->PlayerSignIn->deyvid->deyvid->182.xxx.xxx.xxx
+[2014-04-14 09:26:37] Reply sent to Leader Replica:6->2->User [deyvid] is already online on game server!
+[2014-04-14 09:36:22] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->93.xxx.xxx.xxx
+[2014-04-14 09:36:22] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:39:28] Request received from Leader Replica:1->PlayerSignIn->analyzed->analyzed->93.xxx.xxx.xxx
+[2014-04-14 09:39:28] Reply sent to Leader Replica:1->2->Username [analyzed] does not exist on game server!
+[2014-04-14 09:39:37] Request received from Leader Replica:2->PlayerSignIn->deyvid->asdasd->93.xxx.xxx.xxx
+[2014-04-14 09:39:37] Reply sent to Leader Replica:2->2->Password for username [deyvid] is incorrect!
+[2014-04-14 10:04:26] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->182.xxx.xxx.xxx
+[2014-04-14 10:04:26] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:04:48] Request received from Leader Replica:1->GetPlayerStatus->Admin->Admin->182.xxx.xxx.xxx
+[2014-04-14 10:04:48] Reply sent to Leader Replica:1->2->Server AS:Total players:1 Online:0 Offline: 1#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:0 Online:0 Offline: 0
+[2014-04-14 10:06:16] Request received from Leader Replica:2->GetPlayerStatus->Admin->Aasdas->182.xxx.xxx.xxx
+[2014-04-14 10:06:16] Reply sent to Leader Replica:2->2->Invalid Administator user name or password!
+[2014-04-14 10:08:03] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->182.xxx.xxx.xxx
+[2014-04-14 10:08:03] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:08:21] Request received from Leader Replica:1->GetPlayerStatus->Admin->Asdass->182.xxx.xxx.xxx
+[2014-04-14 10:08:21] Reply sent to Leader Replica:1->2->Invalid Administator user name or password!
+[2014-04-14 10:09:31] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->132.xxx.xxx.xxx
+[2014-04-14 10:09:31] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:09:53] Request received from Leader Replica:1->GetPlayerStatus->Admin->Admin->93.xxx.xxx.xxx
+[2014-04-14 10:09:53] Reply sent to Leader Replica:1->2->Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:1 Online:0 Offline: 1#Server AS:Total players:0 Online:0 Offline: 0
+[2014-04-14 10:10:00] Request received from Leader Replica:2->GetPlayerStatus->Admin->sdasda->93.xxx.xxx.xxx
+[2014-04-14 10:10:00] Reply sent to Leader Replica:2->2->Invalid Administator user name or password!
+[2014-04-14 10:10:09] Request received from Leader Replica:3->GetPlayerStatus->asdasda->asdasdas->93.xxx.xxx.xxx
+[2014-04-14 10:10:09] Reply sent to Leader Replica:3->2->Invalid Administator user name or password!
+[2014-04-14 10:15:11] Request received from Leader Replica:0->PlayerSignIn->sdasda->asdasda->182.xxx.xxx.xxx
+[2014-04-14 10:15:11] Reply sent to Leader Replica:0->2->Username [sdasda] does not exist on game server!
+[2014-04-14 10:15:29] Request received from Leader Replica:1->PlayerSignIn->dasdas->asdasda->182.xxx.xxx.xxx
+[2014-04-14 10:15:29] Reply sent to Leader Replica:1->2->Username [dasdas] does not exist on game server!
+[2014-04-14 10:15:36] Request received from Leader Replica:2->PlayerSignIn->asdasda->asdasda->182.xxx.xxx.xxx
+[2014-04-14 10:15:36] Reply sent to Leader Replica:2->2->Username [asdasda] does not exist on game server!
+[2014-04-14 10:17:54] Request received from Leader Replica:3->PlayerSignIn->121212->1231231->182.xxx.xxx.xxx
+[2014-04-14 10:17:54] Reply sent to Leader Replica:3->2->
+[2014-04-14 10:19:19] Request received from Leader Replica:0->PlayerSignIn->asdasa->asdasda->132.xxx.xxx.xxx
+[2014-04-14 10:19:19] Reply sent to Leader Replica:0->2->Username [asdasa] does not exist on game server!
+[2014-04-14 10:19:22] Request received from Leader Replica:1->PlayerSignIn->asdasda->asdasda->132.xxx.xxx.xxx
+[2014-04-14 10:19:22] Reply sent to Leader Replica:1->2->Username [asdasda] does not exist on game server!
+[2014-04-14 10:19:25] Request received from Leader Replica:2->PlayerSignIn->asdasda->asdasda->132.xxx.xxx.xxx
+[2014-04-14 10:19:25] Reply sent to Leader Replica:2->2->Username [asdasda] does not exist on game server!
+[2014-04-14 10:31:15] Request received from Leader Replica:0->PlayerSignIn->dasdas->asdasd->93.xxx.xxx.xxx
+[2014-04-14 10:31:15] Reply sent to Leader Replica:0->2->Username [dasdas] does not exist on game server!
+[2014-04-14 10:32:52] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->12->132.xxx.xxx.xxx
+[2014-04-14 10:32:52] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:43:50] Request received from Leader Replica:0->PlayerSignIn->sdasda->asdasda->93.xxx.xxx.xxx
+[2014-04-14 10:43:50] Reply sent to Leader Replica:0->2->Username [sdasda] does not exist on game server!
+[2014-04-14 10:51:40] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->132.xxx.xxx.xxx
+[2014-04-14 10:51:40] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:52:30] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->182.xxx.xxx.xxx
+[2014-04-14 10:52:30] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:52:40] Request received from Leader Replica:1->PlayerSignIn->dasdas->asdasd->182.xxx.xxx.xxx
+[2014-04-14 10:52:40] Reply sent to Leader Replica:1->2->Username [dasdas] does not exist on game server!
+[2014-04-14 10:53:21] Request received from Leader Replica:2->TransferAccount->deyvid->deyvid->182.xxx.xxx.xxx->132.xxx.xxx.xxx
+[2014-04-14 10:53:21] Reply sent to Leader Replica:2->2->Username [deyvid] successfully transferred from game server!
+[2014-04-14 10:54:56] Request received from Leader Replica:0->CreatePlayerAccount->deyvid->deyvid->deyvid->deyvid->19->182.xxx.xxx.xxx
+[2014-04-14 10:54:56] Reply sent to Leader Replica:0->2->Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:55:01] Request received from Leader Replica:1->PlayerSignIn->deyvid->deyvid->182.xxx.xxx.xxx
+[2014-04-14 10:55:01] Reply sent to Leader Replica:1->2->User [deyvid] successfully signed in on game server!
+[2014-04-14 10:55:16] Request received from Leader Replica:2->PlayerSignIn->asdasda->asdasda->182.xxx.xxx.xxx
+[2014-04-14 10:55:16] Reply sent to Leader Replica:2->2->Username [asdasda] does not exist on game server!
+[2014-04-14 10:55:30] Request received from Leader Replica:3->PlayerSignIn->asdasda->asdasda->182.xxx.xxx.xxx
+[2014-04-14 10:55:30] Reply sent to Leader Replica:3->2->Username [asdasda] does not exist on game server!
+[2014-04-14 10:55:41] Request received from Leader Replica:4->PlayerSignIn->dasdasda->asdasdas->182.xxx.xxx.xxx
+[2014-04-14 10:55:41] Reply sent to Leader Replica:4->2->Username [dasdasda] does not exist on game server!
+[2014-04-14 10:56:26] Request received from Leader Replica:5->CreatePlayerAccount->deyvid2->deyvid2->deyvid2->deyvid2->19->182.xxx.xxx.xxx
+[2014-04-14 10:56:26] Reply sent to Leader Replica:5->2->Username [deyvid2] successfully created on the requested game server!
