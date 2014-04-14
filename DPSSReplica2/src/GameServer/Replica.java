@@ -75,7 +75,7 @@ public class Replica extends Thread {
 			serverAS= new ServerImpl("AS",3000);	
 			thAS=new Thread(serverAS);
 			thAS.start();
-			socketReply=new DatagramSocket(1012);
+			socketReply=new DatagramSocket(7102);
 
 			hostR = InetAddress.getByName("localhost");	
 		} catch (Exception e) {
@@ -111,7 +111,7 @@ public class Replica extends Thread {
 			serverAS= new ServerImpl("AS",3000);	
 			thAS=new Thread(serverAS);
 			thAS.start();
-			socketReply=new DatagramSocket(1012);
+			socketReply=new DatagramSocket(7102);
 
 			
 		} catch (Exception e) {			
