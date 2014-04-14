@@ -96,9 +96,9 @@ public class ServerImpl implements Runnable {
 	
 	//get the information of the number of players
 	private String getLocalStatus() {
-		// TODO Auto-generated method stub
-		String reply=""+name+": "+onlinePlayerNumber+" online, "+(playerNumber-onlinePlayerNumber)+" offline. ";
 		
+		//String reply=""+name+": "+onlinePlayerNumber+" online, "+(playerNumber-onlinePlayerNumber)+" offline. ";
+		String reply="Server " + name + ":"+ "Total players:" + playerNumber + " Online:" + onlinePlayerNumber + " Offline: " + (playerNumber-onlinePlayerNumber);
 		return reply;
 	}
 	
@@ -373,11 +373,13 @@ public class ServerImpl implements Runnable {
 					Socket.receive(reply);
 					bw.write("["+dateFormat.format(new Date())+"] Get response from Server"+new String(reply.getData()).substring(0,reply.getLength()));
 					
-					response=""+name+": "+onlinePlayerNumber+" online, "+(playerNumber-onlinePlayerNumber)+" offline "+new String(reply.getData()).substring(0,reply.getLength());
+					//response=""+name+": "+onlinePlayerNumber+" online, "+(playerNumber-onlinePlayerNumber)+" offline "+new String(reply.getData()).substring(0,reply.getLength());
+					response="Server " + name + ":"+ "Total players:" + playerNumber + " Online:" + onlinePlayerNumber + " Offline: " + (playerNumber-onlinePlayerNumber) + "#" +new String(reply.getData()).substring(0,reply.getLength());
+					
 					Socket.receive(reply);
 					bw.write("["+dateFormat.format(new Date())+"] Get response from Server"+new String(reply.getData()).substring(0,reply.getLength()));
 
-					response=response+new String(reply.getData()).substring(0,reply.getLength());
+					response=response+"#"+new String(reply.getData()).substring(0,reply.getLength());
 					
 				}
 			bw.write("["+dateFormat.format(new Date())+"] Server ["+name+"]Send reply to Administer["+IP+"]:"+response);
