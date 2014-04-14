@@ -78,9 +78,9 @@ public class GameServerUDP  extends Thread {
 		} 	
 		
 		response = "Server " + gameServerSrc.serverName + ":"+ "Total players:" + playersOnServer + " Online:" + playersOnline + " Offline: " + (playersOnServer-playersOnline); 
-						
+								
 		DatagramPacket reply = new DatagramPacket(response.getBytes(),response.length(), request.getAddress(),request.getPort());
-		uDPSocket.send(reply);		
+		uDPSocket.send(reply);
 		
 	}
 	
