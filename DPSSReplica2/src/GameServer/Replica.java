@@ -62,9 +62,7 @@ public class Replica extends Thread {
 		}
 	}
 	public Replica() {
-
-
-		System.out.println("factory created");		
+	
 		try {
 			serverEU= new ServerImpl("EU",1000);
 			thEU=new Thread(serverEU);
