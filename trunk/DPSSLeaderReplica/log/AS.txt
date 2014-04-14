@@ -1,18 +1,24 @@
-[2014-04-10 09:46:25] Game server AS is up and running!
-[2014-04-10 09:47:24] Username [deyvid] sucessfuly created on the requested game server!
-[2014-04-10 09:49:58] Game server AS is up and running!
-[2014-04-10 09:50:22] Game server AS is up and running!
-[2014-04-10 09:55:24] Game server AS is up and running!
-[2014-04-10 09:56:02] Username [portFES] successfully created on the requested game server!
-[2014-04-10 09:59:20] Game server AS is up and running!
-[2014-04-10 10:17:41] Game server AS is up and running!
-[2014-04-10 10:28:45] Game server AS is up and running!
-[2014-04-10 10:31:07] Game server AS is up and running!
-[2014-04-10 10:33:18] Game server AS is up and running!
-[2014-04-10 10:39:52] Game server AS is up and running!
-[2014-04-10 10:40:02] Game server AS is up and running!
-[2014-04-10 10:40:12] Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:40:46] Game server AS is up and running!
-[2014-04-10 10:41:17] Game server AS is up and running!
-[2014-04-10 10:43:37] Game server AS is up and running!
-[2014-04-10 10:44:18] Game server AS is up and running!
+[2014-04-14 09:24:24] Username [deyvid] successfully created on the requested game server AS!
+[2014-04-14 09:25:32] User [deyvid] successfully signed in on game server AS!
+[2014-04-14 09:25:48] Username [deyvid] successfully signed out of game server AS!
+[2014-04-14 09:25:58] Password for username [deyvid] is incorrect on game server AS!
+[2014-04-14 09:26:25] Username [deyvid3] does not exist on game server AS!
+[2014-04-14 09:26:34] User [deyvid] successfully signed in on game server AS!
+[2014-04-14 09:26:37] User [deyvid] is already online on game server AS!
+[2014-04-14 09:35:57] Game server AS is up and running!
+[2014-04-14 10:04:03] Game server AS is up and running!
+[2014-04-14 10:04:26] Username [deyvid] successfully created on the requested game server AS!
+[2014-04-14 10:04:48] Players status requested by Administator user!
+[2014-04-14 10:04:48] Result returned to Administator user:Server AS:Total players:1 Online:0 Offline: 1 * Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:0 Online:0 Offline: 0
+[2014-04-14 10:06:16] Invalid Administator user name or password on game server AS!
+[2014-04-14 10:07:44] Game server AS is up and running!
+[2014-04-14 10:08:03] Username [deyvid] successfully created on the requested game server AS!
+[2014-04-14 10:08:21] Invalid Administator user name or password on game server AS!
+[2014-04-14 10:09:06] Game server AS is up and running!
+[2014-04-14 10:14:54] Game server AS is up and running!
+[2014-04-14 10:15:11] Username [sdasda] does not exist on game server AS!
+[2014-04-14 10:15:29] Username [dasdas] does not exist on game server AS!
+[2014-04-14 10:15:36] Username [asdasda] does not exist on game server AS!
+[2014-04-14 10:19:00] Game server AS is up and running!
+[2014-04-14 10:30:48] Game server AS is up and running!
+[2014-04-14 10:32:36] Game server AS is up and running!

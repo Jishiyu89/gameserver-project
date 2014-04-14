@@ -64,7 +64,7 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 				Request auxRequest = reqList.get(reqList.indexOf(new Request(seqFIFO)));	
 				
 				//GetPlayerStatus Unmarshalling
-				if (auxRequest.type == RequestType.GetPlayerStatus){
+				if (auxRequest.type == RequestType.GetPlayerStatus && replyReplica.indexOf("#")>-1) {
 					String[] arrReplyReplica=new String[3];
 					arrReplyReplica = replyReplica.split("#");
 					Arrays.sort(arrReplyReplica);
