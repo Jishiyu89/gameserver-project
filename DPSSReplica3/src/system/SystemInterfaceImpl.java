@@ -209,6 +209,7 @@ public class SystemInterfaceImpl implements Runnable {
 				{
 					if (Play1.Username.equalsIgnoreCase(hash_data.get(str1).get(input).Username)) 
 					{
+						//TODO
 						entry = false;
 						break;
 					}
@@ -336,14 +337,12 @@ public class SystemInterfaceImpl implements Runnable {
 			{
 				file2.close();
 			}
-			return "Username [" +Username + "] successfully created on the requested game server!";
+			return "Username [" + Username + "] already exists on the game server!";
 		}
 
 	}
 	
 
-
-		
 		
 	public String playerSignIn(String Username, String Password,String IPaddress) 
 	{
