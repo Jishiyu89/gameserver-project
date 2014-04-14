@@ -1,5 +1,6 @@
 package dpss.service.replica;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 import dpss.model.Request;
@@ -119,7 +120,16 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 		}
 		
 		//After receiving the reply from local game servers > update FIFO queue
-		Request auxRequest = reqList.get(reqList.indexOf(new Request(seqFIFO)));		
+		Request auxRequest = reqList.get(reqList.indexOf(new Request(seqFIFO)));
+		
+		//GetPlayerStatus Unmarshalling
+		if (auxRequest.type == RequestType.GetPlayerStatus){
+			String[] arrReplyReplica=new String[3];
+			arrReplyReplica = reply.split("#");
+			Arrays.sort(arrReplyReplica);
+			reply = arrReplyReplica[0]+"#"+arrReplyReplica[1]+"#"+arrReplyReplica[2];			
+		}	
+		
 		try {
 			
 			synchronized (auxRequest) {

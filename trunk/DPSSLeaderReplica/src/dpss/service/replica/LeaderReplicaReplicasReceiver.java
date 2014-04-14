@@ -3,9 +3,11 @@ package dpss.service.replica;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 import dpss.model.Request;
+import dpss.model.RequestType;
 import dpss.service.WriteLog;
 
 public class LeaderReplicaReplicasReceiver extends Thread {
@@ -58,8 +60,17 @@ public class LeaderReplicaReplicasReceiver extends Thread {
 				codReplica = Integer.parseInt(requestInformation[1]);
 				//3rd position = Reply from Replica 
 				replyReplica = requestInformation[2];
-						
+
 				Request auxRequest = reqList.get(reqList.indexOf(new Request(seqFIFO)));	
+				
+				//GetPlayerStatus Unmarshalling
+				if (auxRequest.type == RequestType.GetPlayerStatus){
+					String[] arrReplyReplica=new String[3];
+					arrReplyReplica = replyReplica.split("#");
+					Arrays.sort(arrReplyReplica);
+					replyReplica = arrReplyReplica[0]+"#"+arrReplyReplica[1]+"#"+arrReplyReplica[2];
+					
+				}				
 				
 				synchronized (auxRequest) {
 					auxRequest.setStatus(codReplica, replyReplica);
