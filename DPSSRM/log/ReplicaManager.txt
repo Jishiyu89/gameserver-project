@@ -28,3 +28,16 @@
 [2014-04-13 23:47:51] Leader Replica informed Replica3 generated wrong result
 [2014-04-13 23:48:12] Leader Replica informed Replica1 generated wrong result
 [2014-04-13 23:55:13] Leader Replica informed Replica1 generated wrong result
+[2014-04-14 09:25:58] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:15:12] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:15:29] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:15:36] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:15:36] Restart order sent to Replica3
+[2014-04-14 10:19:19] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:19:23] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:19:25] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:19:25] Restart order sent to Replica3
+[2014-04-14 10:55:16] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:55:30] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:55:41] Leader Replica informed Replica3 generated wrong result
+[2014-04-14 10:55:41] Restart order sent to Replica3
