@@ -32,3 +32,21 @@
 [2014-03-04 21:18:47]Server[EU]:Get the request for Transfer Account from PlayerClient[93.111.140.30].
 [2014-03-04 21:18:47] Transfer User [A] sucessfully.[2014-03-04 21:19:35]Server[EU]:Get the request for Sign In from PlayerClient[93.111.140.30].
 [2014-03-04 21:19:35]Server[EU] Reply:[93.111.140.30]Sorry, the EU does not contains this user:A
+[2014-04-14 01:11:40]Server[EU]:Get the request for Create Player Account from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:11:40]Server[EU] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 01:12:11]Server[EU]:Get the request for Sign In from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:12:11]Server[EU] Reply:User [deyvid] successfully signed in on game server!
+[2014-04-14 01:23:48]Server[EU]:Get the request for Create Player Account from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:23:48]Server[EU] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 01:24:07]Server[EU]:Get the request for Sign In from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:24:07]Server[EU] Reply:User [deyvid] successfully signed in on game server!
+[2014-04-14 01:25:00]Server[EU]:Get the request for Sign In from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:25:00]Server[EU] Reply:Username [deyvid] successfully signed out of game server!
+[2014-04-14 01:34:54]Server[EU]:Get the request for Create Player Account from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:34:54]Server[EU] Reply to:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 01:35:06]Server[EU]:Get the request for Create Player Account from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:35:06]Server[EU] Reply to:Username [deyvid] already exists on the game server!
+[2014-04-14 01:35:11]Server[EU]:Get the request for Sign In from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:35:11]Server[EU] Reply:User [deyvid] successfully signed in on game server!
+[2014-04-14 01:38:55]Server[EU]:Get the request for Sign In from PlayerClient[93.xxx.xxx.xxx].
+[2014-04-14 01:38:55]Server[EU] Reply:Username [deyvid] successfully signed out of game server!

@@ -152,12 +152,12 @@ public class Process implements Runnable  {
 	}
 	public boolean Reply(String str) throws Exception{
 
-		System.out.println("Reply 1");
+		
 		DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostR,1300);
-		System.out.println("Reply 2");
+		
 		//synchronized(s){
 			try {
-				System.out.println("Reply 3");
+				
 				//synchronized(s){
 					s.send(message);
 				//}
