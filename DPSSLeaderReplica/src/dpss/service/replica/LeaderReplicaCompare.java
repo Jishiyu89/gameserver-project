@@ -3,12 +3,14 @@ package dpss.service.replica;
 import java.util.LinkedList;
 
 import dpss.model.Request;
+import dpss.service.WriteLog;
 
 public class LeaderReplicaCompare extends Thread {
 
 	LinkedList<Request> reqList;
 	LeaderReplicaFESender fESender;
 	LeaderReplicaRMSender rMSender;
+	WriteLog Logger = new WriteLog(); 	
 
 	public LeaderReplicaCompare(LinkedList<Request> reqListParam, LeaderReplicaFESender fESenderParam, LeaderReplicaRMSender rMSenderParam) {
 		this.reqList = reqListParam;
@@ -40,19 +42,18 @@ public class LeaderReplicaCompare extends Thread {
 					//Informing RM about the issue//
 					if (oldestReq.diffResponse > 0){				
 
-						System.out.println("Informing RM about results mismatch on Replica:" + oldestReq.diffResponse);
-
+						Logger.write("LeaderReplica", "Informing RM about results mismatch on Replica:" + oldestReq.diffResponse);
+						
 						auxMessage = Integer.toString(oldestReq.diffResponse);
 						rMSender.send(auxMessage);
 					}
 
 					//Delete analyzed request from FIFO Queue			
-					reqList.removeFirst();
-					System.out.println("First elemented removed");
+					reqList.removeFirst();					
 				}
 
 				else
-					System.out.println("First element analyzied. Nothing to compare yet!");		
+					System.out.println("First element from FIFO queue analyzed. Nothing to compare yet!");		
 			}
 		}
 

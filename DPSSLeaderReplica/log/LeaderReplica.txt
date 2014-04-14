@@ -1,22 +1,87 @@
-[2014-04-10 09:47:24] Reply from Leader Replica to request[0]:Username [deyvid] sucessfuly created on the requested game server!
-[2014-04-10 09:47:24] Reply from Replica2 to request[0]:Username [deyvid] sucessfuly created on the requested game server!
-[2014-04-10 09:51:10] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 09:51:10] Unexpected error receiving reply from Replicas!
-[2014-04-10 09:56:02] Reply from Leader Replica to request[0]:Username [portFES] successfully created on the requested game server!
-[2014-04-10 09:56:03] Reply from Replica2 to request[0]:Username [portFES] successfully created on the requested game server!
-[2014-04-10 09:59:41] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 09:59:41] Reply from Replica2 to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:01:14] Reply from Leader Replica to request[1]:Username [ShuLiu] successfully created on the requested game server!
-[2014-04-10 10:18:30] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:18:43] Reply from Leader Replica to request[1]:Username [deyvid1] successfully created on the requested game server!
-[2014-04-10 10:24:36] Reply from Leader Replica to request[2]:Username [tanmay] successfully created on the requested game server!
-[2014-04-10 10:25:01] Reply from Leader Replica to request[3]:Username [ooooooo] successfully created on the requested game server!
-[2014-04-10 10:29:00] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:31:46] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:40:12] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:40:57] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:41:37] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:43:49] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
-[2014-04-10 10:44:04] Reply from Leader Replica to request[1]:Username [deyvid2] successfully created on the requested game server!
-[2014-04-10 10:44:18] Reply from Leader Replica to request[2]:Username [deyvid3] successfully created on the requested game server!
-[2014-04-10 10:44:18] Restart request from Replica Manager(RM) successfully executed!
+[2014-04-14 09:24:24] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:24:24] Reply from Replica2 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:24:24] Reply from Replica3 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:25:32] Reply from Leader Replica to request[1]:User [deyvid] successfully signed in on game server!
+[2014-04-14 09:25:32] Reply from Replica2 to request[1]:User [deyvid] successfully signed in on game server!
+[2014-04-14 09:25:33] Reply from Replica3 to request[1]:User [deyvid] successfully signed in on game server!
+[2014-04-14 09:25:48] Reply from Leader Replica to request[2]:Username [deyvid] successfully signed out of game server!
+[2014-04-14 09:25:48] Reply from Replica2 to request[2]:Username [deyvid] successfully signed out of game server!
+[2014-04-14 09:25:48] Reply from Replica3 to request[2]:Username [deyvid] successfully signed out of game server!
+[2014-04-14 09:25:58] Reply from Replica2 to request[3]:Password for username [deyvid] is incorrect!
+[2014-04-14 09:25:58] Reply from Leader Replica to request[3]:Password for username [deyvid] is incorrect!
+[2014-04-14 09:25:58] Reply from Replica3 to request[3]:Username [deyvid] does not exist on game server!
+[2014-04-14 09:26:25] Reply from Replica2 to request[4]:Username [deyvid3] does not exist on game server!
+[2014-04-14 09:26:25] Reply from Leader Replica to request[4]:Username [deyvid3] does not exist on game server!
+[2014-04-14 09:26:25] Reply from Replica3 to request[4]:Username [deyvid3] does not exist on game server!
+[2014-04-14 09:26:34] Reply from Replica2 to request[5]:User [deyvid] successfully signed in on game server!
+[2014-04-14 09:26:34] Reply from Leader Replica to request[5]:User [deyvid] successfully signed in on game server!
+[2014-04-14 09:26:34] Reply from Replica3 to request[5]:User [deyvid] successfully signed in on game server!
+[2014-04-14 09:26:37] Reply from Leader Replica to request[6]:User [deyvid] is already online on game server!
+[2014-04-14 09:26:37] Reply from Replica2 to request[6]:User [deyvid] is already online on game server!
+[2014-04-14 09:26:37] Reply from Replica3 to request[6]:User [deyvid] is already online on game server!
+[2014-04-14 09:36:22] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:36:22] Reply from Replica2 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:36:22] Reply from Replica3 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 09:39:28] Reply from Replica2 to request[1]:Username [analyzed] does not exist on game server!
+[2014-04-14 09:39:28] Reply from Leader Replica to request[1]:Username [analyzed] does not exist on game server!
+[2014-04-14 09:39:28] Reply from Replica3 to request[1]:Username [analyzed] does not exist on game server!
+[2014-04-14 09:39:37] Reply from Replica2 to request[2]:Password for username [deyvid] is incorrect!
+[2014-04-14 09:39:37] Reply from Leader Replica to request[2]:Password for username [deyvid] is incorrect!
+[2014-04-14 09:39:37] Reply from Replica3 to request[2]:Password for username [deyvid] is incorrect!
+[2014-04-14 10:04:26] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:04:26] Reply from Replica2 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:04:26] Reply from Replica3 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:04:48] Reply from Replica2 to request[1]:Server AS:Total players:1 Online:0 Offline: 1#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:0 Online:0 Offline: 0
+[2014-04-14 10:04:48] Reply from Leader Replica to request[1]:Server AS:Total players:1 Online:0 Offline: 1#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:0 Online:0 Offline: 0
+[2014-04-14 10:04:48] Reply from Replica3 to request[1]:Server AS:Total players:1 Online:0 Offline: 1#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:0 Online:0 Offline: 0
+[2014-04-14 10:06:16] Unexpected error receiving reply from Replicas!
+[2014-04-14 10:06:16] Unexpected error receiving reply from Replicas!
+[2014-04-14 10:08:03] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:08:03] Reply from Replica2 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:08:03] Reply from Replica3 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:08:21] Reply from Leader Replica to request[1]:Invalid Administator user name or password!
+[2014-04-14 10:08:21] Unexpected error receiving reply from Replicas!
+[2014-04-14 10:08:21] Unexpected error receiving reply from Replicas!
+[2014-04-14 10:09:31] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:09:31] Reply from Replica2 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:09:31] Reply from Replica3 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:09:53] Reply from Replica3 to request[1]:Server AS:Total players:0 Online:0 Offline: 0#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:1 Online:0 Offline: 1
+[2014-04-14 10:09:53] Reply from Replica2 to request[1]:Server AS:Total players:0 Online:0 Offline: 0#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:1 Online:0 Offline: 1
+[2014-04-14 10:09:53] Reply from Leader Replica to request[1]:Server AS:Total players:0 Online:0 Offline: 0#Server EU:Total players:0 Online:0 Offline: 0#Server NA:Total players:1 Online:0 Offline: 1
+[2014-04-14 10:10:00] Reply from Replica3 to request[2]:Invalid Administator user name or password!
+[2014-04-14 10:10:00] Reply from Leader Replica to request[2]:Invalid Administator user name or password!
+[2014-04-14 10:10:00] Reply from Replica2 to request[2]:Invalid Administator user name or password!
+[2014-04-14 10:10:09] Reply from Replica2 to request[3]:Invalid Administator user name or password!
+[2014-04-14 10:10:09] Reply from Leader Replica to request[3]:Invalid Administator user name or password!
+[2014-04-14 10:10:09] Reply from Replica3 to request[3]:Invalid Administator user name or password!
+[2014-04-14 10:15:11] Reply from Leader Replica to request[0]:Username [sdasda] does not exist on game server!
+[2014-04-14 10:15:11] Reply from Replica2 to request[0]:Username [sdasda] does not exist on game server!
+[2014-04-14 10:15:12] Reply from Replica3 to request[0]:Username [sdasda] does not exist on gam8e server!
+[2014-04-14 10:15:12] Informing RM about results mismatch on Replica:3
+[2014-04-14 10:15:29] Reply from Replica2 to request[1]:Username [dasdas] does not exist on game server!
+[2014-04-14 10:15:29] Reply from Leader Replica to request[1]:Username [dasdas] does not exist on game server!
+[2014-04-14 10:15:29] Reply from Replica3 to request[1]:Username [dasdas] does not exist on gam8e server!
+[2014-04-14 10:15:29] Informing RM about results mismatch on Replica:3
+[2014-04-14 10:15:36] Reply from Replica2 to request[2]:Username [asdasda] does not exist on game server!
+[2014-04-14 10:15:36] Reply from Leader Replica to request[2]:Username [asdasda] does not exist on game server!
+[2014-04-14 10:15:36] Reply from Replica3 to request[2]:Username [asdasda] does not exist on gam8e server!
+[2014-04-14 10:15:36] Informing RM about results mismatch on Replica:3
+[2014-04-14 10:17:54] Unexpected error receiving reply from Replicas!
+[2014-04-14 10:17:54] Reply from Replica3 to request[3]:Username [121212] does not exist on gam8e server!
+[2014-04-14 10:19:19] Reply from Leader Replica to request[0]:Username [asdasa] does not exist on game server!
+[2014-04-14 10:19:19] Reply from Replica2 to request[0]:Username [asdasa] does not exist on game server!
+[2014-04-14 10:19:19] Reply from Replica3 to request[0]:Username [asdasa] does not exist on gam8e server!
+[2014-04-14 10:19:19] Informing RM about results mismatch on Replica:3
+[2014-04-14 10:19:22] Reply from Replica2 to request[1]:Username [asdasda] does not exist on game server!
+[2014-04-14 10:19:22] Reply from Leader Replica to request[1]:Username [asdasda] does not exist on game server!
+[2014-04-14 10:19:22] Reply from Replica3 to request[1]:Username [asdasda] does not exist on gam8e server!
+[2014-04-14 10:19:22] Informing RM about results mismatch on Replica:3
+[2014-04-14 10:19:25] Reply from Replica2 to request[2]:Username [asdasda] does not exist on game server!
+[2014-04-14 10:19:25] Reply from Leader Replica to request[2]:Username [asdasda] does not exist on game server!
+[2014-04-14 10:19:25] Reply from Replica3 to request[2]:Username [asdasda] does not exist on gam8e server!
+[2014-04-14 10:19:25] Informing RM about results mismatch on Replica:3
+[2014-04-14 10:31:15] Reply from Leader Replica to request[0]:Username [dasdas] does not exist on game server!
+[2014-04-14 10:31:15] Reply from Replica2 to request[0]:Username [dasdas] does not exist on game server!
+[2014-04-14 10:32:52] Reply from Leader Replica to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:32:52] Reply from Replica2 to request[0]:Username [deyvid] successfully created on the requested game server!
+[2014-04-14 10:32:52] Reply from Replica3 to request[0]:Username [deyvid] successfully created on the requested game server!

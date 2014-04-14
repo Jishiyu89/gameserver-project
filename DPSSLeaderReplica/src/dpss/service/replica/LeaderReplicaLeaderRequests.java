@@ -50,9 +50,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 						requestMessageArray[2], requestMessageArray[3],
 						requestMessageArray[4],
 						Integer.parseInt(requestMessageArray[5]),
-						requestMessageArray[6]);
-				
-				System.out.println("reply = >>>" + reply);
+						requestMessageArray[6]);						
 
 			}			
 			break;
@@ -65,8 +63,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 			
 			if (gameServer != null)
 				reply = gameServer.playerSignIn(requestMessageArray[1],
-						requestMessageArray[2], requestMessageArray[3]);
-			System.out.println(reply);
+						requestMessageArray[2], requestMessageArray[3]);			
 			
 			break;
 		case PlayerSignOut:
@@ -76,8 +73,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 			if (gameServer != null)
 				reply = gameServer.playerSignOut(requestMessageArray[1],
 						requestMessageArray[2]);
-			System.out.println(reply);
-		
+				
 
 			break;
 		case TransferAccount:
@@ -88,8 +84,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 				reply = gameServer.transferAccount(requestMessageArray[1],
 						requestMessageArray[2], requestMessageArray[3],
 						requestMessageArray[4]);
-			System.out.println(reply);
-			
+						
 
 			break;
 		case GetPlayerStatus:
@@ -99,8 +94,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 			if (gameServer != null)
 				reply = gameServer.getPlayerStatus(requestMessageArray[1],
 						requestMessageArray[2], requestMessageArray[3]);
-			System.out.println(reply);
-		
+					
 
 			break;
 		case SuspendAccount:
@@ -112,8 +106,7 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 				reply = gameServer.suspendAccount(requestMessageArray[1],
 						requestMessageArray[2], requestMessageArray[3],
 						requestMessageArray[4]);
-			System.out.println(reply);
-		
+					
 
 			break;
 
@@ -121,9 +114,9 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 		
 		//After receiving the reply from local game servers > update FIFO queue
 		Request auxRequest = reqList.get(reqList.indexOf(new Request(seqFIFO)));
-		
+		System.out.println("index of # = "+ reply.indexOf("#"));
 		//GetPlayerStatus Unmarshalling
-		if (auxRequest.type == RequestType.GetPlayerStatus){
+		if (auxRequest.type == RequestType.GetPlayerStatus && reply.indexOf("#")>-1) {
 			String[] arrReplyReplica=new String[3];
 			arrReplyReplica = reply.split("#");
 			Arrays.sort(arrReplyReplica);
@@ -149,21 +142,15 @@ public class LeaderReplicaLeaderRequests implements Runnable {
 
 	private GameServerImpl IPConvert(String s) {
 		String[] IP = s.split("\\.");
-		System.out.println(s);
-		System.out.println(IP[0]);
-		if (IP[0] == null) {
-			System.out.println("null>");
+		if (IP[0] == null) {			
 			return null;
 		} else {
 			switch (Integer.parseInt(IP[0])) {
-			case 132:
-				System.out.println("132 here!");
+			case 132:				
 				return gameServers.servantNA;
 			case 93:
-				System.out.println("93 here!");
 				return gameServers.servantEU;
 			default:
-				System.out.println("wte here!");
 				return gameServers.servantAS;
 			}
 		}
