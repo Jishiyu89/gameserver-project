@@ -68,6 +68,7 @@ public class ServerImpl implements Runnable {
 					String response=getLocalStatus();
 					bufferReply=response.getBytes();
 					reply= new DatagramPacket(bufferReply,response.length(), request.getAddress(),request.getPort());
+					
 					aSocket.send(reply);
 				}
 				else if(new String(request.getData()).substring(0,request.getLength()).equals("Transfer"))
@@ -75,10 +76,11 @@ public class ServerImpl implements Runnable {
 					aSocket.receive(request);
 					String[] playerInformation=new String[10];
 					playerInformation=new String(request.getData()).substring(0,request.getLength()).split("->");
+					
 					Player tranPlayer=new Player(playerInformation[0],playerInformation[1],playerInformation[2],
 							Integer.parseInt(playerInformation[4]),playerInformation[3],playerInformation[6]);
 					
-					int index=playerInformation[2].charAt(0)-'A';
+					int index=playerInformation[2].charAt(0)-'a';
 					synchronized(hash.get(index)){
 						hash.get(index).add(tranPlayer);
 						playerNumber++;
@@ -96,6 +98,7 @@ public class ServerImpl implements Runnable {
 	private String getLocalStatus() {
 		// TODO Auto-generated method stub
 		String reply=""+name+": "+onlinePlayerNumber+" online, "+(playerNumber-onlinePlayerNumber)+" offline. ";
+		
 		return reply;
 	}
 	
@@ -148,7 +151,7 @@ public class ServerImpl implements Runnable {
 			bw.newLine();
 			
 			//Find out which list this user belongs to
-			int listIndex= userName.charAt(0)-'A';
+			int listIndex= userName.charAt(0)-'a';
 			Player player=new Player(userName);
 		 
 			// Check the list whether contains the play which has same userName
@@ -197,7 +200,7 @@ public class ServerImpl implements Runnable {
 			bw.newLine();
 			
 			// get the index of the lists
-			int index=userName.charAt(0)-'A';
+			int index=userName.charAt(0)-'a';
 			
 			// check the list whether contains the user account
 			Player player=new Player(userName);
@@ -241,7 +244,7 @@ public class ServerImpl implements Runnable {
 			bw.newLine();
 		
 			// get the index of the lists
-			int listIndex=userName.charAt(0)-'A';
+			int listIndex=userName.charAt(0)-'a';
 			
 			// check the list whether contains the user account
 			Player player=new Player(userName);
@@ -325,7 +328,8 @@ public class ServerImpl implements Runnable {
 			{
 				bw.write("["+dateFormat.format(new Date())+"]Server["+name+"]:Get the request for Create Player Account from PlayerClient["+IP+"]."); 
 				bw.newLine();
-				
+				DatagramSocket Socket = null;
+				Socket = new DatagramSocket();
 				//Check the name and password
 				if((!adminName.equals("Admin")) || (!adminPassword.equals("Admin")))
 					response= "Invalid Administator user name or password!";
@@ -333,11 +337,11 @@ public class ServerImpl implements Runnable {
 				//	response= "Wrong Password.";
 				else{
 					
-					//DatagramSocket aSocket = null;
+					
 					int adminServerPortNum1=0,adminServerPortNum2=0;
 					DatagramPacket request1,request2;
 					
-					//aSocket = new DatagramSocket();
+					
 					InetAddress aHost = InetAddress.getByName("localhost");
 					
 					//figure out the port number of other 2 severs
@@ -358,29 +362,31 @@ public class ServerImpl implements Runnable {
 					
 					//send request to other servers
 					request1= new DatagramPacket("Status".getBytes(),"Status".length(),aHost, adminServerPortNum1);//Send the userName of Administer
-					aSocket.send(request1);
+					Socket.send(request1);
 					
 					request2= new DatagramPacket("Status".getBytes(),"Status".length(),aHost, adminServerPortNum2);// Send the Password of Administer
-					aSocket.send(request2);
+					Socket.send(request2);
 					
 					//receive reply
 					byte[] buffer = new byte[1000];
 					DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
-					aSocket.receive(reply);
+					Socket.receive(reply);
 					bw.write("["+dateFormat.format(new Date())+"] Get response from Server"+new String(reply.getData()).substring(0,reply.getLength()));
 					
 					response=""+name+": "+onlinePlayerNumber+" online, "+(playerNumber-onlinePlayerNumber)+" offline "+new String(reply.getData()).substring(0,reply.getLength());
-					aSocket.receive(reply);
+					Socket.receive(reply);
 					bw.write("["+dateFormat.format(new Date())+"] Get response from Server"+new String(reply.getData()).substring(0,reply.getLength()));
 
 					response=response+new String(reply.getData()).substring(0,reply.getLength());
-				 
+					
 				}
 			bw.write("["+dateFormat.format(new Date())+"] Server ["+name+"]Send reply to Administer["+IP+"]:"+response);
 			bw.flush();
+			Socket.close();
 			}catch(SocketException e){ System.out.println("Socket " + e.getMessage());
 			}catch(IOException e){ System.out.println("IO" + e.getMessage());
-			}//finally{ if(aSocket != null) aSocket.close();}
+			}
+		 	
 			return response;
 	}
 	
@@ -393,7 +399,7 @@ public class ServerImpl implements Runnable {
 			bw.newLine();
 			
 			//Find out which list this user belongs to
-			int listIndex= userName.charAt(0)-'A';
+			int listIndex= userName.charAt(0)-'a';
 			Player player=new Player(userName);
 		 
 			// Check the list whether contains the play which has same userName
