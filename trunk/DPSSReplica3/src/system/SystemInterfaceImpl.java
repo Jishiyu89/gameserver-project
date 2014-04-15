@@ -18,7 +18,7 @@ import java.util.logging.SimpleFormatter;
 
 
 public class SystemInterfaceImpl implements Runnable {
-
+	
 	DatagramSocket aSocket;
 	int portNumber;
 

@@ -19,11 +19,12 @@ import system.SystemInterfaceImpl;
 
 
 public class Process implements Runnable  {
+	public static String NameLR="localhost";
 	String message;
 	SystemInterfaceImpl gameServer=null;
 	SystemInterfaceImpl sNA=null,sEU=null,sAS=null;
 	DatagramSocket s;
-	InetAddress hostR;
+	InetAddress hostLR;
 	BufferedWriter bw;
 	SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	int idReplica = 3;
@@ -38,7 +39,7 @@ public class Process implements Runnable  {
 		if(s==null)
 			System.out.println("NULL");
 		try {
-			hostR = InetAddress.getByName("localhost");
+			hostLR = InetAddress.getByName(NameLR);
 			bw=new BufferedWriter( new FileWriter("log/"+nameReplica+".txt",true));
 		} catch (Exception e) {
 			
@@ -160,7 +161,7 @@ private SystemInterfaceImpl IPConvert(String s){
 public boolean Reply(String str) throws Exception{
 
 	
-	DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostR,1300);
+	DatagramPacket message = new DatagramPacket(str.getBytes(), str.length(),hostLR,1300);
 	
 			try {
 						
