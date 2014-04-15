@@ -32,7 +32,7 @@ import org.omg.PortableServer.POAHelper;
 import dpss.service.corba.GameServerPOA;
 
 public class FrontEndImpl extends GameServerPOA {
-	
+	public static String NameLR="localhost";
 	ORB orb; 
 	String name="FrontEnd";
 	int portUDP=9000;		
@@ -53,7 +53,7 @@ public class FrontEndImpl extends GameServerPOA {
 			socketFE=new DatagramSocket(portUDP);
 			Logger.write(name,"Front End " + name +  " is up and running!");
 			System.out.println("Front End " + name +  " is up and running!");	
-			hostLR = InetAddress.getByName("localhost");
+			hostLR = InetAddress.getByName(NameLR);
 			portLR=1010;
 		}catch(Exception e){
 			e.printStackTrace();
