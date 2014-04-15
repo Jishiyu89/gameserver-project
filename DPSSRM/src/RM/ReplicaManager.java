@@ -13,23 +13,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.SocketException;
+import java.net.InetAddress;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ReplicaManager extends Thread{
-	
+	public static String Name1="localhost",Name2="localhost",Name3="localhost";
+	InetAddress R1,R2,R3;
 	DatagramSocket socketRM=null;
 	int count1,count2,count3;
 	int portRM=7000;
 	BufferedWriter bw;
 	SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String nameReplica = "ReplicaManager";	
-		
+	
 	public ReplicaManager()
 	{ 
 		try {
-			
+			R1=InetAddress.getByName("Name1");
+			R2=InetAddress.getByName("Name2");
+			R3=InetAddress.getByName("Name3");
 			socketRM=new DatagramSocket(portRM);
 			bw=new BufferedWriter( new FileWriter("log/"+nameReplica+".txt",true));
 			
@@ -67,7 +70,7 @@ public class ReplicaManager extends Thread{
 					 
 					 if (count1>2)
 					 {
-						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7101);
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, R1,7101);
 						 count1=0;
 						 socketRM.send(replyMsg);
 						 bw.write("["+dateFormat.format(new Date())+"] Restart order sent to Replica1 (Leader)");
@@ -76,7 +79,7 @@ public class ReplicaManager extends Thread{
 					 }
 					 else if (count2>2)
 					 {
-						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7102);
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length,R2,7102);
 						 count2=0;
 						 socketRM.send(replyMsg);
 						 
@@ -86,7 +89,7 @@ public class ReplicaManager extends Thread{
 					 }
 					 else if (count3>2)
 					 {
-						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length, receiveMsg.getAddress(),7103);
+						 replyMsg=new DatagramPacket(bufferReply,bufferReply.length,R3,7103);
 						 count3=0;
 						 socketRM.send(replyMsg);
 						 
