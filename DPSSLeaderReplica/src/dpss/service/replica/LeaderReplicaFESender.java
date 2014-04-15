@@ -8,7 +8,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 
 public class LeaderReplicaFESender {
-
+	public static String NameFE="localhost";
 	///Socket to send to FE
 	
 	String message=null;
@@ -22,7 +22,7 @@ public class LeaderReplicaFESender {
 		try {			
 		
 			socketFE=new DatagramSocket(portFES);
-			hostFE = InetAddress.getByName("localhost");
+			hostFE = InetAddress.getByName(NameFE);
 
 		} catch (UnknownHostException e) {		
 			e.printStackTrace();
